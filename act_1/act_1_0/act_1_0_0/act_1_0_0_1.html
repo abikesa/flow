@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"></a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="act_1_0_0_2.html"></a></li>
 <li class="toctree-l1"><a class="reference internal" href="act_1_0_0_3.html"></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../act_1_0_1/act_1_0_1_1.html"></a></li>
@@ -336,7 +337,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -352,6 +355,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-ethics-qualitative-research">Introduction to Ethics &amp; Qualitative Research</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -363,6 +376,198 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction-to-ethics-qualitative-research">
+<h1>Introduction to Ethics &amp; Qualitative Research<a class="headerlink" href="#introduction-to-ethics-qualitative-research" title="Permalink to this heading">#</a></h1>
+<ol class="arabic">
+<li><p>Olivia Kates, MD</p>
+<ul class="simple">
+<li><p>Descriptive Ethics (<code class="docutils literal notranslate"><span class="pre">is</span></code>)</p>
+<ul>
+<li><p>Empirical</p></li>
+<li><p>Historical</p></li>
+<li><p>Narrataive</p></li>
+</ul>
+</li>
+<li><p>Normative Ethics (<code class="docutils literal notranslate"><span class="pre">ought</span></code>)</p>
+<ul>
+<li><p>Applied</p>
+<ul>
+<li><p>Pluralism</p></li>
+<li><p>Applied Theory</p>
+<ul>
+<li><p>Virtue</p></li>
+<li><p>Deontology</p></li>
+<li><p>Utilitarianism</p></li>
+<li><p>Care Ethics</p></li>
+<li><p>Social Contract</p></li>
+<li><p>Feminist Ethics</p></li>
+</ul>
+</li>
+<li><p>Casuistry</p></li>
+</ul>
+</li>
+<li><p>Theory</p></li>
+</ul>
+</li>
+<li><p>Metaethics (<code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">discussed:</span> <span class="pre">mentioned</span> <span class="pre">in</span> <span class="pre">passing</span></code>)</p>
+<ul>
+<li><p>Moral Epistemology</p></li>
+<li><p>Moral Psychology</p></li>
+<li><p>Moral Ontology</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Hannah Sung, PhD</p>
+<blockquote>
+<div><p><em>You may have heard the world is made up of atoms and molecules, but it’s really made up of stories. When you sit with an individual that’s been here, you can give quantitiative data a qualitiative overlay. – William Turner, MD</em></p>
+</div></blockquote>
+</li>
+</ol>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Create an empty directed graph</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="c1"># Add nodes</span>
+<span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1.Analyzing&#39;</span><span class="p">,</span> <span class="s1">&#39;3.Writing&#39;</span><span class="p">,</span> <span class="s1">&#39;4.Discussing&#39;</span><span class="p">,</span> <span class="s1">&#39;5.Reflecting&#39;</span><span class="p">,</span> <span class="s1">&#39;6.Planning&#39;</span><span class="p">,</span> <span class="s1">&#39;2.Collecting&#39;</span><span class="p">]</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+
+<span class="c1"># Add edges to the graph (arrows in the DAG)</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;1.Analyzing&#39;</span><span class="p">,</span> <span class="s1">&#39;4.Discussing&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;2.Collecting&#39;</span><span class="p">,</span> <span class="s1">&#39;4.Discussing&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;4.Discussing&#39;</span><span class="p">,</span> <span class="s1">&#39;5.Reflecting&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;5.Reflecting&#39;</span><span class="p">,</span> <span class="s1">&#39;6.Planning&#39;</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+
+<span class="c1"># Set figure size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># You can adjust the width and height here</span>
+
+<span class="c1"># Draw the DAG</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;1.Analyzing&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="s1">&#39;3.Writing&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+    <span class="s1">&#39;4.Discussing&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">.75</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+    <span class="s1">&#39;2.Collecting&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="s1">&#39;5.Reflecting&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">1.35</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+    <span class="s1">&#39;6.Planning&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">edge</span><span class="p">:</span> <span class="s1">&#39;&#39;</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">}</span>
+
+<span class="c1"># https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.ConnectionStyle.html#matplotlib.patches.ConnectionStyle</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">12000</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">arrows</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">connectionstyle</span><span class="o">=</span><span class="s1">&#39;arc3,rad=0.01&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/3d532d577ae3057bf5083dffc23a8ea1b7e19af9c977bfb5a53d0fb0846299ea.png" src="../../../_images/3d532d577ae3057bf5083dffc23a8ea1b7e19af9c977bfb5a53d0fb0846299ea.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Qualitative research</p>
+<ul>
+<li><p>Understand the world from your point of view</p></li>
+<li><p>Term of convenience</p></li>
+<li><p>Conducted under an interpretive paradigm</p>
+<ul>
+<li><p>Reality is socially constructed</p></li>
+<li><p>Knowledge is historically and socially situated</p></li>
+<li><p>Research is about understanding meanings</p></li>
+</ul>
+</li>
+<li><p>Single story creates stereotypes</p>
+<ul>
+<li><p>Not untrue</p></li>
+<li><p>Just incomplete</p></li>
+</ul>
+</li>
+<li><p>Very iterative cycle dealing with emergent, evolving processes</p>
+<ul>
+<li><p>Not a linear process</p></li>
+<li><p>But can think of it linearly</p></li>
+</ul>
+</li>
+<li><p>Reflexivity</p>
+<ul>
+<li><p>Lens</p>
+<ul>
+<li><p>Subjective realities</p></li>
+<li><p>Socially constructed concepts</p></li>
+<li><p>Intersectionality of issues</p></li>
+<li><p>Personal experiences</p></li>
+</ul>
+</li>
+<li><p>Framework</p>
+<ul>
+<li><p>Postpositivism</p></li>
+<li><p>Social constructivist</p></li>
+<li><p>Critical theorist</p></li>
+<li><p>Transformative</p></li>
+<li><p>Postmodernist</p></li>
+<li><p>Pragmatic</p></li>
+</ul>
+</li>
+<li><p>Methodologies</p>
+<ul>
+<li><p>Narrative</p></li>
+<li><p>Phenomenology</p></li>
+<li><p>Grounded theory</p></li>
+<li><p>Ethnography</p></li>
+<li><p>Case study</p></li>
+</ul>
+</li>
+<li><p>Methods</p>
+<ul>
+<li><p>Content analysis</p></li>
+<li><p>Thematic analysis</p></li>
+<li><p>Grounded theory analysis</p></li>
+<li><p>Discourse analysis</p></li>
+<li><p>Interaction analysis</p></li>
+</ul>
+</li>
+<li><p>Reporting</p>
+<ul>
+<li><p>Writing as synthesis</p></li>
+<li><p>Writing as interpretation</p></li>
+<li><p>Writing as social action</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Qualitative coding</p>
+<ul>
+<li><p>Analytic memoing</p></li>
+<li><p>Inductive</p></li>
+<li><p>Deductive</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">Embrace</span> <span class="pre">the</span> <span class="pre">bias</span></code> is our rule in qualitative research (So basically embrace noise too?)</p>
+<ol class="arabic simple" start="3">
+<li><p>Janetta Brunddage, MSc</p>
+<ul class="simple">
+<li><p>Patient and provider opinions regarding the six months rule for alcohol-related liver transplantation</p></li>
+<li><p>Early liver transplantation for severe alcoholic hepatitis in the United States–ready for prime time?</p></li>
+<li><p>Hopkins practices it but it remains ethically controversial</p></li>
+</ul>
+</li>
+</ol>
 <Details style="margin-top:111618px; margin-left:111618px;">
    <Summary></Summary>
 </Details>
@@ -1577,6 +1782,22 @@ The Randomized Controlled Trial is more than a scientific method; for some, it's
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-ethics-qualitative-research">Introduction to Ethics &amp; Qualitative Research</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
