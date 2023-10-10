@@ -364,11 +364,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment-of-kidney-function">Assessment of kidney function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#age-specifc-interpretation-of-egfr">Age-specifc interpretation of eGFR</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comorbidities">Comorbidities</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#frailty">Frailty</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histology">Histology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comorbidities">Comorbidities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#webapp">WebApp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#risk">Risk</a></li>
 </ul>
 </li>
 </ul>
@@ -389,6 +388,54 @@ document.write(`
 <section id="introduction">
 <h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h3>
 <p>Kidney function declines with age. But it also declines with the progression of some diseases. Since the effects of age on kidney function are subtle, cumulative, and often irreversible, they are much more apparent in the geriatric population. And since the geriatric population is more likely to have multiple comorbidities, it makes the assessment of kidney function in the geriatric population more challenging than in the general population. A 90 year old with estimated glomerular filtration rate (eGFR) of 55 may have normal kidney function for his age, or he may have a disease process that is causing his kidney function to decline. How do we distinguish the two? This is the question that we will try to answer in this article.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Setting seed for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Generate age data from 60 to 100</span>
+<span class="n">age</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="c1"># Generate baseline eGFR data. Here, I&#39;m assuming an arbitrary starting point of 120 for age 60</span>
+<span class="c1"># You can replace this value with a more appropriate one if necessary</span>
+<span class="n">baseline_eGFR</span> <span class="o">=</span> <span class="mi">85</span>
+
+<span class="c1"># Generate eGFR scatter plot data with a standard deviation of 15 ml/min</span>
+<span class="n">standard_deviation</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">standard_deviation</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">eGFR</span> <span class="o">=</span> <span class="n">baseline_eGFR</span> <span class="o">+</span> <span class="n">noise</span> <span class="o">-</span> <span class="mf">10.1</span> <span class="o">*</span> <span class="p">(</span><span class="n">age</span> <span class="o">-</span> <span class="mi">60</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span>
+
+<span class="c1"># Calculate line of best fit, which should be a straight line</span>
+<span class="n">best_fit_line</span> <span class="o">=</span> <span class="n">baseline_eGFR</span> <span class="o">-</span> <span class="mf">10.1</span> <span class="o">*</span> <span class="p">(</span><span class="n">age</span> <span class="o">-</span> <span class="mi">60</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span>
+
+<span class="c1"># Plot scatter plot and line of best fit</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">eGFR</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Simulated Data&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">best_fit_line</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Best Fit Line: eGFR = </span><span class="si">{</span><span class="n">baseline_eGFR</span><span class="si">}</span><span class="s1"> - 10.1 * (age - 60) / 10&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;eGFR (mL/min)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;eGFR vs Age&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/26412fc8732d1d7e21f3a8a13aafc4ef0b012baadc83f59642eeb03994b2afce.png" src="../../../_images/26412fc8732d1d7e21f3a8a13aafc4ef0b012baadc83f59642eeb03994b2afce.png" />
+</div>
+</div>
 </section>
 <section id="assessment-of-kidney-function">
 <h3>Assessment of kidney function<a class="headerlink" href="#assessment-of-kidney-function" title="Permalink to this heading">#</a></h3>
@@ -401,10 +448,57 @@ document.write(`
 <p>If we then consider the expected eGFR at 50, 60, and 70 years of age, it is 90, 80, and 70 respectively. If any one of these groups has donated a kidney, it then becomes apparent that some will have eGFR &lt; 60 in the absence of a progressive disease process. An even more nuanced approach would be warranted in this somewhat older population than the younger one considered before.</p>
 <p>But for those who are 80, 90, or 100 years of age, the expected eGFR is 60, 50, and 40 respectively. And thus, as mentioned in the introduction, an eGFR of 55 in a 90 year old is normal for his age.</p>
 <p>So might there be a cutoff below which, regardless of age, we can say that the eGFR is abnormal? The answer is yes. But it is not 60. And it is even more nuanced when we go beyond age and consider comorbidities and frailty.</p>
-</section>
-<section id="comorbidities">
-<h3>Comorbidities<a class="headerlink" href="#comorbidities" title="Permalink to this heading">#</a></h3>
-<p>Risk of disease increases with age. And so does the risk of comorbidities. The median number of comorbidities among the elderly is 3 but this may range from 0 to 20. The most prevalent comorbities are hypertension, diabetes, and cardiovascular disease and these are also the most common causes of CKD. But the elderly are also at risk of acute kidney injury (AKI), another risk factor for CKD. So the elderly are at risk of CKD from both AKI and comorbidities. This clinical picture when overlaid on the age-specific interpretation of eGFR makes the assessment of kidney function in the geriatric population even more challenging.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Create an empty directed graph</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="c1"># Add nodes</span>
+<span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1.Aging&#39;</span><span class="p">,</span><span class="s1">&#39;2.Frailty&#39;</span><span class="p">,</span><span class="s1">&#39;3.Comorbidity&#39;</span><span class="p">,</span> <span class="s1">&#39;4.WebApp&#39;</span><span class="p">,</span> <span class="s1">&#39;5.Risk&#39;</span><span class="p">]</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+
+<span class="c1"># Add edges to the graph (arrows in the DAG)</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;1.Aging&#39;</span><span class="p">,</span> <span class="s1">&#39;4.WebApp&#39;</span><span class="p">),</span>   
+    <span class="p">(</span><span class="s1">&#39;2.Frailty&#39;</span><span class="p">,</span> <span class="s1">&#39;1.Aging&#39;</span><span class="p">),</span>    
+    <span class="p">(</span><span class="s1">&#39;3.Comorbidity&#39;</span><span class="p">,</span> <span class="s1">&#39;1.Aging&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;4.WebApp&#39;</span><span class="p">,</span> <span class="s1">&#39;5.Risk&#39;</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+
+<span class="c1"># Set figure size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># You can adjust the width and height here</span>
+
+<span class="c1"># Draw the DAG</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;1.Aging&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">.75</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+    <span class="s1">&#39;2.Frailty&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="s1">&#39;3.Comorbidity&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="s1">&#39;4.WebApp&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">1.35</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+    <span class="s1">&#39;5.Risk&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">edge</span><span class="p">:</span> <span class="s1">&#39;&#39;</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">}</span>
+
+<span class="c1"># https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.ConnectionStyle.html#matplotlib.patches.ConnectionStyle</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">12000</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">arrows</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">connectionstyle</span><span class="o">=</span><span class="s1">&#39;arc3,rad=0.01&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/61fd9b12e6ed5e04afdb75a89662e410bb78f6eb624fd411faafc7c83246c9f4.png" src="../../../_images/61fd9b12e6ed5e04afdb75a89662e410bb78f6eb624fd411faafc7c83246c9f4.png" />
+</div>
+</div>
 </section>
 <section id="frailty">
 <h3>Frailty<a class="headerlink" href="#frailty" title="Permalink to this heading">#</a></h3>
@@ -412,16 +506,20 @@ document.write(`
 <p>Unintentional weight loss captures the underlying issue of sarcopenia, which is the loss of muscle mass. This is important because serum creatinine level is a function of muscle mass. As muscle mass declines with age, so does the serum creatinine level. This can lead to an overestimation of eGFR in the geriatric population but more specifically in the frail elderly.</p>
 <p>eGFR can be calculated using the cystatin C level instead of the serum creatinine level to address this issue.</p>
 </section>
-<section id="data">
-<h3>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h3>
+<section id="comorbidities">
+<h3>Comorbidities<a class="headerlink" href="#comorbidities" title="Permalink to this heading">#</a></h3>
+<p>Risk of disease increases with age. And so does the risk of comorbidities. The median number of comorbidities among the elderly is 3 but this may range from 0 to 20. The most prevalent comorbities are hypertension, diabetes, and cardiovascular disease and these are also the most common causes of CKD. But the elderly are also at risk of acute kidney injury (AKI), another risk factor for CKD. So the elderly are at risk of CKD from both AKI and comorbidities. This clinical picture when overlaid on the age-specific interpretation of eGFR makes the assessment of kidney function in the geriatric population even more challenging.</p>
+</section>
+<section id="webapp">
+<h3>WebApp<a class="headerlink" href="#webapp" title="Permalink to this heading">#</a></h3>
 <p>The literature on this topic is sparse. How may a clinician take all three considerations into account when assessing kidney function in the geriatric population? A reference chart that takes into account age, comorbidities, and frailty may be overly complex. But a webApp that prompts the clinician to enter age, comorbidities, and frailty and then provides a recommendation may be a more practical solution.</p>
 <p>Such an app doesn’t exist yet. But are there data to support the design of such an app? The answer is no. But there is a way to get there.</p>
 <p>The National Health and Nutrition Examination Survey (NHANES) is a program of studies designed to assess the health and nutritional status of adults and children in the United States. The survey is unique in that it combines interviews and physical examinations. The NHANES program began in the early 1960s and has been conducted as a series of surveys focusing on different population groups or health topics. In 1999, the survey became a continuous program that has a changing focus on a variety of health and nutrition measurements to meet emerging needs. The survey examines a nationally representative sample of about 5,000 persons each year. These persons are located in counties across the country, 15 of which are visited each year. The NHANES interview includes demographic, socioeconomic, dietary, and health-related questions. The examination component consists of medical, dental, and physiological measurements, as well as laboratory tests administered by highly trained medical personnel.</p>
 <p>For respondents over 50 years old, the NHANES dataset includes serum creatinine, cystatin C, and eGFR. It also includes information on comorbidities and frailty. This dataset can be used to generate the data needed to design the webApp described above.</p>
 <p>What is the next step? The next step is to identify the variables in the NHANES dataset that can be used to generate the data needed to design the webApp. This process may be iterative and may even demand some data that are not available in NHANES. But it is a necessary step to get to the webApp.</p>
 </section>
-<section id="variables">
-<h3>Variables<a class="headerlink" href="#variables" title="Permalink to this heading">#</a></h3>
+<section id="risk">
+<h3>Risk<a class="headerlink" href="#risk" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Demographic</p>
 <ul class="simple">
@@ -480,9 +578,7 @@ document.write(`
 </ul>
 </li>
 </ol>
-</section>
-<section id="histology">
-<h3>Histology<a class="headerlink" href="#histology" title="Permalink to this heading">#</a></h3>
+<p>These are the inputs from NHANES that would be needed to generate the data needed to design the webApp. But there are some missing data. The most important missing data are the histology data. These data are ideal but they are not available in NHANES. And the procedure to obtain these data is risky in the elderly. So what can we do? We can discuss what to expect in normal aging and contrast that with the disease process. It remains unlikely that kidney biopsies for the elderly will become a routine procedure.</p>
 <Details style="margin-top:111618px; margin-left:111618px;">
    <Summary></Summary>
 </Details>
@@ -1712,11 +1808,10 @@ The Randomized Controlled Trial is more than a scientific method; for some, it's
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment-of-kidney-function">Assessment of kidney function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#age-specifc-interpretation-of-egfr">Age-specifc interpretation of eGFR</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comorbidities">Comorbidities</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#frailty">Frailty</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histology">Histology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comorbidities">Comorbidities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#webapp">WebApp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#risk">Risk</a></li>
 </ul>
 </li>
 </ul>
