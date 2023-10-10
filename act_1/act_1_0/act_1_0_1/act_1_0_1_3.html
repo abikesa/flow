@@ -367,6 +367,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comorbidities">Comorbidities</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#frailty">Frailty</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histology">Histology</a></li>
 </ul>
 </li>
 </ul>
@@ -417,6 +419,70 @@ document.write(`
 <p>The National Health and Nutrition Examination Survey (NHANES) is a program of studies designed to assess the health and nutritional status of adults and children in the United States. The survey is unique in that it combines interviews and physical examinations. The NHANES program began in the early 1960s and has been conducted as a series of surveys focusing on different population groups or health topics. In 1999, the survey became a continuous program that has a changing focus on a variety of health and nutrition measurements to meet emerging needs. The survey examines a nationally representative sample of about 5,000 persons each year. These persons are located in counties across the country, 15 of which are visited each year. The NHANES interview includes demographic, socioeconomic, dietary, and health-related questions. The examination component consists of medical, dental, and physiological measurements, as well as laboratory tests administered by highly trained medical personnel.</p>
 <p>For respondents over 50 years old, the NHANES dataset includes serum creatinine, cystatin C, and eGFR. It also includes information on comorbidities and frailty. This dataset can be used to generate the data needed to design the webApp described above.</p>
 <p>What is the next step? The next step is to identify the variables in the NHANES dataset that can be used to generate the data needed to design the webApp. This process may be iterative and may even demand some data that are not available in NHANES. But it is a necessary step to get to the webApp.</p>
+</section>
+<section id="variables">
+<h3>Variables<a class="headerlink" href="#variables" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Demographic</p>
+<ul class="simple">
+<li><p>Age</p></li>
+<li><p>Sex</p></li>
+</ul>
+</li>
+<li><p>Interview</p>
+<ul class="simple">
+<li><p>Weakness</p></li>
+<li><p>Decreased activity</p></li>
+<li><p>Unintentional weight loss</p></li>
+<li><p>Ambulating with assistance</p></li>
+<li><p>Falls in the past year</p></li>
+<li><p>Fractures</p></li>
+<li><p>Hospitalizations</p></li>
+<li><p>Diabetes</p></li>
+<li><p>Hypertension</p></li>
+<li><p>Cardiovascular disease</p></li>
+<li><p>Stroke</p></li>
+</ul>
+</li>
+<li><p>Exam</p>
+<ul class="simple">
+<li><p>General condition</p></li>
+<li><p>Walking speed</p></li>
+<li><p>Grip strength</p></li>
+<li><p>Chair stands</p></li>
+<li><p>Balance</p></li>
+<li><p>Gait</p></li>
+<li><p>Vision</p></li>
+<li><p>Hearing</p></li>
+</ul>
+</li>
+<li><p>Lab</p>
+<ul class="simple">
+<li><p>Serum creatinine</p></li>
+<li><p>Cystatin C</p></li>
+<li><p>eGFR</p></li>
+</ul>
+</li>
+<li><p>Nutrition</p>
+<ul class="simple">
+<li><p>Protein intake</p></li>
+<li><p>Calorie intake</p></li>
+</ul>
+</li>
+<li><p>Histology (missing data)</p>
+<ul class="simple">
+<li><p>Biopsy data are ideal</p></li>
+<li><p>Not available in NHANES</p></li>
+<li><p>Procedure is risky in elderly</p></li>
+<li><p>What to expect in normal aging</p></li>
+<li><p>Contrast with disease process</p></li>
+<li><p>Imputation of these missing data??</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="histology">
+<h3>Histology<a class="headerlink" href="#histology" title="Permalink to this heading">#</a></h3>
 <Details style="margin-top:111618px; margin-left:111618px;">
    <Summary></Summary>
 </Details>
@@ -1649,6 +1715,8 @@ The Randomized Controlled Trial is more than a scientific method; for some, it's
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comorbidities">Comorbidities</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#frailty">Frailty</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histology">Histology</a></li>
 </ul>
 </li>
 </ul>
