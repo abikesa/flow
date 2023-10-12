@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title> &#8212; Work Flow</title>
+    <title>Explanation: &#8212; Work Flow</title>
   
   
   
@@ -189,7 +189,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="act_2_0_0_1.html"></a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Explanation:</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="act_2_0_0_3.html"></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../act_2_0_1/act_2_0_1_1.html"></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../act_2_0_1/act_2_0_1_2.html"></a></li>
@@ -337,7 +338,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -348,11 +351,21 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1></h1>
+    <h1>Explanation:</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Explanation:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">.</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -362,8 +375,464 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+  <p>How to install pandas on your computer in a unix environment (Mac or Linux):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pandas
+</pre></div>
+</div>
+<p>The syntax is the same for all packages that you want to install. Just replace <code class="docutils literal notranslate"><span class="pre">pandas</span></code> with the name of the package you want to install.</p>
+<p>In Windows, you can install packages by opening the Anaconda Prompt and typing the same command as above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Import the CSV file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the CSV file into a DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;~/dropbox/1f.ἡἔρις,κ/1.ontology/donor_live_keep.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Show the DataFrame</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/sx/fd6zgj191mx45hspzbgwzlnr0000gn/T/ipykernel_57868/3459504643.py:2: DtypeWarning: Columns (10,20,21,22,23,24,25,26,27,36,37,38,44,48) have mixed types. Specify dtype option on import or set low_memory=False.
+  df = pd.read_csv(&#39;~/dropbox/1f.ἡἔρις,κ/1.ontology/donor_live_keep.csv&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can find the dimensions of a DataFrame using the <code class="docutils literal notranslate"><span class="pre">.shape</span></code> attribute. This attribute returns a tuple representing the dimensions of the DataFrame, where the first element is the number of rows and the second is the number of columns.</p>
+<p>Here’s how to find the dimensions of your DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the dimensions of the DataFrame</span>
+<span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="c1"># Print the dimensions</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The DataFrame has </span><span class="si">{</span><span class="n">rows</span><span class="si">}</span><span class="s2"> rows and </span><span class="si">{</span><span class="n">cols</span><span class="si">}</span><span class="s2"> columns.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The DataFrame has 186545 rows and 60 columns.
+</pre></div>
+</div>
+</div>
+</div>
+<p>This will give you a quick idea of how large your dataset is.</p>
+<hr class="docutils" />
+<p>Next, you can use the <code class="docutils literal notranslate"><span class="pre">.head()</span></code> method to print the first 5 rows of your DataFrame. This is a good way to get a feel for what information is in your dataset. You can pass a number into the <code class="docutils literal notranslate"><span class="pre">.head()</span></code> method to print a different number of rows. For example, <code class="docutils literal notranslate"><span class="pre">df.head(10)</span></code> will print the first 10 rows of your DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pers_id</th>
+      <th>don_ty</th>
+      <th>don_age_in_months</th>
+      <th>don_age</th>
+      <th>don_gender</th>
+      <th>don_home_state</th>
+      <th>don_race</th>
+      <th>don_race_srtr</th>
+      <th>don_ethnicity_srtr</th>
+      <th>don_citizenship</th>
+      <th>...</th>
+      <th>don_ki_creat_postop</th>
+      <th>don_bp_postop_syst</th>
+      <th>don_bp_postop_diast</th>
+      <th>don_urine_postop_ratio</th>
+      <th>don_urine_postop_protein</th>
+      <th>don_hyperten_postop</th>
+      <th>don_ki_creat_dischrg</th>
+      <th>don_bp_dischrg_syst</th>
+      <th>don_bp_dischrg_diast</th>
+      <th>donor_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3622031</td>
+      <td>L</td>
+      <td>281.0</td>
+      <td>23.0</td>
+      <td>F</td>
+      <td>TX</td>
+      <td>8.0</td>
+      <td>WHITE</td>
+      <td>NLATIN</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>189524</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3590108</td>
+      <td>L</td>
+      <td>441.0</td>
+      <td>36.0</td>
+      <td>F</td>
+      <td>LA</td>
+      <td>16.0</td>
+      <td>BLACK</td>
+      <td>NLATIN</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>97507</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3827563</td>
+      <td>L</td>
+      <td>422.0</td>
+      <td>35.0</td>
+      <td>M</td>
+      <td>SC</td>
+      <td>8.0</td>
+      <td>WHITE</td>
+      <td>NLATIN</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>35162</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3731278</td>
+      <td>L</td>
+      <td>417.0</td>
+      <td>34.0</td>
+      <td>M</td>
+      <td>UT</td>
+      <td>8.0</td>
+      <td>WHITE</td>
+      <td>NLATIN</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>138772</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3845022</td>
+      <td>L</td>
+      <td>273.0</td>
+      <td>22.0</td>
+      <td>F</td>
+      <td>IN</td>
+      <td>8.0</td>
+      <td>WHITE</td>
+      <td>NLATIN</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>161244</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 60 columns</p>
+</div></div></div>
+</div>
+<p>You can restrict the DataFrame to a subset of rows and columns using slicing. Here’s how to keep only the first 1000 rows and the first 9 columns:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Subset the DataFrame</span>
+<span class="n">subset_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">1000</span><span class="p">,</span> <span class="p">:</span><span class="mi">9</span><span class="p">]</span>
+
+<span class="c1"># Show the shape of the new DataFrame to confirm</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The shape of the subset DataFrame is </span><span class="si">{</span><span class="n">subset_df</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The shape of the subset DataFrame is (1000, 9)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="explanation">
+<h1>Explanation:<a class="headerlink" href="#explanation" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df.iloc[:1000,</span> <span class="pre">:9]</span></code> uses the <code class="docutils literal notranslate"><span class="pre">iloc</span></code> indexer for Pandas DataFrames. The <code class="docutils literal notranslate"><span class="pre">:1000</span></code> selects the first 1000 rows and the <code class="docutils literal notranslate"><span class="pre">:9</span></code> selects the first 9 columns.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">subset_df.shape</span></code> will display the shape of the new DataFrame, which should be (1000, 9) to confirm that you’ve correctly subsetted it.</p></li>
+</ul>
+<p>Now <code class="docutils literal notranslate"><span class="pre">subset_df</span></code> contains only the first 1000 rows and the first 9 columns of the original <code class="docutils literal notranslate"><span class="pre">df</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pers_id</th>
+      <th>don_ty</th>
+      <th>don_age_in_months</th>
+      <th>don_age</th>
+      <th>don_gender</th>
+      <th>don_home_state</th>
+      <th>don_race</th>
+      <th>don_race_srtr</th>
+      <th>don_ethnicity_srtr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3622031</td>
+      <td>L</td>
+      <td>281.0</td>
+      <td>23.0</td>
+      <td>F</td>
+      <td>TX</td>
+      <td>8.0</td>
+      <td>WHITE</td>
+      <td>NLATIN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3590108</td>
+      <td>L</td>
+      <td>441.0</td>
+      <td>36.0</td>
+      <td>F</td>
+      <td>LA</td>
+      <td>16.0</td>
+      <td>BLACK</td>
+      <td>NLATIN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3827563</td>
+      <td>L</td>
+      <td>422.0</td>
+      <td>35.0</td>
+      <td>M</td>
+      <td>SC</td>
+      <td>8.0</td>
+      <td>WHITE</td>
+      <td>NLATIN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3731278</td>
+      <td>L</td>
+      <td>417.0</td>
+      <td>34.0</td>
+      <td>M</td>
+      <td>UT</td>
+      <td>8.0</td>
+      <td>WHITE</td>
+      <td>NLATIN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3845022</td>
+      <td>L</td>
+      <td>273.0</td>
+      <td>22.0</td>
+      <td>F</td>
+      <td>IN</td>
+      <td>8.0</td>
+      <td>WHITE</td>
+      <td>NLATIN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select the first 100 rows and cherry-pick columns by index (e.g., columns at index 0, 2, 4, and 6)</span>
+<span class="n">subset_csv</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
+<span class="n">subset_csv</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;~/dropbox/1f.ἡἔρις,κ/1.ontology/subset.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Summary statistics to identify continuous variables</span>
+<span class="n">cont_summary</span> <span class="o">=</span> <span class="n">subset_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Continuous Variables:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cont_summary</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>  <span class="c1"># These are likely to be continuous variables</span>
+
+<span class="c1"># Identify binary variables</span>
+<span class="n">binary_vars</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">subset_df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">subset_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Binary Variables:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">binary_vars</span><span class="p">)</span>
+
+<span class="c1"># Identify categorical variables</span>
+<span class="n">cat_vars</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">subset_df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">binary_vars</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Categorical Variables:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cat_vars</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous Variables:
+[&#39;pers_id&#39;, &#39;don_age_in_months&#39;, &#39;don_age&#39;, &#39;don_race&#39;]
+
+Binary Variables:
+[&#39;don_gender&#39;, &#39;don_ethnicity_srtr&#39;]
+
+Categorical Variables:
+[&#39;don_ty&#39;, &#39;don_home_state&#39;, &#39;don_race_srtr&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>I copied and pasted a tiny subset of the data into a new file called <code class="docutils literal notranslate"><span class="pre">subset.csv</span></code>. This file contains only the first 100 rows and cherry-picked columns from the original dataset. You can download it <a class="reference external" href="https://raw.githubusercontent.com/jhufena/jhufena.github.io/main/data/subset.csv">here</a>.</p>
+<p>You can copy and paste the .csv file into ChatGPT and ask it to perform some task in Python. For example:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="c1"># Sample data (replace with your own)</span>
+<span class="n">ages</span> <span class="o">=</span> <span class="n">subset_df</span><span class="p">[</span><span class="s1">&#39;don_age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>  <span class="c1"># Remove NaN values if any</span>
+
+<span class="c1"># Add jitter to x-values for visualization</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">jitter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ages</span><span class="p">))</span>
+
+<span class="c1"># Scatter plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">jitter</span><span class="p">,</span> <span class="n">ages</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lime&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data Points&#39;</span><span class="p">)</span>
+
+<span class="c1"># Calculate mean and 95% CI for ages</span>
+<span class="n">mean_age</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ages</span><span class="p">)</span>
+<span class="n">confidence</span> <span class="o">=</span> <span class="mf">0.95</span>
+<span class="n">std_dev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ages</span><span class="p">)</span>
+<span class="n">ci</span> <span class="o">=</span> <span class="n">std_dev</span> <span class="o">*</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">confidence</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ages</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Overlay mean as a horizontal line (in gray)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">mean_age</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Mean Age: </span><span class="si">{</span><span class="n">mean_age</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Overlay mean as a blue dot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mean_age</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean&#39;</span><span class="p">)</span>
+
+<span class="c1"># Overlay 95% CI as a vertical error bar (in orange)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mean_age</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">ci</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;95% CI: </span><span class="si">{</span><span class="n">mean_age</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ci</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> - </span><span class="si">{</span><span class="n">mean_age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ci</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Remove x-axis ticks, labels, and title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Jittered Scatter Plot of Age with Overlaid Mean and 95% CI&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/effc8aacbd4842d5ef0963ea7093119b8a9910bd1230688c4708094bb85b112c.png" src="../../../_images/effc8aacbd4842d5ef0963ea7093119b8a9910bd1230688c4708094bb85b112c.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>.<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <Details style="margin-top:111618px; margin-left:111618px;">
    <Summary></Summary>
 </Details>
@@ -890,7 +1359,7 @@ April 9-11, 2024<br>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../../_images/babb942491b3a6db06de963caaa26dd2138cbef373341ad60a289218c3d7cae1.png" src="../../../_images/babb942491b3a6db06de963caaa26dd2138cbef373341ad60a289218c3d7cae1.png" />
+<img alt="../../../_images/2e61c1206bae58b1fc30e24b5f2f5545f043776547599cde13987bf42edeebde.png" src="../../../_images/2e61c1206bae58b1fc30e24b5f2f5545f043776547599cde13987bf42edeebde.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -980,7 +1449,7 @@ April 9-11, 2024<br>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../../_images/51c6671991d156c3428b5ff92d8ae7ba88dfa836dbda1eee3e60fd424831e226.png" src="../../../_images/51c6671991d156c3428b5ff92d8ae7ba88dfa836dbda1eee3e60fd424831e226.png" />
+<img alt="../../../_images/8ff1435d1506881140f1e0caa6fb7f75342aa42159d7b4ed9173187102e75a56.png" src="../../../_images/8ff1435d1506881140f1e0caa6fb7f75342aa42159d7b4ed9173187102e75a56.png" />
 </div>
 </div>
 <p>The concept of the “tragic aesthetic” has been a topic of interest across various disciplines, from literature and art to philosophy and psychology. At its core, the tragic aesthetic involves an appreciation for stories, artworks, or situations that center on human suffering, moral dilemmas, or the inescapability of fate. Yet, these narratives often carry an undercurrent of beauty or a greater truth that can make the experience of them deeply moving or even cathartic.</p>
@@ -1378,7 +1847,7 @@ git2/abikesa_jbc.sh : 11 tokens</p>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../../_images/25e992a093dd1934a413df9b6e25c5c39a4d2afaf26890673a439ed11f5d7911.png" src="../../../_images/25e992a093dd1934a413df9b6e25c5c39a4d2afaf26890673a439ed11f5d7911.png" />
+<img alt="../../../_images/ae8a506868e1c0d71d323428eb828ecfa318044f58aacbfd776541152f4ae39e.png" src="../../../_images/ae8a506868e1c0d71d323428eb828ecfa318044f58aacbfd776541152f4ae39e.png" />
 </div>
 </div>
 </Details>
@@ -1474,7 +1943,7 @@ The Randomized Controlled Trial is more than a scientific method; for some, it's
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../../_images/aeb42aa50a44b2f0604b7bb15c9fda2268a2f7f854e44be290ce19d958bd43a9.png" src="../../../_images/aeb42aa50a44b2f0604b7bb15c9fda2268a2f7f854e44be290ce19d958bd43a9.png" />
+<img alt="../../../_images/e77bcaaf52cc976384aeb13141f1ffca3d873e43984e42d8260b1166e3dd046e.png" src="../../../_images/e77bcaaf52cc976384aeb13141f1ffca3d873e43984e42d8260b1166e3dd046e.png" />
 </div>
 </div>
 <ol class="arabic simple">
@@ -1578,6 +2047,22 @@ The Randomized Controlled Trial is more than a scientific method; for some, it's
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Explanation:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">.</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
