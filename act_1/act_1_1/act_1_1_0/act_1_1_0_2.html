@@ -364,6 +364,189 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1>Kidney function assessment in the geriatric population</h1>
+<p1><b>Introduction</b><br>
+Various formulas have been developed to estimate kidney function (hence forth refered to as eGFR) from serum creatinine. The most widely used is the CKD-EPI equation, because it is the most accurate equation for estimating GFR in the general population. 
+<p>The effects of age on kidney function are subtle from year to year. However, they are striking when viewed across the various cohorts of older persons (Figure 1).</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Setting seed for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Generate age data from 60 to 100</span>
+<span class="n">age</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="c1"># Generate baseline eGFR data. Here, I&#39;m assuming an arbitrary starting point of 120 for age 60</span>
+<span class="c1"># You can replace this value with a more appropriate one if necessary</span>
+<span class="n">baseline_eGFR</span> <span class="o">=</span> <span class="mi">85</span>
+
+<span class="c1"># Generate eGFR scatter plot data with a standard deviation of 15 ml/min</span>
+<span class="n">standard_deviation</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">standard_deviation</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">eGFR</span> <span class="o">=</span> <span class="n">baseline_eGFR</span> <span class="o">+</span> <span class="n">noise</span> <span class="o">-</span> <span class="mf">10.1</span> <span class="o">*</span> <span class="p">(</span><span class="n">age</span> <span class="o">-</span> <span class="mi">60</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span>
+
+<span class="c1"># Calculate line of best fit, which should be a straight line</span>
+<span class="n">best_fit_line</span> <span class="o">=</span> <span class="n">baseline_eGFR</span> <span class="o">-</span> <span class="mf">10.1</span> <span class="o">*</span> <span class="p">(</span><span class="n">age</span> <span class="o">-</span> <span class="mi">60</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span>
+
+<span class="c1"># Plot scatter plot and line of best fit</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">eGFR</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Simulated Data&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">best_fit_line</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Best Fit Line: eGFR = </span><span class="si">{</span><span class="n">baseline_eGFR</span><span class="si">}</span><span class="s1"> - 10.1 * (age - 60) / 10&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;eGFR (mL/min)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;eGFR vs Age&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/26412fc8732d1d7e21f3a8a13aafc4ef0b012baadc83f59642eeb03994b2afce.png" src="../../../_images/26412fc8732d1d7e21f3a8a13aafc4ef0b012baadc83f59642eeb03994b2afce.png" />
+</div>
+</div>
+<p>When you consider the comorbidities a person may accumulate during these years, top among them will be diabetes, hypertension, and cardiovascular disease, which are also the most common causes of CKD.</p>
+<p>Aging is also associated with a decline in muscle mass, which is the source of creatinine. This decline in muscle mass leads to a decline in serum creatinine, which in turn leads to an overestimation of eGFR.</p>
+<p>When you take all these factors into consideration, it becomes apparent that the assessment of kidney function in the geriatric population is not straightforward.</p1></p>
+<p><p1><b>Age</b><br>
+Among the elderly, the prevalence of CKD is 40% in those 65 years of age and older. But the prevalence of CKD is 50% in those 70 years of age and older. And it is 60% in those 80 years of age and older. This is the effect of age on kidney function.</p>
+<p>But aging may render the above estimates of CKD prevalence inaccurate. This is because these estimates say nothing about the comorbidities present and the frailty of the elderly.</p>
+<p>The elderly are a very heterogenous group with ages ranging from 65 to 100 years, with comorbities that can range from 0 to 20, and frailty that can range from robust to pre-frail to frail.</p>
+<p>While eGFR &lt; 60 ml/min is a generally accepted definition of chronic kidney disease (CKD), it is not applicable to the geriatric population. In Figure 1, this cutoff would render the majority of the olderly over 85 as having CKD. Yet there may be inaccurate</p1></p>
+<p><p1><b>Comorbidities</b><br>
+It is well recognized that some comorbidites my injure the kidney and that the injured kidney may in turn injure other organs. This is the vicious cycle of chronic kidney disease (CKD), which is defined as progressive kidney damage or decreased kidney function (eGFR &lt; 60 ml/min) for three or more months. Progression of CKD is tracked using the decline in eGFR, which in turn is associated with increased risk of cardiovascular disease, hospitalization, kidney failure and death.</p></p>
+<p><b>Frailty</b><br>
+The Linda Fried Physical Frailty phenotype includes six components: unintentional weight loss, self-reported exhaustion, weakness, slow walking speed, and low physical activity. The presence of three or more of these components is considered frailty. The presence of one or two components is considered pre-frailty. And the absence of all components is considered robustness.
+<p>Unintentional weight loss captures the underlying issue of sarcopenia, which is the loss of muscle mass. This is important because serum creatinine level is a function of muscle mass. As muscle mass declines with age, so does the serum creatinine level. This can lead to an overestimation of eGFR in the geriatric population but more specifically in the frail elderly. eGFR can be calculated using the cystatin C level instead of the serum creatinine level to address this issue</p>
+<p>Frailty is also associated with reduced resilience to all kinds of physiological stressors. This reduced resilience is due to the overall loss of functional reserve in the frail elderly. This loss of functional reserve is also seen in the kidney, which makes the frail elderly at increased risk of AKI, usually reversible in the younger robust individual, but more often resulting in CKD in the frail elderly.</p></p>
+<p><b>Literature</b><br>
+The table below listing articles in the literature that discuss kidney function assessment in the olderly. We assess these articles using a checklist of items that aid in eGFR estimation, present of comorbidities, and frailty status (Table 1). </p>
+<p>[Insert Table &amp; Footnotes Here]</p>
+<p><b>WebApp</b></p>
+<p>Accurately assessing kidney function in the geriatric population is a challenging but vital endeavor. The commonly used CKD-EPI equation will not adequately reflect the complexities in this age group, which include age-related decline in muscle mass, varying degrees of comorbidity, and states of frailty.</p><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Create an empty directed graph</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="c1"># Add nodes</span>
+<span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1.Aging&#39;</span><span class="p">,</span><span class="s1">&#39;2.Frailty&#39;</span><span class="p">,</span><span class="s1">&#39;3.Comorbidity&#39;</span><span class="p">,</span> <span class="s1">&#39;4.WebApp&#39;</span><span class="p">,</span> <span class="s1">&#39;5.Risk&#39;</span><span class="p">]</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+
+<span class="c1"># Add edges to the graph (arrows in the DAG)</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;1.Aging&#39;</span><span class="p">,</span> <span class="s1">&#39;4.WebApp&#39;</span><span class="p">),</span>   
+    <span class="p">(</span><span class="s1">&#39;2.Frailty&#39;</span><span class="p">,</span> <span class="s1">&#39;1.Aging&#39;</span><span class="p">),</span>    
+    <span class="p">(</span><span class="s1">&#39;3.Comorbidity&#39;</span><span class="p">,</span> <span class="s1">&#39;1.Aging&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;4.WebApp&#39;</span><span class="p">,</span> <span class="s1">&#39;5.Risk&#39;</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+
+<span class="c1"># Set figure size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># You can adjust the width and height here</span>
+
+<span class="c1"># Draw the DAG</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;1.Aging&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">.75</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+    <span class="s1">&#39;2.Frailty&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="s1">&#39;3.Comorbidity&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="s1">&#39;4.WebApp&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">1.35</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+    <span class="s1">&#39;5.Risk&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">edge</span><span class="p">:</span> <span class="s1">&#39;&#39;</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">}</span>
+
+<span class="c1"># https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.ConnectionStyle.html#matplotlib.patches.ConnectionStyle</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">12000</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">arrows</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">connectionstyle</span><span class="o">=</span><span class="s1">&#39;arc3,rad=0.01&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/61fd9b12e6ed5e04afdb75a89662e410bb78f6eb624fd411faafc7c83246c9f4.png" src="../../../_images/61fd9b12e6ed5e04afdb75a89662e410bb78f6eb624fd411faafc7c83246c9f4.png" />
+</div>
+</div>
+<p>Here is a list of potential items that would qualify as inputs into a risk calculator for elderly eGFR, based on publically available dataset such the NHANES dataset and existing literature:</p>
+<h3>Demographic:</h3>
+<ul>
+  <li>Age</li>
+  <li>Gender</li>
+  <li>Race/Ethnicity</li>
+</ul>
+<h3>History:</h3>
+<ul>
+  <li>Diabetes Mellitus</li>
+  <li>Hypertension</li>
+  <li>Cardiovascular Disease</li>
+  <li>Previous episodes of AKI</li>
+  <li>Use of nephrotoxic medications</li>
+</ul>
+<h3>Physical:</h3>
+<ul>
+  <li>Weight (or unintentional weight loss)</li>
+  <li>Height</li>
+  <li>BMI</li>
+</ul>
+<h3>Exam:</h3>
+<ul>
+  <li>Blood Pressure</li>
+  <li>Edema</li>
+  <li>Signs of uremia</li>
+</ul>
+<h3>Lab:</h3>
+<ul>
+  <li>Serum Creatinine</li>
+  <li>Cystatin C</li>
+  <li>Urinalysis (Proteinuria, Hematuria)</li>
+</ul>
+<h3>Nutrition:</h3>
+<ul>
+  <li>Dietary Protein Intake</li>
+</ul>
+<h3>Histology:</h3>
+<ul>
+  <li>Renal Biopsy (if available)</li>
+</ul>
+<h3>Frailty:</h3>
+<ul>
+  <li>Unintentional weight loss</li>
+  <li>Self-reported exhaustion</li>
+  <li>Weakness</li>
+  <li>Slow walking speed</li>
+  <li>Low physical activity</li>
+</ul>
+<p>A WebApp designed to aid clinicians in assessing kidney function in the elderly could be an invaluable tool. It could integrate these complex factors into an easy-to-use interface, producing a more nuanced eGFR tailored to the geriatric population. Such a tool would be of interest not only to geriatricians but also to general practitioners who frequently manage elderly patients with multiple comorbidities.</p>
+<p><b>Risk</b><br>
+A careprovider using such a WebApp to assess kidney function in the elderly would have to be aware of one crucial potential sources of bias and error: 
+<ol class="arabic simple">
+<li><p>Publically available data are unlikely to have information on all the variables of interest. Histological data from renal biopsies, for example, would be difficult to obtain. Such data would help distinguish between low eGFR due to intrinsic kidney disease versus low eGFR due to normal aging or frailty. However, in a clinical setting, the careprovider is unlikely to have access to such data either. Biopsies are not routinely performed in the elderly, and the procedure itself carries significant risk. A WebApp designed for clinical use would have to generate an eGFR estimate without such data.</p></li>
+<li><p>Cystic changes in the kidney deserve specific mention. They increase in the incidence with age, vary in type from simple, to parapelvic, and malignant cysts. Larger cysts (&gt; 5 mm) in the cortex or medulla are associated with hyperfiltration, hypertension, and albuminuria, representing the earliest signs of kidney injury. These cysts are also associated with a decline in kidney function. However, the presence of cysts does not necessarily mean that the patient has CKD. The careprovider would have to be aware of this potential source of bias and error when using the WebApp.</p></li>
+<li><p>Living kidney donor assessment should take into consideration the impact of a sudded loss of 50% of nephrons. This is especially important in the elderly, who may have a lower nephron reserve and are unlikely to experience the adaptive increases in GFR that are seen in younger donors. The careprovider would have to be aware of this potential when contemplating thresholds for living kidney donation in the elderly.</p></li>
+<li><p>What are the outcomes of interest to the elderly and careproviders against which to benchmark the eGFR estimate? How should the thresholds for Stage 3, 4, and 5 CKD be modified for the elderly? The elderly are more likely to die from cardiovascular disease than to progress to ESRD. The careprovider would have to be aware of this potential source of bias and error when using the WebApp.</p></li>
+<li><p>Biomarkers that correlate with frailty and sarcopenia are being developed by gerontologist but the engagement of nephrologists in this area is lacking. These biomarkers could ultimately be incorporated into the WebApp to truly personalize care for each individual. </p></p></li>
+</ol>
+<p><b>Conclusion</b><br>
+<p>In this article we have discussed the complexities of assessing kidney function in the geriatric population. We have also discussed the potential utility of a WebApp designed to aid clinicians in this endeavor. Such a WebApp would have to be designed for clinical use, not research. This means that it would have to generate an eGFR estimate without histological data from renal biopsies, but with more reliance on measures of frailty that best correlate with kidney function. Measures of frailty are very easy to assess and correlate with quality of life, which is more important to the elderly than most outcomes typically investigated in the clinical literature </p></p>
+</p>
 <Details style="margin-top:111618px; margin-left:111618px;">
    <Summary></Summary>
 </Details>
