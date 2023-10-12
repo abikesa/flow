@@ -1,0 +1,782 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>9. Stata &#8212; Challenges, Skills, and Tools</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'act3/act_3_0/act_2_2_0_3';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://github.com/jhufena/jhufena.github.io/blob/main/png/hub_and_spoke.jpg?raw=true" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="https://github.com/jhufena/jhufena.github.io/blob/main/png/hub_and_spoke.jpg?raw=true" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to Fena
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Challenges</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act1/act_1_0/act_1_0_1.html">1. Rigor</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../act1/act_1_0/act_1_0_2.html">2. Error</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../act1/act_1_0/act_1_0_3.html">3. Sloppiness</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act2/act_2_0/act_2_0_1.html">4. Manuscripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act2/act_2_0/act_2_0_2.html">5. Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act2/act_2_0/act_2_0_3.html">6. Git</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numeracy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="act_3_0_1.html">7. Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="act_3_0_2.html">8. R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="act_3_0_3.html">9. Stata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Literacy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act4/act_4_0/act_4_0_1.html">10. Open Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act4/act_4_0/act_4_0_2.html">11. Self-Publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act4/act_4_0/act_4_0_3.html">12. Grants</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workflow</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act5/act_5_0/act_5_0_1.html">13. Automate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act5/act_5_0/act_5_0_2.html">14. Bash</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../act5/act_5_0/act_5_0_3.html">15. Unix</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/act3/act_3_0/act_2_2_0_3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>9. Stata</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#breaking-down-the-command">Breaking Down the Command</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-to-stata-syntax">Application to Stata Syntax</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-tokens-to-explain-variance">Using Tokens to Explain Variance</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="stata">
+<h1>9. <a class="reference external" href="https://www.stata.com/features/overview/jupyter-notebooks/#">Stata</a><a class="headerlink" href="#stata" title="Permalink to this heading">#</a></h1>
+<p>Stata is a software package mainly used for data management and complex statistical tasks 📈💻</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> Statistical software package</p></li>
+<li><p><strong>Primary Uses:</strong> Data management, statistical analysis, graphics, simulations, regression, and custom programming</p></li>
+<li><p><strong>Paradigms:</strong> Primarily command-driven, though it also offers a graphical user interface</p></li>
+<li><p><strong>Community:</strong> Popular in social sciences, economics, epidemiology, and other fields that require robust statistical analysis</p></li>
+<li><p><strong>License:</strong> Proprietary</p></li>
+</ul>
+<p><strong>The ‘Plug-and-Play’ Marvel: Stata’s Game-Changing Role in Data Science</strong></p>
+<p><strong>Intro: Why Stata is the Smartphone of Data Analysis Tools</strong></p>
+<p>Alright, let’s drop the formalities. We all love our smartphones, right? Imagine having all your essential apps—like Instagram, Snapchat, and Spotify—pre-installed the moment you unwrap your phone. No more scrolling through app stores, dealing with downloads, or fumbling with settings. That’s what Stata is to the data analysis world. It’s the ‘out-of-the-box,’ fully-loaded smartphone, and here at Johns Hopkins, we’re turning every student into a high-tier app developer.</p>
+<p><strong>What Makes Stata So Fresh?</strong></p>
+<p><strong>No Package Drama</strong> 🙅‍♂️</p>
+<p>You know the drill with Python and R: before you can even get started, you’re already busy hunting down packages, installing them, and praying everything’s compatible. It’s like buying a PS5 but still needing to download every game and add-on manually. With Stata, everything you traditionally need for data management and advanced statistics—especially if you’re into epidemiology or clinical research—is already installed! It’s like getting a PS5 with all the top-tier games pre-loaded.</p>
+<p><strong>Zero to Hero in 9 Months</strong> 🚀</p>
+<p>Got no time to master the complexities of Python or R, with their endless installations and package management? We totally get it. Whether you’re at Hopkins pursuing a dual MD-MPH, focusing on a GTPCI Ph.D., or a grad student in another field, you’ve got big responsibilities. You have research to conduct, papers to write, and lives to save—whether it’s millions at a time in public health or just one at a time in clinical practice.</p>
+<p>That’s where Stata comes in, and so do we.</p>
+<p>We understand that you’re not just here to play with code. You’re on a mission to make a difference. So in just 8 weeks, we’ll empower you with the data analysis skills you need to excel in your respective fields—no coding headaches involved. With Stata, you can focus on what truly matters: advancing science, impacting policy, and, yes, saving lives.</p>
+<p><strong>Be Your Own Developer</strong> 👨‍💻</p>
+<p>Ever wanted to customize your favorite game or app? In Stata, not only do you get a fully-loaded arsenal of statistical tools, but you also get the freedom to create your custom programs. It’s like turning your PS5 into a development studio, where you’re the head developer.</p>
+<p><strong>Code Like You Text</strong> 📱</p>
+<p>Coding in Stata is like texting with syntax highlighting, thanks to VS Code’s Stata extensions. No more wall-of-text codes. Stata with VS Code turns each line of code into an Instagrammable moment, complete with all the aesthetic and #nofilter vibes.</p>
+<p><strong>Run Your Code, Not a Marathon</strong> 🏃</p>
+<p>Executing Stata code in VS Code is as simple as hitting the “play” button on Spotify. No buffering, no waiting. Just instant results.</p>
+<p><strong>Conclusion: Why Stata is the BFF You Never Knew You Needed</strong> 🤗</p>
+<p>So, whether you’re just starting your journey or you’re already down the data science rabbit hole, Stata has your back. It’s the unsung hero in a world where everyone’s caught up in the Python vs. R battle. It’s reliable, it’s chic, and it’s all about making your life easier.</p>
+<p>Now, who wouldn’t want a BFF like that?</p>
+<Details>
+  <Summary>Chat with GPT-4</Summary>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;jhufena@gmail.com&quot;</span><span class="w"> </span>-f<span class="w"> </span>~/.ssh/id_ourhome
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>subject: hey, unix!</p></li>
+<li><p>verb: could you generate an ssh key-pair</p>
+<ul class="simple">
+<li><p>adverbial: -t ed25519</p></li>
+<li><p>adverbial: -C “<a class="reference external" href="mailto:jhufena&#37;&#52;&#48;gmail&#46;com">jhufena<span>&#64;</span>gmail<span>&#46;</span>com</a>”</p></li>
+</ul>
+</li>
+<li><p>object: -f ~/.ssh/id_ourhome?</p></li>
+</ol>
+<hr class="docutils" />
+<p>I’m thinking tokens and how language is structured to train Stata Programming students Stata syntax using Unix syntax. crazy?</p>
+<hr class="docutils" />
+<p>Certainly, that’s an interesting way to approach teaching Stata syntax! The idea of using Unix syntax as a bridge to Stata isn’t crazy at all, especially when you consider how command-line interfaces share underlying principles. Parsing your <code class="docutils literal notranslate"><span class="pre">ssh-keygen</span></code> command using the framework of subject, verb, and object (with adverbials) would indeed be an enlightening way to discuss the structure and organization of code.</p>
+<section id="breaking-down-the-command">
+<h2>Breaking Down the Command<a class="headerlink" href="#breaking-down-the-command" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Subject</strong>: <code class="docutils literal notranslate"><span class="pre">hey,</span> <span class="pre">unix!</span></code> — It’s as if you’re calling on Unix to take an action.</p></li>
+<li><p><strong>Verb</strong>: <code class="docutils literal notranslate"><span class="pre">could</span> <span class="pre">you</span> <span class="pre">generate</span> <span class="pre">an</span> <span class="pre">ssh</span> <span class="pre">key-pair</span></code> — The core action being taken. In this case, <code class="docutils literal notranslate"><span class="pre">ssh-keygen</span></code> is the command doing the “generation” work.</p>
+<ul class="simple">
+<li><p><strong>Adverbial</strong>: <code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">ed25519</span></code> — Specifies the type of key to create.</p></li>
+<li><p><strong>Adverbial</strong>: <code class="docutils literal notranslate"><span class="pre">-C</span> <span class="pre">&quot;jhufena&#64;gmail.com&quot;</span></code> — Provides a label for the key.</p></li>
+</ul>
+</li>
+<li><p><strong>Object</strong>: <code class="docutils literal notranslate"><span class="pre">-f</span> <span class="pre">~/.ssh/id_ourhome</span></code> — Specifies where to store the generated key.</p></li>
+</ol>
+</section>
+<section id="application-to-stata-syntax">
+<h2>Application to Stata Syntax<a class="headerlink" href="#application-to-stata-syntax" title="Permalink to this heading">#</a></h2>
+<p>Stata syntax can be complex, but it also contains verbs (commands like <code class="docutils literal notranslate"><span class="pre">regress</span></code> or <code class="docutils literal notranslate"><span class="pre">summarize</span></code>), subjects (the data variables), and adverbials (options or qualifiers). You can use the Unix command as an example to explain how command-line tasks often break down into these categories, making it easier to understand the functional parts of any given command. This could especially help in teaching students to think about the structural components when they’re writing their own code.</p>
+</section>
+<section id="using-tokens-to-explain-variance">
+<h2>Using Tokens to Explain Variance<a class="headerlink" href="#using-tokens-to-explain-variance" title="Permalink to this heading">#</a></h2>
+<p>As you think about tokens, the parallel in Stata (or Unix) would be the various commands, flags, and options that experienced users deploy with finesse. High ICCs in professionals arise from the creative use of a well-understood set of tokens (commands, options). For beginners, the lack of understanding or misuse of these tokens can introduce “noise” or errors in their code.</p>
+<p>Would love to hear more about how you’re planning to integrate these ideas!</p>
+<hr class="docutils" />
+<p>now very delighted to see you indulge in my “ICC-talk”!!! very powerful way to engage me</p>
+<hr class="docutils" />
+<p>I’m glad to hear that you’re delighted! The concept of ICCs is a captivating way to examine expertise and creativity across different fields, from programming to the arts. The structured breakdown of commands in Unix and its parallel in Stata syntax exemplifies how ICCs can be applied to better understand the mechanisms underlying skill and creativity. It’s an exciting lens through which to view both technical and artistic endeavors.</p>
+<p>If you have more questions or further insights about ICCs or any other topic, feel free to share!</p>
+</Details>
+<hr class="docutils" />
+<Details>
+    <Summary>Using VS Code for Stata</Summary>
+<p>Visual Studio Code (VS Code) provides syntax highlighting based on file extensions and language modes. If you want to get nice colors (syntax highlighting) for your Stata <code class="docutils literal notranslate"><span class="pre">.do</span></code> files in VS Code, you can follow these steps:</p>
+<ol class="arabic simple">
+<li><p><strong>Install a Stata Extension for VS Code</strong>:</p>
+<ul class="simple">
+<li><p>Open VS Code.</p></li>
+<li><p>Go to Extensions (you can use the shortcut <code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+X</span></code> on PC or <code class="docutils literal notranslate"><span class="pre">Command+Shift+X</span></code> on Mac).</p></li>
+<li><p>Search for <code class="docutils literal notranslate"><span class="pre">Stata</span></code>.</p></li>
+<li><p>You should see a few extensions that provide Stata language support. One popular choice is “Stata Enhanced”. Install it (or another that you prefer).</p></li>
+</ul>
+</li>
+<li><p><strong>Save or Rename Your File</strong>:</p>
+<ul class="simple">
+<li><p>If you are creating a new Stata file, simply save it with the <code class="docutils literal notranslate"><span class="pre">.do</span></code> extension. For existing files that don’t have this extension, you can rename them to include <code class="docutils literal notranslate"><span class="pre">.do</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Select the Right Language Mode</strong>:</p>
+<ul class="simple">
+<li><p>Sometimes, VS Code might not automatically recognize the correct language mode for your file. If that’s the case, you can manually set it.</p></li>
+<li><p>In the bottom right corner of the VS Code window, you’ll see a language label (like “Plain Text” or something else). Click on it.</p></li>
+<li><p>A search bar will appear at the top. Type <code class="docutils literal notranslate"><span class="pre">Stata</span></code> and select it from the list.</p></li>
+</ul>
+</li>
+</ol>
+<p>After doing the above, your Stata <code class="docutils literal notranslate"><span class="pre">.do</span></code> file should now have proper syntax highlighting in VS Code. Remember, the effectiveness of the syntax highlighting depends on the quality of the Stata extension you’ve chosen. Some extensions may provide more detailed and accurate highlighting than others.</p>
+<Details>
+    <Summary>Stata Enhanced</Summary>
+<p>Stata syntax highlighting in Visual Studio Code, built from the ground up.
+Also available for Atom.</p>
+<p>stata Code snippet from Gtools, a faster implementation of Stata’s collapse and egen using C plugins. Shown with the Material theme.</p>
+<p>Features
+This package highlights:</p>
+<p>System commands, functions, and function arguments
+Macros, both global and local
+Accurately colors nested macros and escaped macros in strings when you want the inner macro to evaluate at runtime
+Colors macro extended functions inside `: … ‘ as well as after local lname:
+Comments, more accurately than Stata’s Do-file Editor.
+Regular expressions
+Colors both the limited syntax provided through the regexr() and regexm() functions, as well as the vastly expanded regex syntax provided in Stata 14 and 15 through the ustrregexm(), ustrregexrf(), and ustrregexra() functions.
+Dynamic Markdown and LaTeX documents. Instructions below.
+Other nice features:</p>
+<p>Works with unicode identifiers. Use unicode anywhere it’s legal Stata syntax.
+Alerts you if your variable name is illegal, i.e. if your variable name is more than 32 chars, starts with a number, or is a reserved name.
+Alerts you if you have any text other than } on a line ending a foreach/forvalues/if/else command
+Local macro back tick autocompletion. When you write a `, Visual Studio Code automatically fills in a ‘ after your cursor
+Makes it easy to spot incorrect nesting of compound quotes
+Support for programming ligatures for all valid Stata syntax for fonts that support them, like the Fira Code font.
+Highlights SQL queries used in the odbc command. (The language-sql base package must be active.)
+Note
+Some themes may not color all parts of the syntax.</p>
+<p>Installation
+Launch VS Code Quick Open (Ctrl+P), paste the following command, and press enter.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ext<span class="w"> </span>install<span class="w"> </span>stata-enhanced
+</pre></div>
+</div>
+<p>Running Code
+This package doesn’t have the capabilities to run your code in Stata. If you’re using Linux, you can use my scripts with the Autokey automation utility to quickly run selections of your files in a graphical session of Stata.</p>
+<p>You might also be interested in trying to port Atom’s stata-exec package.</p>
+<p>Dynamic Documents</p>
+<p>Stata 15 brought new features for working with dynamic documents. The dyndoc command lets you write in Markdown and converts your file and code to HTML for viewing in a web browser.</p>
+<p>It also added the dyntext command, which fills in Stata output for any text file, without touching the text itself. This lets you then use third-party document generators like Pandoc and LaTeX to generate documents.</p>
+<p>This package now provides syntax highlighting for Stata code written inside Stata’s dynamic tags for Markdown and LaTeX documents.</p>
+<p>By default, this package’s Markdown and LaTeX syntax highlighting will be applied for files ending in .domd and .dotex respectively. The Markdown All in One and LaTeX Workshop packages must be installed for the highlighting to work.</p>
+<p>If you name your file with a different extension, you can manually set the highlighting by clicking on the “Plain Text” button on the bottom right of the screen (or by pressing CTRL+SHIFT+L) and then selecting Stata Dyndoc (Markdown) or Stata Dyndoc (LaTeX) from the drop-down menu.</p>
+<p>Examples
+An example of the PDF output of using dyntext and Pandoc is in the examples folder: dyntext.pdf.</p>
+<p>That file was created by running</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>dyntext dyntext<span class="m">.</span>domd, saving(dyntext<span class="m">.</span>md)<span class="k"> replace</span>
+</pre></div>
+</div>
+<p>from inside Stata 15, and then with</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pandoc<span class="w"> </span>dyntext.md<span class="w"> </span>-o<span class="w"> </span>dyntext.pdf
+</pre></div>
+</div>
+<p>on the command line using Pandoc.</p>
+<p>The file dyntext.dotex is a proof-of-concept and should compile with LaTeX but the output is not shown here.</p>
+</Details>
+<Details>
+<p>Description
+<strong>stataRun</strong> allow you to run stata codes (.do .ado) and commands from within Visual Studio Code editor. Thus you can take advantage of an editor for syntax highlighting. You may want to install Stata-Enhanced and Stata-Language for syntax highlighting and other features</p>
+<p>Features
+The following command and keyboard shortcut are implemented (crtl to be replace by cmd on MacOS)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>shift+ctrl+a:<span class="w"> </span>Run<span class="w"> </span>All<span class="w"> </span><span class="nv">Lines</span><span class="w"> </span><span class="o">==</span>&gt;<span class="w"> </span>This<span class="w"> </span>will<span class="w"> </span>run<span class="w"> </span>the<span class="w"> </span>entire<span class="w"> </span>file
+shift+ctrl+s:<span class="w"> </span>Run<span class="w"> </span><span class="nv">Selection</span><span class="w"> </span><span class="o">==</span>&gt;<span class="w"> </span>To<span class="w"> </span>run<span class="w"> </span>a<span class="w"> </span>given<span class="w"> </span>slection.<span class="w"> </span>If<span class="w"> </span>no<span class="w"> </span>selection<span class="w"> </span>is<span class="w"> </span>made<span class="w"> </span>it<span class="w"> </span>default<span class="w"> </span>to<span class="w"> </span>Run<span class="w"> </span>All
+shift+ctrl+c:<span class="w"> </span>Run<span class="w"> </span>Current<span class="w"> </span><span class="nv">Line</span><span class="w"> </span><span class="o">==</span>&gt;<span class="w"> </span>This<span class="w"> </span>will<span class="w"> </span>run<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>line<span class="w"> </span>code
+shift+ctrl+d:<span class="w"> </span>Run<span class="w"> </span>Downward<span class="w"> </span><span class="nv">Lines</span><span class="o">==</span>&gt;<span class="w"> </span>from<span class="w"> </span>current<span class="w"> </span>line<span class="w"> </span>to<span class="w"> </span>downward
+shift+ctrl+f:<span class="w"> </span>Run<span class="w"> </span>Frontward<span class="w"> </span><span class="nv">Lines</span><span class="w"> </span><span class="o">==</span>&gt;<span class="w"> </span>from<span class="w"> </span>first<span class="w"> </span>line<span class="w"> </span>till<span class="w"> </span>current<span class="w"> </span>line
+</pre></div>
+</div>
+<p>Settings derived from stata-exec, which provide the same features for Atom. run-command</p>
+<p>Requirements
+Linux
+Requirements for Linux are xdotool and xclip as in the Atom version</p>
+<p>Windows
+Installation instructions for Windows basically follows the original Atom stata-exec building manual with some modifications for code.</p>
+<p>Install the runStata package. I also recommend the Stata Enhanced package for code highlighting.</p>
+<p>Install Node. The original instructions indicated to install this specific version of Node with default settings. I followed the instructions and haven’t tried it with other versions.</p>
+<p>The stataRun extension needs a module called wimax to be compiled into a binary file. To do this Node needs windows-build-tools with Python2.7 and Visual Studio compiler packages. The installation takes some time (over 20 min. in my case) and couple of GB of disk space. To install it open up an administrator PowerShell (you can right click on the Windows icon at the bottom left and select “Windows PowerShell (Admin)”) and type in:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>install<span class="w"> </span>--global<span class="w"> </span>--production<span class="w"> </span>windows-build-tools
+</pre></div>
+</div>
+<p>In my case the original command ended with an error, so I used this one with success:</p>
+<p>npm install –global –production windows-build-tools&#64;2.2.1</p>
+<p>Open up Command Prompt (type cmd in the search bar in the dock, and it will be the first result) and type in:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>%USERPROFILE%<span class="se">\.</span>vscode<span class="se">\e</span>xtensions<span class="se">\y</span>eaoh.statarun-1.1.8
+npm<span class="w"> </span>install<span class="w"> </span>winax<span class="w"> </span>--python<span class="o">=</span>%USERPROFILE%<span class="se">\.</span>windows-build-tools<span class="se">\p</span>ython27<span class="se">\p</span>ython.exe
+</pre></div>
+</div>
+<p>In VSCode go into Help -&gt; About. From there save the Electron version. In the next command replace ELECTRON_VERSION with the version from the About dialogue.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>rebuild<span class="w"> </span>winax<span class="w"> </span>--runtime<span class="o">=</span>electron<span class="w"> </span>--target<span class="o">=</span>ELECTRON_VERSION<span class="w">  </span>--build-from-source
+</pre></div>
+</div>
+<p>Link the Stata Automation library. The following steps worked for me on Windows 10. The Stata executable is most likely in the folder <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files</span> <span class="pre">(x86)\Stata15</span></code> on PC or <code class="docutils literal notranslate"><span class="pre">/applications/stata/Stata18</span></code> on Mac.</p>
+<p>In the installation directory, right-click on the Stata executable, for example, StataSE.exe. Choose “Create Shortcut”.
+Right-click on the newly created “Shortcut to StataSE.exe”, choose “Property”, and change the Target from <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\Stata13\StataSE.exe</span></code> to <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\Stata13\StataSE.exe</span></code> /Register. Click “OK”.
+Right-click on the updated “Shortcut to StataSE.exe”; choose “Run as administrator”
+While you’re doing that, add the path of the Stata executable to the “Stata Path” option in the settings.</p>
+<p>Restart code and enjoy executing Stata code from code! (I hope…).</p>
+<p>Known Issues
+Only tested with Mac Os so far. Please and try create issues if any. Feel free to contributes.</p>
+<p>Installation
+Install as a normal vscode extension by searcing for stataRun in the vscode extension marketplace</p>
+<p>Release
+2.0.3</p>
+<p>Improvement for working on Windows and Linux</p>
+</Details>
+</Details>
+<Details>
+  <Summary>Hands-on .ipynb and .dta integration:</Summary><p><strong>Python Path Handling:</strong> If you’re dealing with paths in a Python script or Jupyter notebook, you should make use of the os and os.path modules which handle paths more gracefully:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">base_path</span> <span class="o">=</span> <span class="s2">&quot;/Users/d/Dropbox (Personal)/1f.ἡἔρις,κ/1.ontology&quot;</span>
+<span class="n">full_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="s2">&quot;myenv&quot;</span><span class="p">,</span> <span class="s2">&quot;bin&quot;</span><span class="p">,</span> <span class="s2">&quot;python&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple">
+<li><p><strong>Check Stata Installation Path:</strong>
+First, ensure that Stata is indeed installed in the /Applications directory. You can check this by navigating to the Applications folder or by using the terminal:</p></li>
+</ol>
+<p>ls /Applications | grep Stata:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>ls<span class="w"> </span>/Applications<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Stata
+
+Stata
+Stata18.dmg
+<span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>
+</pre></div>
+</div>
+<p>This command lists all the items in the Applications directory and then filters the results to only show items containing the word “Stata”. This will give you an idea of the correct path to use.</p>
+<ol class="arabic simple" start="2">
+<li><p><strong>Configuration:<br />
+Once you have the correct path, you can set it up:</strong></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># method 1</span>
+<span class="c1"># !pip install stata_setup</span>
+<span class="kn">import</span> <span class="nn">stata_setup</span>
+<span class="n">stata_setup</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;/Applications/stata/&quot;</span><span class="p">,</span> <span class="s2">&quot;se&quot;</span><span class="p">,</span> <span class="n">splash</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># method 1</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># !pip install stata_setup</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">stata_setup</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">stata_setup</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;/Applications/stata/&quot;</span><span class="p">,</span> <span class="s2">&quot;se&quot;</span><span class="p">,</span> <span class="n">splash</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;stata_setup&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># method 2</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">base_path</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pystata</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="n">config</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="s1">&#39;se&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># method 3</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">base_path</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pystata</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="n">config</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="s1">&#39;se&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># method 4</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Replace “Stata” in the path with whatever the actual name of the Stata application directory is, based on your check from the first step.</p>
+<ol class="arabic simple" start="3">
+<li><p><strong>Launching a Native Stata Window:</strong>
+If your goal is to open Stata itself from within the Jupyter notebook, you might be misinterpreting the function of stata_setup.config. This function typically sets up the integration for using Stata commands within Python or a Jupyter notebook, but it might not open a native Stata window by itself.
+To open Stata from the command line or a script on a Mac, you’d typically use the open command:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>open<span class="w"> </span>/Applications/stata/StataSE.app
+</pre></div>
+</div>
+</div>
+</div>
+<p>Make sure to adjust /Applications/Stata.app to the actual path and name of the Stata application on your machine.</p>
+<ol class="arabic simple" start="4">
+<li><p><strong>Further Integration:</strong>
+If you’re trying to execute Stata commands within Jupyter directly, consider using the <code class="docutils literal notranslate"><span class="pre">ipystata</span></code> package, which provides a bridge between Python and Stata in Jupyter notebooks. Once set up, you can use %%stata in a Jupyter cell to execute Stata commands.</p></li>
+</ol>
+<p>Lastly, ensure that the version of Stata you’re using supports the integration you’re trying to achieve. Some features might be limited to specific versions of Stata.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">stata</span>
+sysuse auto, clear
+summarize mpg
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UsageError: Cell magic `%%stata` not found.
+</pre></div>
+</div>
+</div>
+</div>
+</Details></Details></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./act3/act_3_0"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#breaking-down-the-command">Breaking Down the Command</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-to-stata-syntax">Application to Stata Syntax</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-tokens-to-explain-variance">Using Tokens to Explain Variance</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Abimereki Muzaale & Vincent Jin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

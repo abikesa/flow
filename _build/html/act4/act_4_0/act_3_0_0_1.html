@@ -1,0 +1,695 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>10. Open Science &#8212; Challenges, Skills, and Tools</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'act4/act_4_0/act_3_0_0_1';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://github.com/jhufena/jhufena.github.io/blob/main/png/hub_and_spoke.jpg?raw=true" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="https://github.com/jhufena/jhufena.github.io/blob/main/png/hub_and_spoke.jpg?raw=true" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to Fena
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Challenges</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act1/act_1_0/act_1_0_1.html">1. Rigor</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../act1/act_1_0/act_1_0_2.html">2. Error</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../act1/act_1_0/act_1_0_3.html">3. Sloppiness</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act2/act_2_0/act_2_0_1.html">4. Manuscripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act2/act_2_0/act_2_0_2.html">5. Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act2/act_2_0/act_2_0_3.html">6. Git</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numeracy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act3/act_3_0/act_3_0_1.html">7. Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act3/act_3_0/act_3_0_2.html">8. R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act3/act_3_0/act_3_0_3.html">9. Stata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Literacy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="act_4_0_1.html">10. Open Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="act_4_0_2.html">11. Self-Publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="act_4_0_3.html">12. Grants</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workflow</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act5/act_5_0/act_5_0_1.html">13. Automate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act5/act_5_0/act_5_0_2.html">14. Bash</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../act5/act_5_0/act_5_0_3.html">15. Unix</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/act4/act_4_0/act_3_0_0_1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>10. Open Science</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="open-science">
+<h1>10. Open Science<a class="headerlink" href="#open-science" title="Permalink to this heading">#</a></h1>
+<p>Introduction</p>
+<p>As medical research and collaborative platforms evolve, the Fena platform is pioneering the fusion of open science principles and secure Git practices. This dual commitment not only accelerates the sharing of scientific knowledge but also ensures that sensitive data remain shielded. At the heart of this balance is the belief that transparency doesn’t have to come at the expense of privacy.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Set seed for layout</span>
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">1234567890</span>
+
+<span class="c1"># Directory structure</span>
+<span class="n">structure</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Challenges&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Fraud&quot;</span><span class="p">,</span> <span class="s2">&quot;Sloppiness&quot;</span><span class="p">,</span> <span class="s2">&quot;Rigor&quot;</span><span class="p">,</span> <span class="s2">&quot;Learning&quot;</span><span class="p">,</span> <span class="s2">&quot;Truth&quot;</span><span class="p">,</span> <span class="s2">&quot;Error&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Literacy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Grants&quot;</span><span class="p">,</span> <span class="s2">&quot;Self-publish&quot;</span><span class="p">,</span> <span class="s2">&quot;Knowledge-Gaps&quot;</span><span class="p">,</span> <span class="s2">&quot;Open-Science&quot;</span><span class="p">,</span> <span class="s2">&quot;Journals&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Numeracy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Stata&quot;</span><span class="p">,</span> <span class="s2">&quot;Estimates&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="s2">&quot;AI&quot;</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span><span class="p">],</span>  
+    <span class="s2">&quot;Project&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Manuscripts&quot;</span><span class="p">,</span> <span class="s2">&quot;Git&quot;</span><span class="p">,</span> <span class="s2">&quot;Code&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Skills&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Literacy&quot;</span><span class="p">,</span> <span class="s2">&quot;Project&quot;</span><span class="p">,</span> <span class="s2">&quot;Numeracy&quot;</span><span class="p">,</span> <span class="s2">&quot;Workflow&quot;</span><span class="p">,</span> <span class="s2">&quot;Challenges&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Workflow&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;High School Students&quot;</span><span class="p">,</span> <span class="s2">&quot;Undergraduates&quot;</span><span class="p">,</span> <span class="s2">&quot;Graduate Students&quot;</span><span class="p">,</span> <span class="s2">&quot;Medical Students&quot;</span><span class="p">,</span> <span class="s2">&quot;Residents&quot;</span><span class="p">,</span> <span class="s2">&quot;Fellows&quot;</span><span class="p">,</span> <span class="s2">&quot;Faculty&quot;</span><span class="p">,</span> <span class="s2">&quot;Analysts&quot;</span><span class="p">,</span> <span class="s2">&quot;Staff&quot;</span><span class="p">,</span> <span class="s2">&quot;Collaborators&quot;</span><span class="p">,</span> <span class="s2">&quot;Graduates&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="c1"># Gentle colors for children</span>
+<span class="n">child_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;lightgreen&quot;</span><span class="p">,</span> <span class="s2">&quot;lightpink&quot;</span><span class="p">,</span> <span class="s2">&quot;lightyellow&quot;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;honeydew&#39;</span><span class="p">,</span> <span class="s1">&#39;lightcoral&#39;</span><span class="p">,</span><span class="s1">&#39;azure&#39;</span><span class="p">,</span> <span class="s1">&#39;lightblue&#39;</span><span class="p">,</span><span class="s1">&#39;lavender&#39;</span><span class="p">]</span>
+
+<span class="c1"># List of nodes to color light blue</span>
+<span class="n">light_blue_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Literacy&quot;</span><span class="p">,</span> <span class="s2">&quot;Numeracy&quot;</span><span class="p">,</span> <span class="s2">&quot;You&quot;</span><span class="p">,</span> <span class="s2">&quot;Project&quot;</span><span class="p">,</span> <span class="s2">&quot;Challenges&quot;</span><span class="p">]</span>
+
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="n">node_colors</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># Function to capitalize the first letter of each word</span>
+<span class="k">def</span> <span class="nf">capitalize_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">))</span>
+
+<span class="c1"># Assign colors to nodes</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">children</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">structure</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">parent_name</span> <span class="o">=</span> <span class="n">capitalize_name</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">))</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">parent_name</span><span class="p">)</span>
+
+    <span class="c1"># Set the color for Skills</span>
+    <span class="k">if</span> <span class="n">parent_name</span> <span class="o">==</span> <span class="s2">&quot;Skills&quot;</span><span class="p">:</span>
+        <span class="n">node_colors</span><span class="p">[</span><span class="n">parent_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lightgray&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node_colors</span><span class="p">[</span><span class="n">parent_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">child_colors</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">child_colors</span><span class="p">)]</span>
+
+    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">children</span><span class="p">:</span>
+        <span class="n">child_name</span> <span class="o">=</span> <span class="n">capitalize_name</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">))</span>
+        <span class="c1"># Exclude &quot;Co-Pilot&quot; and &quot;ChatGPT&quot;</span>
+        <span class="k">if</span> <span class="n">child_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Co-Pilot&quot;</span><span class="p">,</span> <span class="s2">&quot;ChatGPT&quot;</span><span class="p">]:</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">parent_name</span><span class="p">,</span> <span class="n">child_name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">child_name</span> <span class="ow">in</span> <span class="n">light_blue_nodes</span><span class="p">:</span>
+                <span class="n">node_colors</span><span class="p">[</span><span class="n">child_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lightblue&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">node_colors</span><span class="p">[</span><span class="n">child_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">child_colors</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">8</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">child_colors</span><span class="p">)]</span>  <span class="c1"># You can customize the logic here to assign colors</span>
+
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">node_colors</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()]</span>
+
+<span class="c1"># Set figure size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+
+<span class="c1"># Draw the graph</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>  <span class="c1"># Boundary color set here</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/4bfd9ab0126a49a10a0f2137e73cc845e24835156c669a9f1e0e1ac32ca84146.png" src="../../_images/4bfd9ab0126a49a10a0f2137e73cc845e24835156c669a9f1e0e1ac32ca84146.png" />
+</div>
+</div>
+<p><strong>Open Science: A New Paradigm</strong></p>
+<p>The Fena platform stands at the forefront of promoting open science, allowing researchers to share their findings, protocols, and knowledge without barriers. By transforming research content into accessible digital formats, Fena makes scientific knowledge transparent, navigable, and impactful. This level of openness amplifies the reach of research and fosters a global community of researchers.</p>
+<p><strong>Git Security: Safeguarding Research</strong></p>
+<p>Understanding the sensitivity of medical research data, Fena employs rigorous Git security practices:</p>
+<ul class="simple">
+<li><p><strong>Repositories</strong>: Distinct <code class="docutils literal notranslate"><span class="pre">Private</span></code> and <code class="docutils literal notranslate"><span class="pre">Public</span></code> repositories ensure data segregation. While public repositories promote open science, private repositories safeguard sensitive or preliminary data.</p></li>
+<li><p><strong>Authentication</strong>: Leveraging SSH key authentication, Fena ensures that every user interaction with the platform is secure and traceable, preventing unauthorized data alterations and access.</p></li>
+<li><p><strong>Encryption</strong>: Leveraging the <code class="docutils literal notranslate"><span class="pre">Public</span></code> and <code class="docutils literal notranslate"><span class="pre">Private</span></code> key infrastructure, data transferred to and from GitHub remain encrypted, ensuring data integrity and confidentiality.</p></li>
+</ul>
+<p><strong>Inclusivity in Collaboration</strong></p>
+<p>Fena extends its collaborative ethos to a wide spectrum of contributors, from faculty and seasoned researchers to high school students. This diverse collaboration enriches the research process while also emphasizing ethical considerations and data privacy.</p>
+<p><strong>The Role of Infrastructure</strong></p>
+<p>Core to Fena’s operations are platforms like Jupyter Book and GitHub. These tools not only offer robust collaboration features but also integrate stringent security measures, protecting sensitive research findings while facilitating open science.</p>
+<p><strong>Impact on Healthcare</strong></p>
+<p>With a commitment to open science and stringent security protocols, Fena promises a transformative impact on healthcare. Research outcomes become widely available, empowering healthcare professionals with the latest advancements, while data security ensures the confidentiality of sensitive patient data.</p>
+<p><strong>Conclusion</strong></p>
+<p>The Fena platform heralds a new era where open science and Git security coexist harmoniously. In line with HIPAA guidelines, Fena ensures that no identifiable patient data is stored directly in the repositories. Instead, the platform encourages storing metadata or data references, thereby ensuring that knowledge dissemination doesn’t compromise data security. Regular audits, advanced encryption techniques, and a culture of continuous learning among contributors further fortify the platform against potential breaches, paving the way for a revolution in medical research that is both open and secure.</p>
+<hr class="docutils" />
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Set seed for layout</span>
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">35</span>
+
+<span class="c1"># Updated directory structure</span>
+<span class="n">structure</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Challenges&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Fraud&quot;</span><span class="p">,</span> <span class="s2">&quot;Sloppiness&quot;</span><span class="p">,</span> <span class="s2">&quot;Rigor&quot;</span><span class="p">,</span> <span class="s2">&quot;Learning&quot;</span><span class="p">,</span> <span class="s2">&quot;Truth&quot;</span><span class="p">,</span> <span class="s2">&quot;Error&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Literacy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Grants&quot;</span><span class="p">,</span> <span class="s2">&quot;Self-publish&quot;</span><span class="p">,</span> <span class="s2">&quot;Knowledge-Gaps&quot;</span><span class="p">,</span> <span class="s2">&quot;Open-Science&quot;</span><span class="p">,</span> <span class="s2">&quot;Journals&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Numeracy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Stata&quot;</span><span class="p">,</span> <span class="s2">&quot;Estimates&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="s2">&quot;AI&quot;</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span><span class="p">],</span>  
+    <span class="s2">&quot;Project&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Manuscripts&quot;</span><span class="p">,</span> <span class="s2">&quot;Git&quot;</span><span class="p">,</span> <span class="s2">&quot;Code&quot;</span><span class="p">,</span> <span class="s2">&quot;Security&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Security&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Cloud Key&quot;</span><span class="p">,</span> <span class="s2">&quot;HIPAA&quot;</span><span class="p">,</span> <span class="s2">&quot;Pairing&quot;</span><span class="p">,</span> <span class="s2">&quot;Secure Shell&quot;</span><span class="p">,</span> <span class="s2">&quot;Local Key&quot;</span><span class="p">,</span> <span class="s2">&quot;Industry Standard&quot;</span><span class="p">,</span> <span class="s2">&quot;GitHub Repos&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Skills&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Literacy&quot;</span><span class="p">,</span> <span class="s2">&quot;Project&quot;</span><span class="p">,</span> <span class="s2">&quot;Numeracy&quot;</span><span class="p">,</span> <span class="s2">&quot;Workflow&quot;</span><span class="p">,</span> <span class="s2">&quot;Challenges&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Workflow&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;High School Students&quot;</span><span class="p">,</span> <span class="s2">&quot;Undergraduates&quot;</span><span class="p">,</span> <span class="s2">&quot;Graduate Students&quot;</span><span class="p">,</span> <span class="s2">&quot;Medical Students&quot;</span><span class="p">,</span> <span class="s2">&quot;Residents&quot;</span><span class="p">,</span> <span class="s2">&quot;Fellows&quot;</span><span class="p">,</span> <span class="s2">&quot;Faculty&quot;</span><span class="p">,</span> <span class="s2">&quot;Analysts&quot;</span><span class="p">,</span> <span class="s2">&quot;Staff&quot;</span><span class="p">,</span> <span class="s2">&quot;Collaborators&quot;</span><span class="p">,</span> <span class="s2">&quot;Graduates&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">child_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;lightgreen&quot;</span><span class="p">,</span> <span class="s2">&quot;lightpink&quot;</span><span class="p">,</span> <span class="s2">&quot;lightyellow&quot;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;honeydew&#39;</span><span class="p">,</span> <span class="s1">&#39;azure&#39;</span><span class="p">,</span> <span class="s1">&#39;lightcoral&#39;</span><span class="p">,</span> <span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="s1">&#39;lightcyan&#39;</span><span class="p">,</span> <span class="s1">&#39;peachstuff&#39;</span><span class="p">,</span> <span class="s1">&#39;lightsalmon&#39;</span><span class="p">,</span> <span class="s1">&#39;lavender&#39;</span><span class="p">]</span>
+
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="n">node_colors</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># Assign colors to nodes</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">children</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">structure</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">parent_name</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">parent_name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">parent_name</span> <span class="o">==</span> <span class="s2">&quot;Skills&quot;</span><span class="p">:</span>
+        <span class="n">node_colors</span><span class="p">[</span><span class="n">parent_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lightgray&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node_colors</span><span class="p">[</span><span class="n">parent_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">child_colors</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">child_colors</span><span class="p">)]</span>
+    
+    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">children</span><span class="p">:</span>
+        <span class="n">child_name</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">parent_name</span><span class="p">,</span> <span class="n">child_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">child_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Literacy&quot;</span><span class="p">,</span> <span class="s2">&quot;Numeracy&quot;</span><span class="p">,</span> <span class="s2">&quot;Project&quot;</span><span class="p">,</span> <span class="s2">&quot;Challenges&quot;</span><span class="p">,</span> <span class="s2">&quot;Git Security&quot;</span><span class="p">]:</span>
+            <span class="n">node_colors</span><span class="p">[</span><span class="n">child_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lightblue&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">node_colors</span><span class="p">[</span><span class="n">child_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">child_colors</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">11</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">child_colors</span><span class="p">)]</span>
+
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">node_colors</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()]</span>
+
+<span class="c1"># Set figure size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+
+<span class="c1"># Draw the graph</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>  <span class="c1"># Boundary color set here</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/e13d233e83a022ff632a5cb4504be2496ebf96ed2494447654e6712d480783e0.png" src="../../_images/e13d233e83a022ff632a5cb4504be2496ebf96ed2494447654e6712d480783e0.png" />
+</div>
+</div>
+</Details>
+<Details>
+<Summary>Concerns</Summary>
+<p>A brief breakdown of potential concerns and the provided suggestions:</p>
+<ol class="arabic simple">
+<li><p><strong>HIPAA Compliance</strong>: HIPAA provides rules to protect the privacy and security of personal health information. Therefore, if any repository (public or private) contains identifiable patient data, it may violate HIPAA regulations.</p>
+<ul class="simple">
+<li><p><strong>Suggestion</strong>: Ensure no identifiable patient data is stored in the repositories. Instead, data can be stored in a HIPAA-compliant cloud storage, and the platform should allow access to the data only through secure interfaces without allowing the data itself to be downloaded or copied.</p></li>
+</ul>
+</li>
+<li><p><strong>Git Repositories</strong>: The inherent nature of Git is that every change to the repository is stored in its history. This means that even if sensitive data is deleted in a later commit, its trace might still exist in the repository’s history.</p>
+<ul class="simple">
+<li><p><strong>Suggestion</strong>: Implement a Git history rewrite or scrubbing tool that allows for the removal of sensitive data from the entire Git history when necessary. Additionally, regularly audit repositories for sensitive data and use pre-commit hooks to scan for and block potential sensitive data from being committed.</p></li>
+</ul>
+</li>
+<li><p><strong>Authentication and Encryption</strong>: While the platform uses SSH key authentication and public-private key infrastructure, it’s essential to ensure end-to-end encryption, especially if sensitive data is being transmitted.</p>
+<ul class="simple">
+<li><p><strong>Suggestion</strong>: Regularly review and update the encryption and authentication mechanisms to ensure they adhere to the latest security standards.</p></li>
+</ul>
+</li>
+<li><p><strong>Inclusivity in Collaboration</strong>: The diverse range of contributors could mean varying levels of awareness about data security and privacy.</p>
+<ul class="simple">
+<li><p><strong>Suggestion</strong>: Provide mandatory training sessions on data privacy and security to all contributors, ensuring everyone understands the importance of safeguarding sensitive data.</p></li>
+</ul>
+</li>
+<li><p><strong>Storage of Data</strong>: The main issue revolves around whether data, especially sensitive data, are stored in the repositories.</p>
+<ul class="simple">
+<li><p><strong>Suggestion</strong>: Instead of storing raw data in repositories, consider storing metadata or data references. If necessary, utilize data tokenization or pseudonymization techniques to protect the actual content of the data.</p></li>
+</ul>
+</li>
+</ol>
+</Details>
+<Details>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Summary&gt;Reflection&lt;/Summary&gt;
+</pre></div>
+</div>
+<p>A Poetic Reflection</p>
+<p>As T.S. Eliot eloquently expresses in “Little Gidding,” Four Quartets:</p>
+<blockquote>
+<div><p>“We shall not cease from exploration<br />
+And the end of all our exploring<br />
+Will be to arrive where we started<br />
+And know the place for the first time.<br />
+Through the unknown, remembered gate<br />
+When the last of earth left to discover<br />
+Is that which was the beginning;<br />
+At the source of the longest river<br />
+The voice of the hidden waterfall<br />
+And the children in the apple-tree<br />
+Not known, because not looked for<br />
+But heard, half-heard, in the stillness<br />
+Between two waves of the sea.”</p>
+</div></blockquote>
+<p>These lines resonate with the journey of scientific exploration and discovery. They remind us that the pursuit of knowledge is an ongoing process, where new insights often lead us back to fundamental truths, seen with fresh eyes and deeper understanding.</p>
+</Details>
+<Details>
+  <Summary>Epilogue</Summary>
+<p><strong>Epilogue: The Daily Grind</strong></p>
+<p>The concept of an “epilogue” often evokes a sense of closure, a final reflection or comment at the end of a literary work or a speech. But within the context of the Fena community, the epilogue is something more profound and continuous. It’s not merely a closing statement but rather an ongoing narrative that reflects the essence of the community:</p>
+<blockquote>
+<div><p>Folks come to Fena from all walks of life
+Then they take on a project
+Challenges loom large
+But the idea is to overcome them
+And that involves acquiring new skills
+We can’t do it alone, so we work together
+Fena is a community after all
+And we learn from each other
+More novel, we recruit AI each step of the way
+Chatbots, GPT-3, Co-Pilot, etc.
+The prospect of exponential growth is exciting
+Of course, we can talk of all the world being a stage
+But we are not actors
+We are real people
+And we are not playing a part
+We are living our lives
+And we are doing it together
+And we are doing it in the open
+And we are doing it for the world to see
+All actors may have their exits and entrances
+But ours is a daily grind
+And we are in it for the long haul
+There’ll always be a tomorrow, and a tomorrow, and a tomorrow
+Repeat, iteration, etc
+And so epilogue is really the daily grind:
+Challenge-levels against skill-levels
+Exponential growth of both
+As if we were in a game
+Generative adversarial networks
+And we are the players
+And we are the game
+And we are the game masters
+And we are the game makers
+And we are the game changers</p>
+</div></blockquote>
+<p>Personal Notes</p>
+<p>These reflections are not merely a poetic musing but a manifestation of the spirit, ethos, and dynamics of a thriving community committed to open science. It’s an epilogue that doesn’t end but rather continues to evolve, mirroring the ceaseless journey of discovery, growth, collaboration, and transformation that characterizes Fena and its global community of researchers and practitioners. A tomorrow that continues, an iteration that never ceases, and a game that we all play and shape – this is the essence of Fena, and the epilogue is our daily grind.</p>
+</Details></section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./act4/act_4_0"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Abimereki Muzaale & Vincent Jin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

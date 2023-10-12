@@ -1,0 +1,918 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>&lt;no title&gt; &#8212; Challenges, Skills, and Tools</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'act0/act_0_4/act_0_0_4_3';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://github.com/jhufena/jhufena.github.io/blob/main/png/hub_and_spoke.jpg?raw=true" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="https://github.com/jhufena/jhufena.github.io/blob/main/png/hub_and_spoke.jpg?raw=true" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to Fena
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Challenges</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act1/act_1_0/act_1_0_1.html">1. Rigor</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../act1/act_1_0/act_1_0_2.html">2. Error</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../act1/act_1_0/act_1_0_3.html">3. Sloppiness</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act2/act_2_0/act_2_0_1.html">4. Manuscripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act2/act_2_0/act_2_0_2.html">5. Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act2/act_2_0/act_2_0_3.html">6. Git</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numeracy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act3/act_3_0/act_3_0_1.html">7. Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act3/act_3_0/act_3_0_2.html">8. R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act3/act_3_0/act_3_0_3.html">9. Stata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Literacy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act4/act_4_0/act_4_0_1.html">10. Open Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act4/act_4_0/act_4_0_2.html">11. Self-Publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act4/act_4_0/act_4_0_3.html">12. Grants</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workflow</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act5/act_5_0/act_5_0_1.html">13. Automate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act5/act_5_0/act_5_0_2.html">14. Bash</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../act5/act_5_0/act_5_0_3.html">15. Unix</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/act0/act_0_4/act_0_0_4_3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <ol class="arabic simple">
+<li><p>Install the relevant packages</p></li>
+</ol>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="nf">suppressWarnings</span><span class="p">({</span>
+<span class="w">     </span><span class="nf">invisible</span><span class="p">({</span>
+<span class="w">       </span><span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ls</span><span class="p">())</span>
+
+<span class="w">       </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">icdpicr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;icdpicr&#39;</span><span class="p">)</span>
+<span class="w">       </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">dplyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;dplyr&#39;</span><span class="p">)</span>
+<span class="w">       </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">readr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;readr&#39;</span><span class="p">)</span>
+<span class="w">       </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">tidyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;tidyr&#39;</span><span class="p">)</span>
+
+<span class="w">       </span><span class="nf">library</span><span class="p">(</span><span class="n">icdpicr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="w">       </span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="w">       </span><span class="nf">library</span><span class="p">(</span><span class="n">readr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="w">       </span><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="w">     </span><span class="p">})</span>
+<span class="w">   </span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Get some documentation</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="nf">ls</span><span class="p">(</span><span class="s">&quot;package:icdpicr&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'cat_trauma'</li><li>'injury'</li></ol>
+</div></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Study the syntax</p></li>
+</ol>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="nf">print</span><span class="p">(</span><span class="n">cat_trauma</span><span class="p">)</span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>function (df, dx_pre, icd10, i10_iss_method, calc_method = 1, 
+    verbose = FALSE) 
+{
+    if (!is.data.frame(df)) 
+        stop(&quot;First argument must be a dataframe&quot;)
+    if (NROW(df) == 0) 
+        stop(&quot;Data contains no observations. It must contain at least one row.&quot;)
+    if (!is.character(dx_pre)) 
+        stop(&quot;Second argument must be a character string&quot;)
+    if (make.names(dx_pre) != dx_pre) 
+        stop(&quot;Second argument must be a valid variable name in R&quot;)
+    if (!(calc_method %in% c(1, 2))) 
+        stop(&quot;calc_method must be either 1 or 2&quot;)
+    if (!(icd10 %in% c(TRUE, FALSE, &quot;cm&quot;, &quot;base&quot;))) 
+        stop(&quot;icd10 must be TRUE, FALSE, &#39;cm&#39;, or &#39;base&#39;&quot;)
+    if (icd10 == FALSE) 
+        i10_iss_method &lt;- &quot;&quot;
+    if (i10_iss_method == &quot;roc_max&quot;) 
+        stop(&quot;The roc_max option has been depricated. Please use roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, or roc_max_TQIP_only instead.&quot;)
+    if ((icd10 != FALSE) &amp;&amp; !(i10_iss_method %in% c(&quot;roc_max_NIS&quot;, 
+        &quot;roc_max_TQIP&quot;, &quot;roc_max_NIS_only&quot;, &quot;roc_max_TQIP_only&quot;, 
+        &quot;gem_max&quot;, &quot;gem_min&quot;))) 
+        stop(&quot;i10_iss_menthod must be roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, roc_max_TQIP_only, gem_max, or gem_min.&quot;)
+    regex_dx &lt;- paste0(&quot;^&quot;, dx_pre, &quot;([0-9]+)$&quot;)
+    dx_colnames &lt;- grep(regex_dx, names(df), value = TRUE)
+    dx_nums &lt;- as.numeric(sub(regex_dx, &quot;\\1&quot;, dx_colnames))
+    num_dx &lt;- length(dx_nums)
+    if (num_dx == 0) 
+        stop(&quot;No variables with prefix found in data&quot;)
+    df &lt;- data.frame(df)
+    if (isTRUE(icd10)) 
+        icd10 &lt;- &quot;cm&quot;
+    if (icd10 %in% c(&quot;base&quot;, &quot;cm&quot;)) {
+        etab &lt;- rbind(etab_s1, i10_ecode)
+        ntab &lt;- switch(i10_iss_method, roc_max_NIS = rbind(ntab_s1, 
+            .select_i10_data(&quot;NIS&quot;, icd10)), roc_max_TQIP = rbind(ntab_s1, 
+            .select_i10_data(&quot;TQIP&quot;, icd10)), roc_max_NIS_only = rbind(ntab_s1, 
+            .select_i10_data(&quot;NIS_only&quot;, icd10)), roc_max_TQIP_only = rbind(ntab_s1, 
+            .select_i10_data(&quot;TQIP_only&quot;, icd10)), gem_max = rbind(ntab_s1, 
+            i10_map_max), gem_min = rbind(ntab_s1, i10_map_min))
+    }
+    else {
+        ntab &lt;- ntab_s1
+        etab &lt;- etab_s1
+    }
+    for (i in dx_nums) {
+        dx_name &lt;- paste0(dx_pre, i)
+        df_ss &lt;- df[, dx_name, drop = FALSE]
+        df_ss$n &lt;- 1:NROW(df_ss)
+        df_ss[, dx_name] &lt;- sub(&quot;\\.&quot;, &quot;&quot;, df_ss[, dx_name])
+        if (icd10 == TRUE &amp; i10_iss_method == &quot;roc_max&quot;) {
+            i9_valid &lt;- c(&quot;8&quot;, &quot;9&quot;, &quot;E&quot;)
+            i10_valid &lt;- c(&quot;S&quot;, &quot;T&quot;, &quot;U&quot;, &quot;V&quot;, &quot;W&quot;, &quot;X&quot;, &quot;Y&quot;)
+            df_ss[, dx_name] &lt;- ifelse(substr(df_ss[, dx_name], 
+                1, 1) %in% c(i9_valid, i10_valid), df_ss[, dx_name], 
+                NA)
+            process_i10 &lt;- function(s) {
+                stopifnot(is.character(s) | is.na(s))
+                ret_val &lt;- NA
+                s &lt;- sub(&quot;\\.&quot;, &quot;&quot;, s)
+                if (!substr(s, 1, 1) %in% c(&quot;S&quot;, &quot;T&quot;, &quot;U&quot;, &quot;V&quot;, 
+                  &quot;W&quot;, &quot;X&quot;, &quot;Y&quot;)) {
+                  ret_val &lt;- s
+                }
+                else if (nchar(s) &lt; 7 &amp; !grepl(&quot;X&quot;, substr(s, 
+                  2, nchar(s)))) {
+                  ret_val &lt;- s
+                }
+                else if (nchar(s) != 7) {
+                  ret_val &lt;- &quot;&quot;
+                }
+                else if (substr(s, 7, 7) != &quot;A&quot;) {
+                  ret_val &lt;- &quot;&quot;
+                }
+                else if (substr(s, 5, 5) == &quot;X&quot;) {
+                  ret_val &lt;- substr(s, 1, 4)
+                }
+                else if (substr(s, 6, 6) == &quot;X&quot;) {
+                  ret_val &lt;- substr(s, 1, 5)
+                }
+                else {
+                  ret_val &lt;- substr(s, 1, 6)
+                }
+                return(ret_val)
+            }
+            df_ss[, dx_name] &lt;- sapply(df_ss[, dx_name], process_i10)
+        }
+        temp &lt;- merge(df_ss, ntab, by.x = dx_name, by.y = &quot;dx&quot;, 
+            all.x = TRUE, all.y = FALSE, sort = FALSE)
+        temp &lt;- temp[order(temp$n), ]
+        temp &lt;- temp[, c(&quot;severity&quot;, &quot;issbr&quot;)]
+        if (calc_method == 2) {
+            temp[which(temp$severity == 6), &quot;severity&quot;] &lt;- 5
+        }
+        names(temp) &lt;- paste0(c(&quot;sev_&quot;, &quot;issbr_&quot;), i)
+        df &lt;- .insert_columns(df, dx_name, temp)
+    }
+    body_regions &lt;- unique(i10_map_max$issbr)
+    issbr_names &lt;- gsub(&quot;/&quot;, &quot;_&quot;, body_regions)
+    for (i in body_regions) {
+        temp &lt;- df[, grepl(&quot;sev_&quot;, names(df)), drop = FALSE] * 
+            (1 * (df[, grepl(&quot;issbr_&quot;, names(df))] == i))
+        df[, paste0(&quot;mxaisbr_&quot;, gsub(&quot;/&quot;, &quot;&quot;, i))] &lt;- apply(temp, 
+            1, function(row) {
+                row &lt;- ifelse(row == 0, NA, row)
+                if (all(is.na(row))) {
+                  maxaisbr &lt;- 0
+                }
+                else if (all(row == 9, na.rm = TRUE)) {
+                  maxaisbr &lt;- 9
+                }
+                else {
+                  maxaisbr &lt;- max(c(0, row[row != 9]), na.rm = TRUE)
+                }
+                return(maxaisbr)
+            })
+    }
+    c9to0 &lt;- function(x) ifelse(x == 9, 0, x)
+    df$maxais &lt;- apply(df, 1, function(row) {
+        row &lt;- row[grepl(&quot;mxaisbr&quot;, names(row))]
+        if (all(is.na(row))) {
+            maxais &lt;- as.numeric(NA)
+        }
+        else if (max(c9to0(row), na.rm = TRUE) == 0) {
+            maxais &lt;- max(row, na.rm = TRUE)
+        }
+        else {
+            maxais &lt;- max(c9to0(row), na.rm = TRUE)
+        }
+        return(maxais)
+    })
+    df$maxais &lt;- as.numeric(df$maxais)
+    df$riss &lt;- apply(df, 1, function(row) {
+        temp &lt;- row[grepl(&quot;^mxaisbr&quot;, names(row))]
+        temp &lt;- as.numeric(c9to0(temp))
+        sum(temp[order(-temp)[1:3]]^2)
+    })
+    df[df$maxais == 6, &quot;riss&quot;] &lt;- 75
+    df[df$maxais == 9, &quot;riss&quot;] &lt;- NA
+    df$niss &lt;- apply(df, 1, function(row) {
+        temp &lt;- row[grepl(&quot;^sev_&quot;, names(row))]
+        temp &lt;- as.numeric(temp)
+        temp &lt;- ifelse(is.na(temp) | temp == 9, 0, temp)
+        sum(temp[order(-temp)[1:3]]^2)
+    })
+    df[df$maxais == 6, &quot;niss&quot;] &lt;- 75
+    df[df$maxais == 9, &quot;niss&quot;] &lt;- NA
+    ecode_colnames &lt;- paste0(&quot;ecode_&quot;, 1:4)
+    df[, ecode_colnames] &lt;- NA
+    ecode_regex &lt;- paste0(&quot;^&quot;, etab$dx, collapse = &quot;|&quot;)
+    df[, ecode_colnames] &lt;- t(apply(df, 1, function(row) {
+        row &lt;- sub(&quot;\\.&quot;, &quot;&quot;, row)
+        row_ecodes &lt;- stringr::str_extract(as.character(unlist(row)), 
+            ecode_regex)
+        row_ecodes &lt;- na.omit(row_ecodes)
+        row_ecodes[1:4]
+    }))
+    for (i in 1:4) {
+        col_name &lt;- paste(&quot;ecode_&quot;, i, sep = &quot;&quot;)
+        df_ss &lt;- df[, col_name, drop = FALSE]
+        df_ss$n &lt;- 1:NROW(df_ss)
+        df_ss[, col_name] &lt;- sub(&quot;\\.&quot;, &quot;&quot;, df_ss[, col_name])
+        temp &lt;- merge(df_ss, etab, by.x = col_name, by.y = &quot;dx&quot;, 
+            all.x = TRUE, all.y = FALSE, sort = FALSE)
+        temp &lt;- temp[order(temp$n), ]
+        temp &lt;- temp[, c(&quot;mechmaj&quot;, &quot;mechmin&quot;, &quot;intent&quot;)]
+        names(temp) &lt;- paste(c(&quot;mechmaj&quot;, &quot;mechmin&quot;, &quot;intent&quot;), 
+            i, sep = &quot;&quot;)
+        df &lt;- .insert_columns(df, col_name, temp)
+    }
+    if (stringr::str_detect(i10_iss_method, &quot;NIS|TQIP&quot;) &amp;&amp; icd10 %in% 
+        c(&quot;cm&quot;, &quot;base&quot;)) {
+        if (verbose) 
+            print(&quot;Calculating mortality prediction&quot;)
+        coef_df &lt;- .select_i10_coef(prefix = stringr::str_extract(i10_iss_method, 
+            &quot;NIS|TQIP&quot;), icd10)
+        stopifnot(max(coef_df$intercept, na.rm = TRUE) == min(coef_df$intercept, 
+            na.rm = TRUE))
+        intercept &lt;- max(coef_df$intercept, na.rm = TRUE)
+        coef_df &lt;- coef_df[!is.na(coef_df$effect), ]
+        effect_hash &lt;- coef_df$effect
+        names(effect_hash) &lt;- coef_df$dx
+        calc_mortality_prediction &lt;- function(dx) {
+            x &lt;- sum(effect_hash[sub(&quot;\\.&quot;, &quot;&quot;, dx)], na.rm = TRUE) + 
+                intercept
+            1/(1 + exp(-x))
+        }
+        mat &lt;- as.matrix(df[, grepl(paste0(&quot;^&quot;, dx_pre), names(df))])
+        df$Pmort &lt;- apply(mat, 1, calc_mortality_prediction)
+    }
+    rownames(df) &lt;- 1:nrow(df)
+    df
+}
+&lt;bytecode: 0x7feb3695ea58&gt;
+&lt;environment: namespace:icdpicr&gt;
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>What is the value of dx_pre?</p></li>
+</ol>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="n">injury</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 100,477 × 11
+   dx1      dx2      dx3      dx4      dx5   dx6   dx7   dx8   dx9   dx10   died
+   &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;
+ 1 S72.342A <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>        0
+ 2 S05.22XA <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>        0
+ 3 S00.01XA S00.03XA S00.11XA S00.12XA S00.… S00.… S00.… S01.… S02.… S80.…     0
+ 4 S21.119A <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>        0
+ 5 S82.191A <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>        0
+ 6 S22.42XA <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>        0
+ 7 S92.052A S92.065A S92.325A S92.335A S92.… S93.… <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>        0
+ 8 S02.112A S06.5X0A S12.090A S12.100A S12.… S20.… S20.… S22.… S22.… S22.…     0
+ 9 S00.03XA S22.058A S22.068A S22.078A S22.… S30.… S42.… S62.… S81.… S82.…     0
+10 S61.411A S62.624B S62.626B S66.300A S66.… S66.… S66.… <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>        0
+# ℹ 100,467 more rows
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>As such, the script should first use a sample:</p></li>
+</ol>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="c1"># use subset of injury given its size</span>
+<span class="w">   </span><span class="n">inj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">injury</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">]</span>
+<span class="w">   </span><span class="n">df_score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cat_trauma</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">inj</span><span class="p">,</span><span class="w"> </span><span class="n">dx_pre</span><span class="o">=</span><span class="s">&quot;dx&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">icd10</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">i10_iss_method</span><span class="o">=</span><span class="s">&quot;roc_max_NIS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">calc_method</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+
+<span class="w">   </span><span class="c1"># visualize the output</span>
+<span class="w">   </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">];</span><span class="w"> </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">10</span><span class="o">:</span><span class="m">14</span><span class="p">];</span><span class="w"> </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">15</span><span class="o">:</span><span class="m">18</span><span class="p">];</span><span class="w"> </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">34</span><span class="o">:</span><span class="m">35</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 9 × 9</caption>
+<thead>
+	<tr><th></th><th scope=col>dx1</th><th scope=col>sev_1</th><th scope=col>issbr_1</th><th scope=col>dx2</th><th scope=col>sev_2</th><th scope=col>issbr_2</th><th scope=col>dx3</th><th scope=col>sev_3</th><th scope=col>issbr_3</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>S72.342A</td><td>1</td><td>Extremities</td><td>NA      </td><td>NA</td><td>NA         </td><td>NA      </td><td>NA</td><td>NA         </td></tr>
+	<tr><th scope=row>2</th><td>S05.22XA</td><td>1</td><td>Face       </td><td>NA      </td><td>NA</td><td>NA         </td><td>NA      </td><td>NA</td><td>NA         </td></tr>
+	<tr><th scope=row>3</th><td>S00.01XA</td><td>1</td><td>Head/Neck  </td><td>S00.03XA</td><td> 2</td><td>Head/Neck  </td><td>S00.11XA</td><td> 2</td><td>Face       </td></tr>
+	<tr><th scope=row>4</th><td>S21.119A</td><td>3</td><td>Chest      </td><td>NA      </td><td>NA</td><td>NA         </td><td>NA      </td><td>NA</td><td>NA         </td></tr>
+	<tr><th scope=row>5</th><td>S82.191A</td><td>3</td><td>Extremities</td><td>NA      </td><td>NA</td><td>NA         </td><td>NA      </td><td>NA</td><td>NA         </td></tr>
+	<tr><th scope=row>6</th><td>S22.42XA</td><td>3</td><td>Chest      </td><td>NA      </td><td>NA</td><td>NA         </td><td>NA      </td><td>NA</td><td>NA         </td></tr>
+	<tr><th scope=row>7</th><td>S92.052A</td><td>1</td><td>Extremities</td><td>S92.065A</td><td> 1</td><td>Extremities</td><td>S92.325A</td><td> 1</td><td>Extremities</td></tr>
+	<tr><th scope=row>8</th><td>S02.112A</td><td>1</td><td>Face       </td><td>S06.5X0A</td><td> 4</td><td>Head/Neck  </td><td>S12.090A</td><td> 4</td><td>Head/Neck  </td></tr>
+	<tr><th scope=row>9</th><td>S00.03XA</td><td>2</td><td>Head/Neck  </td><td>S22.058A</td><td> 1</td><td>Chest      </td><td>S22.068A</td><td> 3</td><td>Chest      </td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 9 × 5</caption>
+<thead>
+	<tr><th></th><th scope=col>mxaisbr_General</th><th scope=col>mxaisbr_HeadNeck</th><th scope=col>mxaisbr_Face</th><th scope=col>mxaisbr_Extremities</th><th scope=col>mxaisbr_Chest</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+	<tr><th scope=row>2</th><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+	<tr><th scope=row>3</th><td>0</td><td>2</td><td>2</td><td>0</td><td>0</td></tr>
+	<tr><th scope=row>4</th><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td></tr>
+	<tr><th scope=row>5</th><td>0</td><td>0</td><td>0</td><td>3</td><td>0</td></tr>
+	<tr><th scope=row>6</th><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td></tr>
+	<tr><th scope=row>7</th><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+	<tr><th scope=row>8</th><td>0</td><td>4</td><td>1</td><td>0</td><td>0</td></tr>
+	<tr><th scope=row>9</th><td>0</td><td>2</td><td>0</td><td>0</td><td>3</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 9 × 4</caption>
+<thead>
+	<tr><th></th><th scope=col>mxaisbr_Abdomen</th><th scope=col>maxais</th><th scope=col>riss</th><th scope=col>niss</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>0</td><td>1</td><td> 1</td><td> 1</td></tr>
+	<tr><th scope=row>2</th><td>0</td><td>1</td><td> 1</td><td> 1</td></tr>
+	<tr><th scope=row>3</th><td>0</td><td>2</td><td> 8</td><td> 9</td></tr>
+	<tr><th scope=row>4</th><td>0</td><td>3</td><td> 9</td><td> 9</td></tr>
+	<tr><th scope=row>5</th><td>0</td><td>3</td><td> 9</td><td> 9</td></tr>
+	<tr><th scope=row>6</th><td>0</td><td>3</td><td> 9</td><td> 9</td></tr>
+	<tr><th scope=row>7</th><td>0</td><td>1</td><td> 1</td><td> 3</td></tr>
+	<tr><th scope=row>8</th><td>0</td><td>4</td><td>17</td><td>33</td></tr>
+	<tr><th scope=row>9</th><td>0</td><td>3</td><td>13</td><td>14</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 9 × 2</caption>
+<thead>
+	<tr><th></th><th scope=col>intent4</th><th scope=col>Pmort</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>NA</td><td>0.013857916</td></tr>
+	<tr><th scope=row>2</th><td>NA</td><td>0.014412795</td></tr>
+	<tr><th scope=row>3</th><td>NA</td><td>0.017673701</td></tr>
+	<tr><th scope=row>4</th><td>NA</td><td>0.026078454</td></tr>
+	<tr><th scope=row>5</th><td>NA</td><td>0.027839150</td></tr>
+	<tr><th scope=row>6</th><td>NA</td><td>0.024364215</td></tr>
+	<tr><th scope=row>7</th><td>NA</td><td>0.005516156</td></tr>
+	<tr><th scope=row>8</th><td>NA</td><td>0.037222518</td></tr>
+	<tr><th scope=row>9</th><td>NA</td><td>0.021037152</td></tr>
+</tbody>
+</table>
+</div></div>
+</details>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>What is the value of the ISS?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="n">df_score</span><span class="o">$</span><span class="n">iss</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NULL
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>What is the value of the NISS?</p></li>
+</ol>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="nf">print</span><span class="p">(</span><span class="n">df_score</span><span class="o">$</span><span class="n">niss</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  [1]  1  1  9  9  9  9  3 33 14  6 22  1  1  2  1  4  1  6  1  6  1  9  1  3 22
+ [26]  6 10  6  1 30  4  9 11 33 17  1 17  1 17  3  2  6  8  9  5  4  1 21  1 11
+ [51] 20 11  6  1 26  9  3  2 27 11  6 19  1 11  6  3  3 41  2 10  9 11  1  1  1
+ [76]  1 18 22 10  3 19  6  1  9  9 14  9  5  4 33 21 22  1  4  2  1 13  1  9 35
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>What is the value of the RTS?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="nf">print</span><span class="p">(</span><span class="n">df_score</span><span class="o">$</span><span class="n">rts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NULL
+</pre></div>
+</div>
+</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\vdots\)</span></p>
+<ol class="arabic" start="9">
+<li><p>Edit code to run on the full dataset</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># use subset of injury given its size (replace &quot;injury&quot; with your datafile of interest)</span>
+<span class="n">df_score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cat_trauma</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">injury</span><span class="p">,</span><span class="w"> </span><span class="n">dx_pre</span><span class="o">=</span><span class="s">&quot;dx&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">icd10</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">i10_iss_method</span><span class="o">=</span><span class="s">&quot;roc_max_NIS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">calc_method</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+
+<span class="c1"># visualize the output</span>
+<span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">];</span><span class="w"> </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">10</span><span class="o">:</span><span class="m">14</span><span class="p">];</span><span class="w"> </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">15</span><span class="o">:</span><span class="m">18</span><span class="p">];</span><span class="w"> </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">34</span><span class="o">:</span><span class="m">35</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ol>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./act0/act_0_4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Abimereki Muzaale & Vincent Jin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

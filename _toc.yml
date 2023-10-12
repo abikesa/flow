@@ -1,60 +1,105 @@
 format: jb-book
-root: intro.ipynb
-title: Play
+root: intro
 parts:
-  - caption:  
-    chapters:
-      - file: act_0/act_0_0/act_0_0_0/act_0_0_0_1.ipynb
-      - file: act_0/act_0_0/act_0_0_0/act_0_0_0_2.ipynb
-      - file: act_0/act_0_0/act_0_0_0/act_0_0_0_3.ipynb
-      - file: act_0/act_0_0/act_0_0_1/act_0_0_1_1.ipynb
-      - file: act_0/act_0_0/act_0_0_1/act_0_0_1_2.ipynb
-      - file: act_0/act_0_0/act_0_0_1/act_0_0_1_3.ipynb
-      - file: act_0/act_0_1/act_0_1_0/act_0_1_0_1.ipynb
-      - file: act_0/act_0_1/act_0_1_0/act_0_1_0_2.ipynb
-      - file: act_0/act_0_1/act_0_1_0/act_0_1_0_3.ipynb
-      - file: act_0/act_0_1/act_0_1_1/act_0_1_1_1.ipynb
-      - file: act_0/act_0_1/act_0_1_1/act_0_1_1_2.ipynb
-      - file: act_0/act_0_1/act_0_1_1/act_0_1_1_3.ipynb
-  - caption:  
-    chapters:
-      - file: act_1/act_1_0/act_1_0_0/act_1_0_0_1.ipynb
-      - file: act_1/act_1_0/act_1_0_0/act_1_0_0_2.ipynb
-      - file: act_1/act_1_0/act_1_0_0/act_1_0_0_3.ipynb
-      - file: act_1/act_1_0/act_1_0_1/act_1_0_1_1.ipynb
-      - file: act_1/act_1_0/act_1_0_1/act_1_0_1_2.ipynb
-      - file: act_1/act_1_0/act_1_0_1/act_1_0_1_3.ipynb
-      - file: act_1/act_1_1/act_1_1_0/act_1_1_0_1.ipynb
-      - file: act_1/act_1_1/act_1_1_0/act_1_1_0_2.ipynb
-      - file: act_1/act_1_1/act_1_1_0/act_1_1_0_3.ipynb
-      - file: act_1/act_1_1/act_1_1_1/act_1_1_1_1.ipynb
-      - file: act_1/act_1_1/act_1_1_1/act_1_1_1_2.ipynb
-      - file: act_1/act_1_1/act_1_1_1/act_1_1_1_3.ipynb
-  - caption:  
-    chapters:
-      - file: act_2/act_2_0/act_2_0_0/act_2_0_0_1.ipynb
-      - file: act_2/act_2_0/act_2_0_0/act_2_0_0_2.ipynb
-      - file: act_2/act_2_0/act_2_0_0/act_2_0_0_3.ipynb
-      - file: act_2/act_2_0/act_2_0_1/act_2_0_1_1.ipynb
-      - file: act_2/act_2_0/act_2_0_1/act_2_0_1_2.ipynb
-      - file: act_2/act_2_0/act_2_0_1/act_2_0_1_3.ipynb
-      - file: act_2/act_2_1/act_2_1_0/act_2_1_0_1.ipynb
-      - file: act_2/act_2_1/act_2_1_0/act_2_1_0_2.ipynb
-      - file: act_2/act_2_1/act_2_1_0/act_2_1_0_3.ipynb
-      - file: act_2/act_2_1/act_2_1_1/act_2_1_1_1.ipynb
-      - file: act_2/act_2_1/act_2_1_1/act_2_1_1_2.ipynb
-      - file: act_2/act_2_1/act_2_1_1/act_2_1_1_3.ipynb
-  - caption: 
-    chapters:
-      - file: act_3/act_3_0/act_3_0_0/act_3_0_0_1.ipynb
-      - file: act_3/act_3_0/act_3_0_0/act_3_0_0_2.ipynb
-      - file: act_3/act_3_0/act_3_0_0/act_3_0_0_3.ipynb
-      - file: act_3/act_3_0/act_3_0_1/act_3_0_1_1.ipynb
-      - file: act_3/act_3_0/act_3_0_1/act_3_0_1_2.ipynb
-      - file: act_3/act_3_0/act_3_0_1/act_3_0_1_3.ipynb
-      - file: act_3/act_3_1/act_3_1_0/act_3_1_0_1.ipynb
-      - file: act_3/act_3_1/act_3_1_0/act_3_1_0_2.ipynb
-      - file: act_3/act_3_1/act_3_1_0/act_3_1_0_3.ipynb
-      - file: act_3/act_3_1/act_3_1_1/act_3_1_1_1.ipynb
-      - file: act_3/act_3_1/act_3_1_1/act_3_1_1_2.ipynb
-      - file: act_3/act_3_1/act_3_1_1/act_3_1_1_3.ipynb
+- caption: Challenges
+  chapters: 
+  - file: act1/act_1_0/act_1_0_1.ipynb
+  - file: act1/act_1_0/act_1_0_2.ipynb
+  - file: act1/act_1_0/act_1_0_3.ipynb
+  
+- caption: Project
+  chapters:
+  - file: act2/act_2_0/act_2_0_1.ipynb
+  - file: act2/act_2_0/act_2_0_2.ipynb
+  - file: act2/act_2_0/act_2_0_3.ipynb
+  
+- caption: Numeracy
+  chapters:
+  - file: act3/act_3_0/act_3_0_1.ipynb
+  - file: act3/act_3_0/act_3_0_2.ipynb
+  - file: act3/act_3_0/act_3_0_3.ipynb
+
+- caption: Literacy
+  chapters:
+  - file: act4/act_4_0/act_4_0_1.ipynb
+  - file: act4/act_4_0/act_4_0_2.ipynb
+  - file: act4/act_4_0/act_4_0_3.ipynb
+    
+- caption: Workflow
+  chapters:
+  - file: act5/act_5_0/act_5_0_1.ipynb
+  - file: act5/act_5_0/act_5_0_2.ipynb
+  - file: act5/act_5_0/act_5_0_3.ipynb
+  
+    sections:
+    - file: act_0/act_0_0/act_0_0_0/act_0_0_0_1.ipynb
+    - file: act_0/act_0_0/act_0_0_0/act_0_0_0_2.ipynb
+    - file: act_0/act_0_0/act_0_0_0/act_0_0_0_3.ipynb
+    - file: act_0/act_0_0/act_0_0_1/act_0_0_1_1.ipynb
+    - file: act_0/act_0_0/act_0_0_1/act_0_0_1_2.ipynb
+    - file: act_0/act_0_0/act_0_0_1/act_0_0_1_3.ipynb
+    - file: act_0/act_0_1/act_0_1_0/act_0_1_0_1.ipynb
+    - file: act_0/act_0_1/act_0_1_0/act_0_1_0_2.ipynb
+    - file: act_0/act_0_1/act_0_1_0/act_0_1_0_3.ipynb
+    - file: act_0/act_0_1/act_0_1_1/act_0_1_1_1.ipynb
+    - file: act_0/act_0_1/act_0_1_1/act_0_1_1_2.ipynb
+    - file: act_0/act_0_1/act_0_1_1/act_0_1_1_3.ipynb
+    - file: act_0/act_0_2/act_0_2_0/act_0_2_0_1.ipynb
+    - file: act_0/act_0_2/act_0_2_0/act_0_2_0_2.ipynb
+    - file: act_0/act_0_2/act_0_2_0/act_0_2_0_3.ipynb
+    - file: act_0/act_0_2/act_0_2_1/act_0_2_1_1.ipynb
+    - file: act_0/act_0_2/act_0_2_1/act_0_2_1_2.ipynb
+    - file: act_0/act_0_2/act_0_2_1/act_0_2_1_3.ipynb
+   
+    sections:
+    - file: act_1/act_1_0/act_1_0_0/act_1_0_0_0.ipynb
+    - file: act_1/act_1_0/act_1_0_0/act_1_0_0_4.ipynb
+
+    sections:
+    - file: act_1/act_1_1/act_1_1_0/act_1_1_0_1.ipynb
+    - file: act_1/act_1_1/act_1_1_0/act_1_1_0_2.ipynb
+    - file: act_1/act_1_1/act_1_1_0/act_1_1_0_3.ipynb
+
+    sections:
+    - file: act_1/act_1_1/act_1_1_1/act_1_1_1_1.ipynb
+    - file: act_1/act_1_1/act_1_1_1/act_1_1_1_2.ipynb
+    - file: act_1/act_1_1/act_1_1_1/act_1_1_1_3.ipynb
+    - file: act_1/act_1_2/act_1_2_0/act_1_2_0_1.ipynb
+    - file: act_1/act_1_2/act_1_2_0/act_1_2_0_2.ipynb
+    - file: act_1/act_1_2/act_1_2_0/act_1_2_0_3.ipynb
+    - file: act_1/act_1_2/act_1_2_1/act_1_2_1_1.ipynb
+    - file: act_1/act_1_2/act_1_2_1/act_1_2_1_2.ipynb
+    - file: act_1/act_1_2/act_1_2_1/act_1_2_1_3.ipynb
+    - file: act_2/act_2_0/act_2_0_0/act_2_0_0_1.ipynb
+    - file: act_2/act_2_0/act_2_0_0/act_2_0_0_2.ipynb
+    - file: act_2/act_2_0/act_2_0_0/act_2_0_0_3.ipynb
+    - file: act_2/act_2_0/act_2_0_1/act_2_0_1_1.ipynb
+    - file: act_2/act_2_0/act_2_0_1/act_2_0_1_2.ipynb
+    - file: act_2/act_2_0/act_2_0_1/act_2_0_1_3.ipynb
+    - file: act_2/act_2_1/act_2_1_0/act_2_1_0_1.ipynb
+    - file: act_2/act_2_1/act_2_1_0/act_2_1_0_2.ipynb
+    - file: act_2/act_2_1/act_2_1_0/act_2_1_0_3.ipynb
+    - file: act_2/act_2_1/act_2_1_1/act_2_1_1_1.ipynb
+    - file: act_2/act_2_1/act_2_1_1/act_2_1_1_2.ipynb
+    - file: act_2/act_2_1/act_2_1_1/act_2_1_1_3.ipynb
+
+    sections:
+    - file: act_2/act_2_2/act_2_2_1/act_2_2_1_1.ipynb
+    - file: act_2/act_2_2/act_2_2_1/act_2_2_1_2.ipynb
+    - file: act_2/act_2_2/act_2_2_1/act_2_2_1_3.ipynb
+
+    sections:
+    - file: act_3/act_3_0/act_3_0_1/act_3_0_1_1.ipynb
+    - file: act_3/act_3_0/act_3_0_1/act_3_0_1_2.ipynb
+    - file: act_3/act_3_0/act_3_0_1/act_3_0_1_3.ipynb
+
+    sections:
+    - file: act_3/act_3_1/act_3_1_1/act_3_1_1_1.ipynb
+    - file: act_3/act_3_1/act_3_1_1/act_3_1_1_2.ipynb
+    - file: act_3/act_3_1/act_3_1_1/act_3_1_1_3.ipynb
+    - file: act_3/act_3_2/act_3_2_0/act_3_2_0_1.ipynb
+    - file: act_3/act_3_2/act_3_2_0/act_3_2_0_2.ipynb
+    - file: act_3/act_3_2/act_3_2_0/act_3_2_0_3.ipynb
+    - file: act_3/act_3_2/act_3_2_1/act_3_2_1_1.ipynb
+    - file: act_3/act_3_2/act_3_2_1/act_3_2_1_2.ipynb
+    - file: act_3/act_3_2/act_3_2_1/act_3_2_1_3.ipynb
