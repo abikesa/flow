@@ -1,0 +1,83 @@
+-------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/d/Dropbox (Personal)/1f.ἡἔρις,κ/1.ontology/work/abikesa_
+> stata.log
+  log type:  text
+ opened on:  12 Oct 2023, 11:21:13
+
+. 
+. if 0 {
+. 
+. // Basic (observed data)
+. 1. c(N) and c(k)
+. 2. ds, has(type numeric)
+. 3. ds, has(type string)
+. 4. Is any one of the variables a date?
+. 5. keep one exemplar of each type
+. 6. save dataset
+. 7. program a table 1 & figure 1 from regression output
+. 
+. // Intermediate (expected data)
+. 1. Do the observed data match the expected data?
+. 2. How do we formally test this?
+. 3. Is missingness "observed" or "expected"?
+. 4. Lets decide that by modifying table 1 & figure 1 from the basics class
+. 5. expected
+. 
+. // Advanced
+. 1. Hierarchical clustering
+. 2. Do we always have to acknowledge hierarchies in data?
+. 3. When may we be able to ignore hierarchies in data?
+. 4. How do we formally test this?
+. 5. Lets roll back to the basics class and modify table 1 & figure 1
+. 
+. }
+
+. 
+. // Stata Programming I (Basic)
+. // Import data
+. use donor_live_keep, clear
+
+. 
+. // Dimensions of data
+. di "Obs: `c(N)', Vars: `c(k)'"
+Obs: 186545, Vars: 60
+
+. 
+. // Classify variables as continuous, binary, or categorical
+. 
+. ds, has(type numeric)
+pers_id       don_recov_dt  don_work_y~t  don_living~d  don_ki_cre~g
+don_age_in~s  don_marita~t  don_diab_t~t  pers_ssa_d~t  don_bp_d~yst
+don_age       don_relati~y  don_hist_h~n  don_lu_com~n  don_bp_d~ast
+don_race      don_educat~n  don_ki_c~eop  don_ki_c~top  donor_id
+don_citize~p  don_primar~y  don~eop_syst  don~top_syst
+don_year_e~s  don_functn~t  do~eop_diast  do~top_diast
+don_hgt_cm    don_physc_~y  do~eop_ratio  do~top_ratio
+don_wgt_kg    don_work_n~t  ~eop_protein  ~top_protein
+
+. return list
+
+macros:
+            r(varlist) : "pers_id don_age_in_months don_age don_race don_ci.."
+
+. ds, has(type string)
+don_ty        don_abo       don_priv_i~r  don_work_i~e  don_ki_bio~y
+don_gender    don_health~r  don_hmo_ppo   don_diab      don_hist_c~e
+don_home_s~e  don_medicare  don_self      don_hypert~t  don_lu_compl
+don_race_s~r  don_medicaid  don_donation  don_hyper~cs  don_hypert~p
+don_ethnic~r  don_other_~t  don_free      don_hyper~ds
+
+. return list
+
+macros:
+            r(varlist) : "don_ty don_gender don_home_state don_race_srtr do.."
+
+. 
+. // Summarize continuous variables
+. sum if type == "numeric"
+type not found
+r(111);
+
+end of do-file
+r(111);
