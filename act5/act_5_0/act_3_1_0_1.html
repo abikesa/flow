@@ -1,0 +1,670 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>13. Automate &#8212; Challenges, Skills, and Tools</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'act5/act_5_0/act_3_1_0_1';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://github.com/jhufena/jhufena.github.io/blob/main/png/hub_and_spoke.jpg?raw=true" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="https://github.com/jhufena/jhufena.github.io/blob/main/png/hub_and_spoke.jpg?raw=true" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to Fena
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Challenges</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act1/act_1_0/act_1_0_1.html">1. Rigor</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../act1/act_1_0/act_1_0_2.html">2. Error</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../act1/act_1_0/act_1_0_3.html">3. Sloppiness</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act2/act_2_0/act_2_0_1.html">4. Manuscripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act2/act_2_0/act_2_0_2.html">5. Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act2/act_2_0/act_2_0_3.html">6. Git</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numeracy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act3/act_3_0/act_3_0_1.html">7. Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act3/act_3_0/act_3_0_2.html">8. R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act3/act_3_0/act_3_0_3.html">9. Stata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Literacy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act4/act_4_0/act_4_0_1.html">10. Open Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act4/act_4_0/act_4_0_2.html">11. Self-Publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act4/act_4_0/act_4_0_3.html">12. Grants</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workflow</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="act_5_0_1.html">13. Automate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="act_5_0_2.html">14. Bash</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="act_5_0_3.html">15. Unix</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/act5/act_5_0/act_3_1_0_1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>13. Automate</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="automate">
+<h1>13. Automate<a class="headerlink" href="#automate" title="Permalink to this heading">#</a></h1>
+<p><strong>Why automate?</strong></p>
+<ul class="simple">
+<li><p>Make life simpler.</p></li>
+<li><p>Ensure reproducibility.</p></li>
+<li><p>Enhance efficiency.</p></li>
+<li><p>Foster collaboration.</p></li>
+<li><p>Achieve scalability.</p></li>
+</ul>
+<p><strong>Efficiency Through Command Line</strong></p>
+<p><a class="reference internal" href="act_3_1_0_2.html"><span class="doc std std-doc">Bash</span></a>, the Bourne Again SHell, is a cornerstone of computing mastery. Beyond command execution, Bash exemplifies streamlined operations and a profound understanding. It offers <strong>controlled automation</strong>. While interactve graphical user interfaces (GUIs) provide a superficial interaction, Bash delves deeper, facilitating a richer conversation with the system. Locate the terminal on your computer (search for ‘Terminal’ in MacOS or ‘Command Prompt’ in Windows). Then, type <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code> to list the files in your current directory. You’ve just executed your first Bash command.</p>
+<Details>
+<p>Bash Basics:<br />
+Question: Which of the following commands lists the files in a directory in Linux?</p>
+<p>A) <code class="docutils literal notranslate"><span class="pre">dir</span></code><br />
+B) <code class="docutils literal notranslate"><span class="pre">ls</span></code><br />
+C) <code class="docutils literal notranslate"><span class="pre">show</span></code><br />
+D) <code class="docutils literal notranslate"><span class="pre">open</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># view from a MacOS terminal</span>
+
+<span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>ls<span class="w"> </span>-l
+total<span class="w"> </span><span class="m">1376</span>
+-rw-r--r--@<span class="w">   </span><span class="m">1</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">    </span><span class="m">3993</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">01</span>:21<span class="w"> </span>README.md
+drwxr-xr-x@<span class="w">  </span><span class="m">13</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">416</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">02</span>:49<span class="w"> </span>alpha
+drwxr-xr-x@<span class="w">  </span><span class="m">35</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">    </span><span class="m">1120</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">14</span>:52<span class="w"> </span>bloc
+drwxr-xr-x@<span class="w">   </span><span class="m">9</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">288</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">12</span>:45<span class="w"> </span>cst
+drwxr-xr-x@<span class="w">  </span><span class="m">16</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">512</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">17</span>:47<span class="w"> </span>git
+drwxr-xr-x@<span class="w">  </span><span class="m">17</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">544</span><span class="w"> </span>Aug<span class="w">  </span><span class="m">7</span><span class="w"> </span><span class="m">22</span>:35<span class="w"> </span>git-filter-repo
+drwxr-xr-x@<span class="w">   </span><span class="m">7</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">224</span><span class="w"> </span>Aug<span class="w">  </span><span class="m">6</span><span class="w"> </span><span class="m">07</span>:33<span class="w"> </span>myenv
+drwxr-xr-x@<span class="w">  </span><span class="m">13</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">416</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">18</span>:53<span class="w"> </span>nh_projectbeta
+-rw-r--r--@<span class="w">   </span><span class="m">1</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">   </span><span class="m">77753</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">12</span>:44<span class="w"> </span>particle_animation.gif
+-rw-r--r--@<span class="w">   </span><span class="m">1</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">463</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">12</span>:43<span class="w"> </span>populate_be.ipynb
+-rw-r--r--@<span class="w">   </span><span class="m">1</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">  </span><span class="m">562412</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">06</span>:37<span class="w"> </span>python.ipynb
+-rw-r--r--@<span class="w">   </span><span class="m">1</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">   </span><span class="m">34173</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">12</span>:47<span class="w"> </span>r.ipynb
+drwxr-xr-x@<span class="w">  </span><span class="m">13</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">416</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">02</span>:12<span class="w"> </span>seasons_projectalpha
+drwxr-xr-x@<span class="w">  </span><span class="m">13</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">416</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">14</span>:05<span class="w"> </span>sibs
+-rw-r--r--@<span class="w">   </span><span class="m">1</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">231</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">17</span>:08<span class="w"> </span>stata.do
+-rw-r--r--@<span class="w">   </span><span class="m">1</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">    </span><span class="m">1196</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">18</span>:43<span class="w"> </span>stata.dta
+-rw-r--r--@<span class="w">   </span><span class="m">1</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">    </span><span class="m">1892</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">17</span>:03<span class="w"> </span>stata.log
+-rwxr-xr-x@<span class="w">   </span><span class="m">1</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">      </span><span class="m">90</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">17</span>:08<span class="w"> </span>stata.sh
+drwxr-xr-x@<span class="w"> </span><span class="m">139</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">    </span><span class="m">4448</span><span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">08</span>:29<span class="w"> </span>summer
+drwxr-xr-x@<span class="w">  </span><span class="m">25</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">800</span><span class="w"> </span>Jul<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">20</span>:21<span class="w"> </span>verano
+<span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>
+</pre></div>
+</div>
+<p>To see the contents of a simple bash script, type <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">stata.sh</span></code>. The <code class="docutils literal notranslate"><span class="pre">cat</span></code> command concatenates the contents of a file and prints them to the terminal. The <code class="docutils literal notranslate"><span class="pre">stata.sh</span></code> file contains the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>cat<span class="w"> </span>stata.sh
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/applications/stata/statase.app/contents/macos/
+stata-se<span class="w"> </span>-b<span class="w"> </span><span class="k">do</span><span class="w"> </span>stata.do
+<span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>
+</pre></div>
+</div>
+<p>This tells us that the <code class="docutils literal notranslate"><span class="pre">stata.sh</span></code> script adds the Stata executable to the path and then executes the <code class="docutils literal notranslate"><span class="pre">stata.do</span></code> file. To run the script, type <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">stata.sh</span></code>. The <code class="docutils literal notranslate"><span class="pre">bash</span></code> command executes the script. You can also execute the script by typing <code class="docutils literal notranslate"><span class="pre">./stata.sh</span></code>. The <code class="docutils literal notranslate"><span class="pre">./</span></code> tells the terminal to execute the script in the current directory. The <code class="docutils literal notranslate"><span class="pre">stata.sh</span></code> script is a simple example of how Bash can automate tasks. It’s a simple script, but it can be used to automate the execution of Stata code.</p>
+<p>But before we run that lets see the contents of the <a class="reference external" href="http://stata.do">stata.do</a> file</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>cat<span class="w"> </span>stata.do
+<span class="k">if</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>
+
+<span class="w">    </span><span class="nb">cd</span><span class="w"> </span>/applications/stata
+<span class="w">    </span>ls<span class="w"> </span>-kla
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/applications/stata/statase.app/contents/macos/
+<span class="w">    </span>stata-se<span class="w"> </span>-b<span class="w"> </span><span class="k">do</span><span class="w"> </span>stata.do
+
+<span class="o">}</span>
+
+webuse<span class="w"> </span>auto,<span class="w"> </span>clear<span class="w"> </span>
+l<span class="w"> </span>make<span class="w"> </span>price<span class="w"> </span>mpg<span class="w"> </span>foreign<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span>/9
+di<span class="w"> </span><span class="s2">&quot;`c(N)&#39; obs &amp; `c(k)&#39; vars&quot;</span>%<span class="w">  </span>
+<span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>
+</pre></div>
+</div>
+<p>Now let’s run the script</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>./stata.sh
+
+<span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>cat<span class="w"> </span>stata.log
+
+<span class="w">  </span>___<span class="w">  </span>____<span class="w">  </span>____<span class="w">  </span>____<span class="w">  </span>____<span class="w"> </span>®
+<span class="w"> </span>/__<span class="w">    </span>/<span class="w">   </span>____/<span class="w">   </span>/<span class="w">   </span>____/<span class="w">      </span><span class="m">18</span>.0
+___/<span class="w">   </span>/<span class="w">   </span>/___/<span class="w">   </span>/<span class="w">   </span>/___/<span class="w">       </span>SE—Standard<span class="w"> </span>Edition
+
+<span class="w"> </span>Statistics<span class="w"> </span>and<span class="w"> </span>Data<span class="w"> </span>Science<span class="w">       </span>Copyright<span class="w"> </span><span class="m">1985</span>-2023<span class="w"> </span>StataCorp<span class="w"> </span>LLC
+<span class="w">                                   </span>StataCorp
+<span class="w">                                   </span><span class="m">4905</span><span class="w"> </span>Lakeway<span class="w"> </span>Drive
+<span class="w">                                   </span>College<span class="w"> </span>Station,<span class="w"> </span>Texas<span class="w"> </span><span class="m">77845</span><span class="w"> </span>USA
+<span class="w">                                   </span><span class="m">800</span>-STATA-PC<span class="w">        </span>https://www.stata.com
+<span class="w">                                   </span><span class="m">979</span>-696-4600<span class="w">        </span>stata@stata.com
+
+Stata<span class="w"> </span>license:<span class="w"> </span>Single-user<span class="w"> </span>,<span class="w"> </span>expiring<span class="w"> </span><span class="m">27</span><span class="w"> </span>Mar<span class="w"> </span><span class="m">2024</span>
+Serial<span class="w"> </span>number:<span class="w"> </span><span class="m">401809200438</span>
+<span class="w">  </span>Licensed<span class="w"> </span>to:<span class="w"> </span>Poseidon
+<span class="w">               </span>Johns<span class="w"> </span>Hopkins<span class="w"> </span>University
+
+Notes:
+<span class="w">      </span><span class="m">1</span>.<span class="w"> </span>Stata<span class="w"> </span>is<span class="w"> </span>running<span class="w"> </span><span class="k">in</span><span class="w"> </span>batch<span class="w"> </span>mode.
+<span class="w">      </span><span class="m">2</span>.<span class="w"> </span>Unicode<span class="w"> </span>is<span class="w"> </span>supported<span class="p">;</span><span class="w"> </span>see<span class="w"> </span><span class="nb">help</span><span class="w"> </span>unicode_advice.
+<span class="w">      </span><span class="m">3</span>.<span class="w"> </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>variables<span class="w"> </span>is<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span><span class="m">5</span>,000<span class="w"> </span>but<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>increased<span class="p">;</span>
+<span class="w">          </span>see<span class="w"> </span><span class="nb">help</span><span class="w"> </span>set_maxvar.
+
+.<span class="w"> </span><span class="k">do</span><span class="w"> </span>stata.do<span class="w"> </span>
+
+.<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>
+.<span class="w"> </span>
+.<span class="w">     </span><span class="nb">cd</span><span class="w"> </span>/applications/stata
+.<span class="w">     </span>ls<span class="w"> </span>-kla
+.<span class="w">     </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/applications/stata/statase.app/contents/macos/
+.<span class="w">     </span>stata-se<span class="w"> </span>-b<span class="w"> </span><span class="k">do</span><span class="w"> </span>stata.do
+.<span class="w"> </span>
+.<span class="w"> </span><span class="o">}</span>
+
+.<span class="w"> </span>
+.<span class="w"> </span>webuse<span class="w"> </span>auto,<span class="w"> </span>clear<span class="w"> </span>
+<span class="o">(</span><span class="m">1978</span><span class="w"> </span>automobile<span class="w"> </span>data<span class="o">)</span>
+
+.<span class="w"> </span>l<span class="w"> </span>make<span class="w"> </span>price<span class="w"> </span>mpg<span class="w"> </span>foreign<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span>/9
+
+<span class="w">     </span>+-----------------------------------------+
+<span class="w">     </span><span class="p">|</span><span class="w"> </span>make<span class="w">             </span>price<span class="w">   </span>mpg<span class="w">    </span>foreign<span class="w"> </span><span class="p">|</span>
+<span class="w">     </span><span class="p">|</span>-----------------------------------------<span class="p">|</span>
+<span class="w">  </span><span class="m">1</span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>AMC<span class="w"> </span>Concord<span class="w">      </span><span class="m">4</span>,099<span class="w">    </span><span class="m">22</span><span class="w">   </span>Domestic<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="m">2</span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>AMC<span class="w"> </span>Pacer<span class="w">        </span><span class="m">4</span>,749<span class="w">    </span><span class="m">17</span><span class="w">   </span>Domestic<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="m">3</span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>AMC<span class="w"> </span>Spirit<span class="w">       </span><span class="m">3</span>,799<span class="w">    </span><span class="m">22</span><span class="w">   </span>Domestic<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="m">4</span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>Buick<span class="w"> </span>Century<span class="w">    </span><span class="m">4</span>,816<span class="w">    </span><span class="m">20</span><span class="w">   </span>Domestic<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="m">5</span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>Buick<span class="w"> </span>Electra<span class="w">    </span><span class="m">7</span>,827<span class="w">    </span><span class="m">15</span><span class="w">   </span>Domestic<span class="w"> </span><span class="p">|</span>
+<span class="w">     </span><span class="p">|</span>-----------------------------------------<span class="p">|</span>
+<span class="w">  </span><span class="m">6</span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>Buick<span class="w"> </span>LeSabre<span class="w">    </span><span class="m">5</span>,788<span class="w">    </span><span class="m">18</span><span class="w">   </span>Domestic<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="m">7</span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>Buick<span class="w"> </span>Opel<span class="w">       </span><span class="m">4</span>,453<span class="w">    </span><span class="m">26</span><span class="w">   </span>Domestic<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="m">8</span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>Buick<span class="w"> </span>Regal<span class="w">      </span><span class="m">5</span>,189<span class="w">    </span><span class="m">20</span><span class="w">   </span>Domestic<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="m">9</span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>Buick<span class="w"> </span>Riviera<span class="w">   </span><span class="m">10</span>,372<span class="w">    </span><span class="m">16</span><span class="w">   </span>Domestic<span class="w"> </span><span class="p">|</span>
+<span class="w">     </span>+-----------------------------------------+
+
+.<span class="w"> </span>di<span class="w"> </span><span class="s2">&quot;`c(N)&#39; obs &amp; `c(k)&#39; vars&quot;</span>
+<span class="m">74</span><span class="w"> </span>obs<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="m">12</span><span class="w"> </span>vars
+
+.<span class="w"> </span>
+end<span class="w"> </span>of<span class="w"> </span><span class="k">do</span>-file
+<span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>
+</pre></div>
+</div>
+<p>We can see that the script ran the <a class="reference external" href="http://stata.do">stata.do</a> file and printed the results to stata.log in the terminal. This is a simple example of how Bash can automate tasks. It’s a simple script, but it can be used to automate the execution of Stata code.</p>
+</Details>
+<p><strong>Overshadowed by Aesthetic Simplicity</strong></p>
+<p>In the face of intuitive graphical user interfaces (GUIs) such as Windows, MacOS, and Android, depth of Bash is often overshadowed. With their colorful icons and all you have to do is click on what you want, GUIs are aesthetically pleasing. For many, clickable icons and immediate visual feedback make command-lines appear daunting. Yet, those willing to embrace Bash will find the experience extremely rewarding.</p>
+<p><strong>Early steps</strong></p>
+<p><strong>Jupyter</strong></p>
+<p>Jupyter Notebooks optimize data analysis automation, integrating code, text, and visuals. They’re paramount in this Fena platform, simplifying work-sharing and reproducibility. This platform is built on Jupyter Notebooks and GitHub pages and seeks to automate data analysis and share analysis results (as the simple example above shows)</p>
+<p><strong>Workflow</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Initiate a Jupyter Notebook</strong>: Using Google Colab, Jupyter Lab, or VS Code.</p></li>
+<li><p><strong>Develop Code</strong>: Use the built-in code editor in Jupyter Lab or VS Code. Our unique workflow even allows code writing in non-traditional Jupyter languages like Stata.</p></li>
+<li><p><strong>Execute the Code</strong>.</p></li>
+<li><p><strong>Save the Notebook</strong>.</p></li>
+<li><p><strong>Share the Notebook</strong>: Ranging from basic sharing via Google Colab to advanced methods like pushing to GitHub pages.</p></li>
+</ol>
+<p><strong>Python</strong></p>
+<p>Python’s large user community and integration with Jupyter make it an ideal choice for automating data analysis.</p>
+<Details>
+<p><strong>Libraries Overview</strong>:</p>
+<ul class="simple">
+<li><p><strong>Data Analysis</strong>: Use <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> for data manipulation and analysis.</p></li>
+<li><p><strong>Visualization</strong>: <code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">Seaborn</span></code> are renowned for plotting and graphing.</p></li>
+<li><p><strong>Machine Learning</strong>: <code class="docutils literal notranslate"><span class="pre">Scikit-learn</span></code> simplifies machine learning model creation.</p></li>
+<li><p><strong>Statistical Modeling</strong>: Utilize <code class="docutils literal notranslate"><span class="pre">Statsmodels</span></code>.</p></li>
+<li><p><strong>Bayesian Modeling</strong>: Turn to <code class="docutils literal notranslate"><span class="pre">PyMC3</span></code>.</p></li>
+<li><p><strong>Deep Learning</strong>: Opt for <code class="docutils literal notranslate"><span class="pre">TensorFlow</span></code>, <code class="docutils literal notranslate"><span class="pre">Keras</span></code>, or <code class="docutils literal notranslate"><span class="pre">PyTorch</span></code>.</p></li>
+<li><p><strong>Web Scraping</strong>: <code class="docutils literal notranslate"><span class="pre">Scrapy</span></code>, <code class="docutils literal notranslate"><span class="pre">Beautiful</span> <span class="pre">Soup</span></code>, <code class="docutils literal notranslate"><span class="pre">Selenium</span></code>, and <code class="docutils literal notranslate"><span class="pre">Requests</span></code> are your go-to libraries.</p></li>
+<li><p><strong>Natural Language Processing</strong>: Use <code class="docutils literal notranslate"><span class="pre">NLTK</span></code>, <code class="docutils literal notranslate"><span class="pre">SpaCy</span></code>, or <code class="docutils literal notranslate"><span class="pre">Gensim</span></code>.</p></li>
+<li><p><strong>Network Analysis</strong>: Explore networks with <code class="docutils literal notranslate"><span class="pre">NetworkX</span></code>, <code class="docutils literal notranslate"><span class="pre">PyGraphviz</span></code>, or <code class="docutils literal notranslate"><span class="pre">PyTorch</span> <span class="pre">Geometric</span></code>.</p></li>
+</ul>
+<p>See Python chapter for a simple <a class="reference external" href="https://jhutrc.github.io/beta/act_2/act_2_2/act_2_2_0/act_2_2_0_1.html#">hands-on</a> exercise</p>
+</Details>
+<p><strong>Later steps</strong></p>
+<ol class="arabic simple">
+<li><p>Familiarize yourself with basic Unix commands.</p></li>
+<li><p><a class="reference internal" href="act_3_1_0_2.html"><span class="doc std std-doc">Construct a bash script</span></a> for executing code in Python, R, Stata, etc.</p></li>
+<li><p>Set a cron job to automate the bash script execution.</p></li>
+</ol>
+<Details>
+  <Summary>GitHub Actions</Summary>
+  GitHub Actions can be incredibly powerful, especially as your project grows and you might benefit from automation. Here are some tutorials and resources that can help you learn more about GitHub Actions:
+<p><strong>Official Documentation</strong></p>
+<ol class="arabic simple">
+<li><p><strong>GitHub Actions Documentation</strong>: This is the official documentation and is quite comprehensive. It provides a great overview and dives into more complex topics.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.github.com/en/actions">GitHub Actions Documentation</a></p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Online Tutorials</strong></p>
+<ol class="arabic simple" start="2">
+<li><p><strong>GitHub Actions for Beginners</strong>: This is a simple, straightforward tutorial aimed at beginners.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=R8_veQiYBjI">GitHub Actions for Beginners - YouTube</a></p></li>
+</ul>
+</li>
+<li><p><strong>Automate your Workflow with GitHub Actions</strong>: A more in-depth look into GitHub Actions, great if you’re already familiar with CI/CD concepts.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=eB0nUzAI7M8">Automate your Workflow with GitHub Actions - YouTube</a></p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Articles and Blog Posts</strong></p>
+<ol class="arabic simple" start="4">
+<li><p><strong>Intro to GitHub Actions</strong>: A Medium article that walks you through the basics.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://medium.com/better-programming/github-actions-for-dummies-intro-part-1-4e56408c74d7">Intro to GitHub Actions - Medium</a></p></li>
+</ul>
+</li>
+<li><p><strong>Automating Workflows with GitHub Actions</strong>: This post provides a deep dive into automating various workflows.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://dev.to/helenanders26/automating-workflows-with-github-actions-1l8b">Automating Workflows with GitHub Actions - dev.to</a></p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Courses and Workshops</strong></p>
+<ol class="arabic simple" start="6">
+<li><p><strong>GitHub Actions: Continuous Delivery</strong> - This course on GitHub’s own training platform is a more structured way to learn GitHub Actions.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://lab.github.com/githubtraining/github-actions:-continuous-delivery">GitHub Actions: Continuous Delivery</a></p></li>
+</ul>
+</li>
+<li><p><strong>Automate your code-to-cloud workflows with GitHub Actions</strong> - A workshop that provides hands-on experience.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://githubuniverse.com/automate-your-code-to-cloud-workflows-with-github-actions/">Automate your code-to-cloud workflows with GitHub Actions - GitHub Universe</a></p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Sample Repositories</strong></p>
+<ol class="arabic simple" start="8">
+<li><p><strong>Awesome Actions</strong>: A curated list of custom actions, articles, and other resources.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/sdras/awesome-actions">Awesome Actions - GitHub Repo</a></p></li>
+</ul>
+</li>
+</ol>
+<p>The landscape is constantly changing, so it’s worth keeping an eye out for new tutorials and resources. But these should give you a good starting point.</p>
+</Details></section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./act5/act_5_0"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Abimereki Muzaale & Vincent Jin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

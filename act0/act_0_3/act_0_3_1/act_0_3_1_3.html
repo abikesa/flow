@@ -1,0 +1,1022 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Seasons 2.0 &#8212; Challenges, Skills, and Tools</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'act0/act_0_3/act_0_3_1/act_0_3_1_3';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://github.com/jhufena/jhufena.github.io/blob/main/png/hub_and_spoke.jpg?raw=true" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="https://github.com/jhufena/jhufena.github.io/blob/main/png/hub_and_spoke.jpg?raw=true" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Welcome to Fena
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Challenges</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../act1/act_1_0/act_1_0_1.html">1. Rigor</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../../act1/act_1_0/act_1_0_2.html">2. Error</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../../act1/act_1_0/act_1_0_3.html">3. Sloppiness</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../act2/act_2_0/act_2_0_1.html">4. Manuscripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act2/act_2_0/act_2_0_2.html">5. Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act2/act_2_0/act_2_0_3.html">6. Git</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numeracy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../act3/act_3_0/act_3_0_1.html">7. Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act3/act_3_0/act_3_0_2.html">8. R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act3/act_3_0/act_3_0_3.html">9. Stata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Literacy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../act4/act_4_0/act_4_0_1.html">10. Open Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act4/act_4_0/act_4_0_2.html">11. Self-Publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act4/act_4_0/act_4_0_3.html">12. Grants</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workflow</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../act5/act_5_0/act_5_0_1.html">13. Automate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act5/act_5_0/act_5_0_2.html">14. Bash</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../act5/act_5_0/act_5_0_3.html">15. Unix</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/act0/act_0_3/act_0_3_1/act_0_3_1_3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Seasons 2.0</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-individual-level-and-group-level-data">Combining individual-level and group-level data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration-of-the-mepoisson-command-in-stata-ultimately-translate-to-r">Demonstration of the <code class="docutils literal notranslate"><span class="pre">mepoisson</span></code> command in Stata; ultimately translate to R</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="seasons-2-0">
+<h1>Seasons 2.0<a class="headerlink" href="#seasons-2-0" title="Permalink to this heading">#</a></h1>
+<section id="combining-individual-level-and-group-level-data">
+<h2>Combining individual-level and group-level data<a class="headerlink" href="#combining-individual-level-and-group-level-data" title="Permalink to this heading">#</a></h2>
+<section id="demonstration-of-the-mepoisson-command-in-stata-ultimately-translate-to-r">
+<h3>Demonstration of the <code class="docutils literal notranslate"><span class="pre">mepoisson</span></code> command in Stata; ultimately translate to R<a class="headerlink" href="#demonstration-of-the-mepoisson-command-in-stata-ultimately-translate-to-r" title="Permalink to this heading">#</a></h3>
+<section id="id1">
+<h4>1<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">* Document session using .log file</span>
+
+<span class="k">capture log close</span> 
+<span class="k">log</span> using<span class="k"> poisson</span><span class="m">.</span>log,<span class="k"> replace</span> 
+
+<span class="c1">* Setting timeout to 10000 milliseconds</span>
+<span class="k">set</span> timeout1 <span class="m">10000</span> 
+
+<span class="c1">* Comment indicating external data source  </span>
+<span class="k">global</span> repo <span class="s">&quot;https://github.com/muzaale/got/raw/main/act_5/act_5_9/&quot;</span>
+
+<span class="c1">* Actual loading of data</span>
+<span class="k">use</span> <span class="vg">${repo}</span>donor_live_keep<span class="m">.</span>dta,<span class="k"> clear</span>
+
+<span class="c1">* Change directory and load the dataset</span>
+<span class="k">cd</span> <span class="s">&quot;~/dropbox/1f.ἡἔρις,κ/1.ontology&quot;</span>
+
+
+<span class="k">if</span> <span class="m">1</span> {
+<span class="c1">	</span>
+<span class="c1">	* Recode donor relationship and race variables</span>
+<span class="k">    recode</span> don_relation (<span class="m">1</span><span class="o">/</span><span class="m">4</span>=<span class="m">1</span>)(<span class="m">5</span><span class="o">/</span><span class="m">999</span>=<span class="m">0</span>),<span class="k"> gen</span>(related)
+<span class="k">    recode</span> don_race (<span class="m">8</span>=<span class="m">1</span>)(<span class="m">16</span>=<span class="m">2</span>)(<span class="m">2000</span>=<span class="m">3</span>)(<span class="m">64</span>=<span class="m">4</span>)(<span class="m">24</span><span class="o">/</span><span class="m">1500</span> .=<span class="m">5</span>), <span class="cs">///</span>
+<span class="k">	    gen</span>(racecat)
+<span class="c1">    </span>
+<span class="c1">	* Create year and month variables based on donation recovery date</span>
+<span class="k">    gen</span> year = <span class="nf">year</span>(don_recov_dt)
+<span class="k">    gen</span> month = <span class="nf">month</span>(don_recov_dt)
+<span class="c1">    </span>
+<span class="c1">	* Tabulate donations by year</span>
+<span class="k">    tab</span> year 
+<span class="c1">	</span>
+<span class="c1">	* Tabulate month and calculate the June-to-January ratio</span>
+<span class="k">    tab</span> month, matcell(cellvalues)
+<span class="k">    local</span> freq_jan = cellvalues[<span class="m">1</span>,<span class="m">1</span>]
+<span class="k">    local</span> freq_jun = cellvalues[<span class="m">6</span>,<span class="m">1</span>]
+<span class="k">    local ratio</span> = <span class="nv">`freq_jun&#39;</span> <span class="o">/</span> <span class="nv">`freq_jan&#39;</span>
+<span class="k">    di</span> <span class="nv">`ratio&#39;</span>
+<span class="c1">    </span>
+<span class="c1">	* Create a constant variable &#39;count&#39; and recode &#39;month&#39; for summer vs. rest of the year</span>
+<span class="k">    gen count</span> = <span class="m">1</span>
+<span class="k">    recode</span> month (<span class="m">1</span><span class="o">/</span><span class="m">5</span> <span class="m">9</span><span class="o">/</span><span class="m">12</span>=<span class="m">0</span>)(<span class="m">6</span><span class="o">/</span><span class="m">8</span>=<span class="m">1</span>),<span class="k"> gen</span>(summer)
+	
+}
+
+<span class="c1">    </span>
+<span class="c1">* Currently deactivated by &#39;if 0&#39;: but more efficient than &quot;collapse&quot;</span>
+<span class="k">if</span> <span class="m">0</span> { 
+
+<span class="c1">	* Count donations by year and by month-year</span>
+<span class="k">    egen</span> n_month =<span class="k"> count</span>(don_recov_dt),<span class="k"> by</span>(year month summer related)
+    
+}
+
+<span class="c1">* We have individual-level data to this point</span>
+<span class="c1">* Preserve the original dataset</span>
+<span class="k">preserve</span>
+<span class="k">    collapse</span> (count) donations=pers_id,<span class="k"> by</span>(summer)
+<span class="k">    di</span> (donations[<span class="m">2</span>]<span class="o">/</span><span class="m">3</span>)<span class="o">/</span>(donations[<span class="m">1</span>]<span class="o">/</span><span class="m">9</span>) <span class="c1">//back-of-envelope irr</span>
+<span class="k">restore</span> 
+<span class="k">preserve</span> 
+<span class="c1">    * Collapse the data by year, month, summer, and relation</span>
+<span class="k">    collapse</span> (count) donations=pers_id,<span class="k"> by</span>(year month summer related)
+<span class="c1">	</span>
+<span class="c1">	* Generate and save graphs for related and unrelated donors</span>
+<span class="k">    twoway</span> <span class="cs">///</span>
+	    (scatter donations year<span class="k"> if</span> related<span class="o">==</span><span class="m">1</span>)  <span class="cs">///</span>
+		(lowess donations year<span class="k"> if</span> related<span class="o">==</span><span class="m">1</span>, <span class="cs">///</span>
+		   legend(off) <span class="cs">///</span>
+		   xlab(<span class="m">1990</span>(<span class="m">10</span>)<span class="m">2020</span>) <span class="cs">///</span>
+		   xti(<span class="s">&quot;&quot;</span>) <span class="cs">///</span>
+		 )
+<span class="k">	graph save</span> related<span class="m">.</span>gph,<span class="k"> replace</span>  
+<span class="k">    twoway</span> <span class="cs">///</span>
+	    (scatter donations year<span class="k"> if</span> related<span class="o">==</span><span class="m">0</span>)  <span class="cs">///</span>
+		(lowess donations year<span class="k"> if</span> related<span class="o">==</span><span class="m">0</span>, <span class="cs">///</span>
+		   legend(off) <span class="cs">///</span>
+		   xlab(<span class="m">1990</span>(<span class="m">10</span>)<span class="m">2020</span>) <span class="cs">///</span>
+		   xti(<span class="s">&quot;&quot;</span>) <span class="cs">///</span>
+		 )
+<span class="k">	graph save</span> unrelated<span class="m">.</span>gph,<span class="k"> replace</span> 
+<span class="c1">	</span>
+<span class="c1">	* Combine graphs and save as PNG</span>
+<span class="k">	graph</span> combine related<span class="m">.</span>gph unrelated<span class="m">.</span>gph, <span class="cs">///</span>
+	    ycommon  <span class="cs">///</span>
+		ti(<span class="s">&quot;Number of living kidney donors per month&quot;</span>)
+<span class="k">	graph</span> export donations_years<span class="m">.</span>png,<span class="k"> replace</span> 
+<span class="c1">    </span>
+<span class="c1">	* Save the collapsed data to a temporary file</span>
+<span class="k">    tempfile</span> aggregated_data
+<span class="k">    save</span> <span class="nv">`aggregated_data&#39;</span>
+<span class="k">restore</span> 
+
+<span class="c1">* Merge the aggregated count back to the individual-level data</span>
+<span class="k">merge m</span>:<span class="m">1</span> year month summer related using <span class="nv">`aggregated_data&#39;</span>
+
+<span class="c1">* Now, you&#39;ve both group-level and individual-level variables as predictors</span>
+<span class="c1">* Run the single-level Poisson model first to get starting estimates</span>
+<span class="k">poisson</span> donations summer related, irr iter(<span class="m">5</span>)
+
+<span class="c1">* Capture the estimates for future use</span>
+<span class="k">matrix</span> start_vals =<span class="k"> e</span>(b)
+
+<span class="k">if</span> <span class="m">0</span> {
+
+<span class="c1">* Placeholder for setting initial estimates</span>
+<span class="k">matrix list</span> start_vals  <span class="o">*</span> To check the starting values before using them
+
+<span class="c1">* Run multilevel Poisson model using initial estimates</span>
+mepoisson donations || summer:, irr from(start_vals) iter(<span class="m">3</span>)
+
+}
+
+<span class="k">log close</span> 
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h4>2<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="o">----------------------------------------------------------------------------------------------------------------</span>
+      name:  <span class="o">&lt;</span>unnamed<span class="o">&gt;</span>
+<span class="k">       log</span>:  <span class="o">/</span>Users<span class="o">/</span>d<span class="o">/</span>Dropbox (Personal)<span class="o">/</span>1f<span class="m">.</span>ἡἔρις,κ<span class="o">/</span><span class="m">1.</span>ontology<span class="o">/</span>poisson<span class="m">.</span>log
+<span class="k">  log type</span>:  text
+ opened<span class="k"> on</span>:   <span class="m">5</span> Sep <span class="m">2023</span>, <span class="m">15</span>:<span class="m">18</span>:<span class="m">48</span>
+
+. 
+. <span class="o">*</span> Setting timeout to <span class="m">10000</span> milliseconds
+.<span class="k"> set</span> timeout1 <span class="m">10000</span> 
+
+. 
+. <span class="o">*</span> Comment indicating external data source  
+.<span class="k"> global</span> repo <span class="s">&quot;https://github.com/muzaale/got/raw/main/act_5/act_5_9/&quot;</span>
+
+. 
+. <span class="o">*</span> Actual loading of data
+.<span class="k"> use</span> <span class="vg">${repo}</span>donor_live_keep<span class="m">.</span>dta,<span class="k"> clear</span>
+
+. 
+. <span class="o">*</span> Change directory and load the dataset
+.<span class="k"> cd</span> <span class="s">&quot;~/dropbox/1f.ἡἔρις,κ/1.ontology&quot;</span>
+<span class="o">/</span>Users<span class="o">/</span>d<span class="o">/</span>Dropbox (Personal)<span class="o">/</span>1f<span class="m">.</span>ἡἔρις,κ<span class="o">/</span><span class="m">1.</span>ontology
+
+. 
+. 
+.<span class="k"> if</span> <span class="m">1</span> {
+.         
+.         <span class="o">*</span> Recode donor relationship and race variables
+.    <span class="k"> recode</span> don_relation (<span class="m">1</span><span class="o">/</span><span class="m">4</span>=<span class="m">1</span>)(<span class="m">5</span><span class="o">/</span><span class="m">999</span>=<span class="m">0</span>),<span class="k"> gen</span>(related)
+(<span class="m">161</span>,<span class="m">880</span> differences between don_relationship_ty and related)
+.    <span class="k"> recode</span> don_race (<span class="m">8</span>=<span class="m">1</span>)(<span class="m">16</span>=<span class="m">2</span>)(<span class="m">2000</span>=<span class="m">3</span>)(<span class="m">64</span>=<span class="m">4</span>)(<span class="m">24</span><span class="o">/</span><span class="m">1500</span> .=<span class="m">5</span>), <span class="cs">///</span>
+<span class="o">&gt;</span>            <span class="k"> gen</span>(racecat)
+(<span class="m">186</span>,<span class="m">545</span> differences between don_race and racecat)
+.     
+.         <span class="o">*</span> Create year and month variables based<span class="k"> on</span> donation recovery date
+.    <span class="k"> gen</span> year = <span class="nf">year</span>(don_recov_dt)
+.    <span class="k"> gen</span> month = <span class="nf">month</span>(don_recov_dt)
+.     
+.         <span class="o">*</span> Tabulate donations<span class="k"> by</span> year
+.    <span class="k"> tab</span> year 
+
+       year |      Freq.     Percent        Cum.
+<span class="o">------------+-----------------------------------</span>
+       <span class="m">1987</span> |        <span class="m">402</span>        <span class="m">0.22</span>        <span class="m">0.22</span>
+       <span class="m">1988</span> |      <span class="m">1</span>,<span class="m">829</span>        <span class="m">0.98</span>        <span class="m">1.20</span>
+       <span class="m">1989</span> |      <span class="m">1</span>,<span class="m">918</span>        <span class="m">1.03</span>        <span class="m">2.22</span>
+       <span class="m">1990</span> |      <span class="m">2</span>,<span class="m">122</span>        <span class="m">1.14</span>        <span class="m">3.36</span>
+       <span class="m">1991</span> |      <span class="m">2</span>,<span class="m">427</span>        <span class="m">1.30</span>        <span class="m">4.66</span>
+       <span class="m">1992</span> |      <span class="m">2</span>,<span class="m">571</span>        <span class="m">1.38</span>        <span class="m">6.04</span>
+       <span class="m">1993</span> |      <span class="m">2</span>,<span class="m">905</span>        <span class="m">1.56</span>        <span class="m">7.60</span>
+       <span class="m">1994</span> |      <span class="m">3</span>,<span class="m">104</span>        <span class="m">1.66</span>        <span class="m">9.26</span>
+       <span class="m">1995</span> |      <span class="m">3</span>,<span class="m">496</span>        <span class="m">1.87</span>       <span class="m">11.14</span>
+       <span class="m">1996</span> |      <span class="m">3</span>,<span class="m">803</span>        <span class="m">2.04</span>       <span class="m">13.17</span>
+       <span class="m">1997</span> |      <span class="m">4</span>,<span class="m">067</span>        <span class="m">2.18</span>       <span class="m">15.36</span>
+       <span class="m">1998</span> |      <span class="m">4</span>,<span class="m">570</span>        <span class="m">2.45</span>       <span class="m">17.80</span>
+       <span class="m">1999</span> |      <span class="m">5</span>,<span class="m">046</span>        <span class="m">2.70</span>       <span class="m">20.51</span>
+       <span class="m">2000</span> |      <span class="m">5</span>,<span class="m">947</span>        <span class="m">3.19</span>       <span class="m">23.70</span>
+       <span class="m">2001</span> |      <span class="m">6</span>,<span class="m">621</span>        <span class="m">3.55</span>       <span class="m">27.25</span>
+       <span class="m">2002</span> |      <span class="m">6</span>,<span class="m">631</span>        <span class="m">3.55</span>       <span class="m">30.80</span>
+       <span class="m">2003</span> |      <span class="m">6</span>,<span class="m">828</span>        <span class="m">3.66</span>       <span class="m">34.46</span>
+       <span class="m">2004</span> |      <span class="m">7</span>,<span class="m">005</span>        <span class="m">3.76</span>       <span class="m">38.22</span>
+       <span class="m">2005</span> |      <span class="m">6</span>,<span class="m">904</span>        <span class="m">3.70</span>       <span class="m">41.92</span>
+       <span class="m">2006</span> |      <span class="m">6</span>,<span class="m">733</span>        <span class="m">3.61</span>       <span class="m">45.53</span>
+       <span class="m">2007</span> |      <span class="m">6</span>,<span class="m">315</span>        <span class="m">3.39</span>       <span class="m">48.91</span>
+       <span class="m">2008</span> |      <span class="m">6</span>,<span class="m">218</span>        <span class="m">3.33</span>       <span class="m">52.25</span>
+       <span class="m">2009</span> |      <span class="m">6</span>,<span class="m">610</span>        <span class="m">3.54</span>       <span class="m">55.79</span>
+       <span class="m">2010</span> |      <span class="m">6</span>,<span class="m">561</span>        <span class="m">3.52</span>       <span class="m">59.31</span>
+       <span class="m">2011</span> |      <span class="m">6</span>,<span class="m">023</span>        <span class="m">3.23</span>       <span class="m">62.54</span>
+       <span class="m">2012</span> |      <span class="m">5</span>,<span class="m">868</span>        <span class="m">3.15</span>       <span class="m">65.68</span>
+       <span class="m">2013</span> |      <span class="m">5</span>,<span class="m">989</span>        <span class="m">3.21</span>       <span class="m">68.89</span>
+       <span class="m">2014</span> |      <span class="m">5</span>,<span class="m">820</span>        <span class="m">3.12</span>       <span class="m">72.01</span>
+       <span class="m">2015</span> |      <span class="m">5</span>,<span class="m">989</span>        <span class="m">3.21</span>       <span class="m">75.22</span>
+       <span class="m">2016</span> |      <span class="m">5</span>,<span class="m">975</span>        <span class="m">3.20</span>       <span class="m">78.42</span>
+       <span class="m">2017</span> |      <span class="m">6</span>,<span class="m">181</span>        <span class="m">3.31</span>       <span class="m">81.74</span>
+       <span class="m">2018</span> |      <span class="m">6</span>,<span class="m">845</span>        <span class="m">3.67</span>       <span class="m">85.41</span>
+       <span class="m">2019</span> |      <span class="m">7</span>,<span class="m">389</span>        <span class="m">3.96</span>       <span class="m">89.37</span>
+       <span class="m">2020</span> |      <span class="m">5</span>,<span class="m">725</span>        <span class="m">3.07</span>       <span class="m">92.44</span>
+       <span class="m">2021</span> |      <span class="m">6</span>,<span class="m">539</span>        <span class="m">3.51</span>       <span class="m">95.94</span>
+       <span class="m">2022</span> |      <span class="m">6</span>,<span class="m">466</span>        <span class="m">3.47</span>       <span class="m">99.41</span>
+       <span class="m">2023</span> |      <span class="m">1</span>,<span class="m">103</span>        <span class="m">0.59</span>      <span class="m">100.00</span>
+<span class="o">------------+-----------------------------------</span>
+      Total |    <span class="m">186</span>,<span class="m">545</span>      <span class="m">100.00</span>
+.         
+.         <span class="o">*</span> Tabulate month and calculate the June<span class="o">-</span>to<span class="o">-</span>January<span class="k"> ratio</span>
+.    <span class="k"> tab</span> month, matcell(cellvalues)
+
+      month |      Freq.     Percent        Cum.
+<span class="o">------------+-----------------------------------</span>
+          <span class="m">1</span> |     <span class="m">15</span>,<span class="m">331</span>        <span class="m">8.22</span>        <span class="m">8.22</span>
+          <span class="m">2</span> |     <span class="m">14</span>,<span class="m">245</span>        <span class="m">7.64</span>       <span class="m">15.85</span>
+          <span class="m">3</span> |     <span class="m">15</span>,<span class="m">096</span>        <span class="m">8.09</span>       <span class="m">23.95</span>
+          <span class="m">4</span> |     <span class="m">14</span>,<span class="m">290</span>        <span class="m">7.66</span>       <span class="m">31.61</span>
+          <span class="m">5</span> |     <span class="m">14</span>,<span class="m">788</span>        <span class="m">7.93</span>       <span class="m">39.53</span>
+          <span class="m">6</span> |     <span class="m">17</span>,<span class="m">795</span>        <span class="m">9.54</span>       <span class="m">49.07</span>
+          <span class="m">7</span> |     <span class="m">17</span>,<span class="m">460</span>        <span class="m">9.36</span>       <span class="m">58.43</span>
+          <span class="m">8</span> |     <span class="m">16</span>,<span class="m">147</span>        <span class="m">8.66</span>       <span class="m">67.09</span>
+          <span class="m">9</span> |     <span class="m">14</span>,<span class="m">361</span>        <span class="m">7.70</span>       <span class="m">74.79</span>
+         <span class="m">10</span> |     <span class="m">15</span>,<span class="m">490</span>        <span class="m">8.30</span>       <span class="m">83.09</span>
+         <span class="m">11</span> |     <span class="m">15</span>,<span class="m">598</span>        <span class="m">8.36</span>       <span class="m">91.45</span>
+         <span class="m">12</span> |     <span class="m">15</span>,<span class="m">944</span>        <span class="m">8.55</span>      <span class="m">100.00</span>
+<span class="o">------------+-----------------------------------</span>
+      Total |    <span class="m">186</span>,<span class="m">545</span>      <span class="m">100.00</span>
+.    <span class="k"> local</span> freq_jan = cellvalues[<span class="m">1</span>,<span class="m">1</span>]
+.    <span class="k"> local</span> freq_jun = cellvalues[<span class="m">6</span>,<span class="m">1</span>]
+.    <span class="k"> local ratio</span> = <span class="nv">`freq_jun&#39;</span> <span class="o">/</span> <span class="nv">`freq_jan&#39;</span>
+.    <span class="k"> di</span> <span class="nv">`ratio&#39;</span>
+<span class="m">1.1607201</span>
+.     
+.         <span class="o">*</span> Create a constant variable &#39;count&#39; and<span class="k"> recode</span> &#39;month&#39;<span class="k"> for</span> summer vs. rest of the year
+.    <span class="k"> gen count</span> = <span class="m">1</span>
+.    <span class="k"> recode</span> month (<span class="m">1</span><span class="o">/</span><span class="m">5</span> <span class="m">9</span><span class="o">/</span><span class="m">12</span>=<span class="m">0</span>)(<span class="m">6</span><span class="o">/</span><span class="m">8</span>=<span class="m">1</span>),<span class="k"> gen</span>(summer)
+(<span class="m">186</span>,<span class="m">545</span> differences between month and summer)
+.         
+. }
+
+. 
+.     
+. <span class="o">*</span> Currently deactivated<span class="k"> by</span> &#39;if <span class="m">0</span>&#39;: but<span class="k"> more</span> efficient than <span class="s">&quot;collapse&quot;</span>
+.<span class="k"> if</span> <span class="m">0</span> { 
+. 
+.         <span class="o">*</span> Count donations<span class="k"> by</span> year and<span class="k"> by</span> month<span class="o">-</span>year
+.    <span class="k"> egen</span> n_month =<span class="k"> count</span>(don_recov_dt),<span class="k"> by</span>(year month summer related)
+.     
+. }
+
+. 
+. <span class="o">*</span> We have individual<span class="o">-</span>level data to this point
+. <span class="o">*</span> Preserve the original dataset
+.<span class="k"> preserve</span>
+
+.    <span class="k"> collapse</span> (count) donations=pers_id,<span class="k"> by</span>(summer)
+
+.    <span class="k"> di</span> (donations[<span class="m">2</span>]<span class="o">/</span><span class="m">3</span>)<span class="o">/</span>(donations[<span class="m">1</span>]<span class="o">/</span><span class="m">9</span>) <span class="c1">//back-of-envelope irr</span>
+<span class="m">1.141058</span>
+
+.<span class="k"> restore</span> 
+
+.<span class="k"> preserve</span> 
+
+.     <span class="o">*</span> Collapse the data<span class="k"> by</span> year, month, summer, and relation
+.    <span class="k"> collapse</span> (count) donations=pers_id,<span class="k"> by</span>(year month summer related)
+
+.         
+.         <span class="o">*</span> Generate and<span class="k"> save</span> graphs<span class="k"> for</span> related and unrelated donors
+.    <span class="k"> twoway</span> <span class="cs">///</span>
+<span class="o">&gt;</span>             (scatter donations year<span class="k"> if</span> related<span class="o">==</span><span class="m">1</span>)  <span class="cs">///</span>
+<span class="o">&gt;</span>                 (lowess donations year<span class="k"> if</span> related<span class="o">==</span><span class="m">1</span>, <span class="cs">///</span>
+<span class="o">&gt;</span>                    legend(off) <span class="cs">///</span>
+<span class="o">&gt;</span>                    xlab(<span class="m">1990</span>(<span class="m">10</span>)<span class="m">2020</span>) <span class="cs">///</span>
+<span class="o">&gt;</span>                    xti(<span class="s">&quot;&quot;</span>) <span class="cs">///</span>
+<span class="o">&gt;</span>                  )
+
+.        <span class="k"> graph save</span> related<span class="m">.</span>gph,<span class="k"> replace</span>  
+<span class="k">file</span> related<span class="m">.</span>gph saved
+
+.    <span class="k"> twoway</span> <span class="cs">///</span>
+<span class="o">&gt;</span>             (scatter donations year<span class="k"> if</span> related<span class="o">==</span><span class="m">0</span>)  <span class="cs">///</span>
+<span class="o">&gt;</span>                 (lowess donations year<span class="k"> if</span> related<span class="o">==</span><span class="m">0</span>, <span class="cs">///</span>
+<span class="o">&gt;</span>                    legend(off) <span class="cs">///</span>
+<span class="o">&gt;</span>                    xlab(<span class="m">1990</span>(<span class="m">10</span>)<span class="m">2020</span>) <span class="cs">///</span>
+<span class="o">&gt;</span>                    xti(<span class="s">&quot;&quot;</span>) <span class="cs">///</span>
+<span class="o">&gt;</span>                  )
+
+.        <span class="k"> graph save</span> unrelated<span class="m">.</span>gph,<span class="k"> replace</span> 
+<span class="k">file</span> unrelated<span class="m">.</span>gph saved
+
+.         
+.         <span class="o">*</span> Combine graphs and<span class="k"> save as</span> PNG
+.        <span class="k"> graph</span> combine related<span class="m">.</span>gph unrelated<span class="m">.</span>gph, <span class="cs">///</span>
+<span class="o">&gt;</span>             ycommon  <span class="cs">///</span>
+<span class="o">&gt;</span>                 ti(<span class="s">&quot;Number of living kidney donors per month&quot;</span>)
+
+.        <span class="k"> graph</span> export donations_years<span class="m">.</span>png,<span class="k"> replace</span> 
+<span class="k">file</span> <span class="o">/</span>Users<span class="o">/</span>d<span class="o">/</span>Dropbox (Personal)<span class="o">/</span>1f<span class="m">.</span>ἡἔρις,κ<span class="o">/</span><span class="m">1.</span>ontology<span class="o">/</span>donations_years<span class="m">.</span>png saved<span class="k"> as</span> PNG<span class="k"> format</span>
+
+.     
+.         <span class="o">*</span> Save the collapsed data to a temporary<span class="k"> file</span>
+.    <span class="k"> tempfile</span> aggregated_data
+
+.    <span class="k"> save</span> <span class="nv">`aggregated_data&#39;</span>
+<span class="k">file</span> <span class="o">/</span>var<span class="o">/</span>folders<span class="o">/</span>sx<span class="o">/</span>fd6zgj191mx45hspzbgwzlnr0000gn<span class="o">/</span>T<span class="o">//</span>S_16143<span class="m">.000003</span> saved<span class="k"> as</span> .dta<span class="k"> format</span>
+
+.<span class="k"> restore</span> 
+
+. 
+. <span class="o">*</span> Merge the aggregated<span class="k"> count</span> back to the individual<span class="o">-</span>level data
+.<span class="k"> merge m</span>:<span class="m">1</span> year month summer related using <span class="nv">`aggregated_data&#39;</span>
+
+    Result                      Number of obs
+    <span class="o">-----------------------------------------</span>
+    Not matched                             <span class="m">0</span>
+    Matched                           <span class="m">186</span>,<span class="m">545</span>  (_merge<span class="o">==</span><span class="m">3</span>)
+    <span class="o">-----------------------------------------</span>
+
+. 
+. <span class="o">*</span> Now, you&#39;ve both group<span class="o">-</span>level and individual<span class="o">-</span>level variables<span class="k"> as</span> predictors
+. <span class="o">*</span> Run the single<span class="o">-</span>level Poisson model first to get starting<span class="k"> estimates</span>
+.<span class="k"> poisson</span> donations summer related, irr iter(<span class="m">5</span>)
+
+Iteration <span class="m">0</span>:  Log likelihood =   <span class="o">-</span><span class="m">2917852</span>  
+Iteration <span class="m">1</span>:  Log likelihood =   <span class="o">-</span><span class="m">2917852</span>  
+
+Poisson regression                                   Number of obs =   <span class="m">184</span>,<span class="m">671</span>
+                                                     LR <span class="nf">chi2</span>(<span class="m">2</span>)    = <span class="m">369742.82</span>
+                                                     Prob <span class="o">&gt;</span> chi2   =    <span class="m">0.0000</span>
+Log likelihood = <span class="o">-</span><span class="m">2917852</span>                            Pseudo R2     =    <span class="m">0.0596</span>
+
+<span class="o">------------------------------------------------------------------------------</span>
+   donations |        IRR   Std.<span class="k"> err</span>.      z    P<span class="o">&gt;</span>|z|     [<span class="m">95</span>%<span class="k"> conf</span>. interval]
+<span class="o">-------------+----------------------------------------------------------------</span>
+      summer |   <span class="m">1.148387</span>   .<span class="m">0003555</span>   <span class="m">446.89</span>   <span class="m">0.000</span>      <span class="m">1.14769</span>    <span class="m">1.149084</span>
+     related |   .<span class="m">8867447</span>   .<span class="m">0002529</span>  <span class="o">-</span><span class="m">421.42</span>   <span class="m">0.000</span>     .<span class="m">8862491</span>    .<span class="m">8872406</span>
+       _cons |   <span class="m">272.2428</span>    .<span class="m">060666</span>  <span class="m">2.5e+04</span>   <span class="m">0.000</span>     <span class="m">272.1239</span>    <span class="m">272.3617</span>
+<span class="o">------------------------------------------------------------------------------</span>
+Note: _cons<span class="k"> estimates</span> baseline incidence rate.
+
+. 
+. <span class="o">*</span> Capture the<span class="k"> estimates for</span> future<span class="k"> use</span>
+.<span class="k"> matrix</span> start_vals =<span class="k"> e</span>(b)
+
+. 
+.<span class="k"> if</span> <span class="m">0</span> {
+. 
+. <span class="o">*</span> Placeholder<span class="k"> for</span> setting initial<span class="k"> estimates</span>
+.<span class="k"> matrix list</span> start_vals  <span class="o">*</span> To check the starting values before using them
+. 
+. <span class="o">*</span> Run multilevel Poisson model using initial<span class="k"> estimates</span>
+. mepoisson donations || summer:, irr from(start_vals) iter(<span class="m">3</span>)
+. 
+. }
+
+. 
+.<span class="k"> log close</span> 
+      name:  <span class="o">&lt;</span>unnamed<span class="o">&gt;</span>
+<span class="k">       log</span>:  <span class="o">/</span>Users<span class="o">/</span>d<span class="o">/</span>Dropbox (Personal)<span class="o">/</span>1f<span class="m">.</span>ἡἔρις,κ<span class="o">/</span><span class="m">1.</span>ontology<span class="o">/</span>poisson<span class="m">.</span>log
+<span class="k">  log type</span>:  text
+ closed<span class="k"> on</span>:   <span class="m">5</span> Sep <span class="m">2023</span>, <span class="m">15</span>:<span class="m">18</span>:<span class="m">56</span>
+<span class="o">----------------------------------------------------------------------------------------------------------------</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h4>3<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<p><img alt="" src="../../../_images/donations_years1.png" /></p>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h4>4<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
+<p>If your single-level Poisson model has provided reasonable results, you can potentially use these to set the starting values for the corresponding parameters in the multi-level model. However, note that <code class="docutils literal notranslate"><span class="pre">mepoisson</span></code> doesn’t have a straightforward <code class="docutils literal notranslate"><span class="pre">from()</span></code> option like some other optimization functions in Stata to input starting values.</p>
+<p>Here’s an example with the hypothetical Stata code. In this case, the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">1</span> <span class="pre">{}</span></code> part is a condition to check; you can replace it with an actual condition or ignore it:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">* Run the single-level Poisson model first to get starting estimates</span>
+<span class="k">poisson</span> donations summer related, irr iter(<span class="m">5</span>)
+
+<span class="c1">* Capture the estimates</span>
+<span class="k">matrix</span> start_vals =<span class="k"> e</span>(b)
+
+<span class="c1">* Display the estimates; just for checking</span>
+<span class="k">di</span> <span class="s">&quot;Starting values from the single-level model:&quot;</span>
+<span class="k">matrix list</span> start_vals
+
+<span class="c1">* Run the multi-level model, possibly using starting values (note that mepoisson does not allow you to specify starting values directly)</span>
+mepoisson donations || summer:, irr iter(<span class="m">3</span>)
+</pre></div>
+</div>
+<p>In your pseudo-code, you mention merging the aggregated data back to the individual-level data. If you’ve actually aggregated the data, remember that this will affect the fit of your model. Also, it’s worth mentioning that Stata does not permit setting the starting values in the <code class="docutils literal notranslate"><span class="pre">mepoisson</span></code> command, so the <code class="docutils literal notranslate"><span class="pre">from(start_vals)</span></code> part won’t be applicable here.</p>
+<p>If convergence continues to be a problem, you may want to explore whether Stata’s ML engine options (like different optimization algorithms or providing analytical derivatives if possible) could be useful, though these can be quite technical and are generally used when other options have failed.</p>
+<p>Remember to interpret the results carefully, especially when there are convergence issues, as they may not be reliable.</p>
+<hr class="docutils" />
+<p>I’m open to suggestions including python and machine learning</p>
+<hr class="docutils" />
+<p>If you are interested in Python-based solutions, you could use the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> package, which provides classes for estimating and interpreting models for many different statistical models, including Poisson and Negative Binomial models. The <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> package also provides a <code class="docutils literal notranslate"><span class="pre">PoissonRegressor</span></code> class for fitting Poisson regression models.</p>
+<p>For hierarchical/multilevel models, the <code class="docutils literal notranslate"><span class="pre">pymc3</span></code> package allows for Bayesian hierarchical models, and you can specify initial values.</p>
+<p>Here’s a simplified example using <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+
+<span class="c1"># Let&#39;s assume `df` is your DataFrame containing &#39;donations&#39;, &#39;summer&#39;, &#39;related&#39; </span>
+<span class="c1"># df = pd.read_csv(&#39;your_data.csv&#39;)</span>
+
+<span class="c1"># Adding constant term for intercept</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;intercept&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1"># Defining the dependent variable (y) and independent variables (X)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;donations&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;intercept&#39;</span><span class="p">,</span> <span class="s1">&#39;summer&#39;</span><span class="p">,</span> <span class="s1">&#39;related&#39;</span><span class="p">]]</span>
+
+<span class="c1"># Fit Poisson regression model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">GLM</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">families</span><span class="o">.</span><span class="n">Poisson</span><span class="p">())</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="c1"># Show model summary</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>For a hierarchical model with <code class="docutils literal notranslate"><span class="pre">pymc3</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymc3</span> <span class="k">as</span> <span class="nn">pm</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Again, assume &#39;donations&#39;, &#39;summer&#39;, &#39;related&#39; are your data</span>
+<span class="c1"># donations = np.array(df[&#39;donations&#39;])</span>
+<span class="c1"># summer = np.array(df[&#39;summer&#39;])</span>
+<span class="c1"># related = np.array(df[&#39;related&#39;])</span>
+
+<span class="k">with</span> <span class="n">pm</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
+    <span class="c1"># Hyperpriors</span>
+    <span class="n">mu_intercept</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="s1">&#39;mu_intercept&#39;</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">sigma_intercept</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">HalfNormal</span><span class="p">(</span><span class="s1">&#39;sigma_intercept&#39;</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">mu_slope</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="s1">&#39;mu_slope&#39;</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">sigma_slope</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">HalfNormal</span><span class="p">(</span><span class="s1">&#39;sigma_slope&#39;</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># Intercept and Slope</span>
+    <span class="n">Intercept</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="s1">&#39;Intercept&#39;</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu_intercept</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="n">sigma_intercept</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">summer</span><span class="p">)))</span>
+    <span class="n">Slope</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="s1">&#39;Slope&#39;</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu_slope</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="n">sigma_slope</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">summer</span><span class="p">)))</span>
+
+    <span class="c1"># Expected value</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">Intercept</span><span class="p">[</span><span class="n">summer</span><span class="p">]</span> <span class="o">+</span> <span class="n">Slope</span><span class="p">[</span><span class="n">summer</span><span class="p">]</span><span class="o">*</span><span class="n">related</span><span class="p">)</span>
+
+    <span class="c1"># Likelihood</span>
+    <span class="n">donations_obs</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Poisson</span><span class="p">(</span><span class="s1">&#39;donations_obs&#39;</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">theta</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="n">donations</span><span class="p">)</span>
+
+    <span class="c1"># Fitting the model</span>
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can inspect the <code class="docutils literal notranslate"><span class="pre">trace</span></code> object to look at parameter estimates and other diagnostic information.</p>
+<p>Remember that this is a simplified example, and you’ll need to adjust the models according to your actual data and research questions.</p>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h4>5<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<p>Certainly, I can help translate your Stata script (combining individual-level and group-level data) to R code. Below is the equivalent R code that should accomplish the same tasks you’ve laid out in the Stata script.</p>
+<p>Firstly, you would need to install and load the required R packages if you haven’t already:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;data.table&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;dplyr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ggplot2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;lme4&quot;</span><span class="p">))</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">lme4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, let’s move on to the script.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># Document session using .log file</span>
+<span class="nf">sink</span><span class="p">(</span><span class="s">&quot;poisson.log&quot;</span><span class="p">)</span>
+
+<span class="c1"># Setting timeout to 10000 milliseconds</span>
+<span class="nf">options</span><span class="p">(</span><span class="n">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10000</span><span class="p">)</span>
+
+<span class="c1"># Comment indicating external data source</span>
+<span class="n">repo</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;https://github.com/muzaale/got/raw/main/act_5/act_5_9/&quot;</span>
+
+<span class="c1"># Actual loading of data</span>
+<span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">fread</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;donor_live_keep.dta&quot;</span><span class="p">))</span>
+
+<span class="c1"># Change directory and load the dataset</span>
+<span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;~/dropbox/1f.ἡἔρις,κ/1.ontology&quot;</span><span class="p">)</span>
+
+<span class="c1"># Recode donor relationship and race variables</span>
+<span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">related</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">don_relation</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span>
+<span class="w">         </span><span class="n">racecat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">case_when</span><span class="p">(</span>
+<span class="w">           </span><span class="n">don_race</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">1</span><span class="p">,</span>
+<span class="w">           </span><span class="n">don_race</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">2</span><span class="p">,</span>
+<span class="w">           </span><span class="n">don_race</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2000</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">3</span><span class="p">,</span>
+<span class="w">           </span><span class="n">don_race</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">64</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">4</span><span class="p">,</span>
+<span class="w">           </span><span class="kc">TRUE</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">5</span>
+<span class="w">         </span><span class="p">))</span>
+
+<span class="c1"># Create year and month variables based on donation recovery date</span>
+<span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">format</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">don_recov_dt</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;%Y&quot;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">$</span><span class="n">month</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">format</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">don_recov_dt</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;%m&quot;</span><span class="p">)</span>
+
+<span class="c1"># Tabulate donations by year</span>
+<span class="nf">table</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="p">)</span>
+
+<span class="c1"># Tabulate month and calculate the June-to-January ratio</span>
+<span class="n">month_tab</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">table</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">month</span><span class="p">)</span>
+<span class="n">freq_jan</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">month_tab</span><span class="p">[</span><span class="s">&quot;01&quot;</span><span class="p">]</span>
+<span class="n">freq_jun</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">month_tab</span><span class="p">[</span><span class="s">&quot;06&quot;</span><span class="p">]</span>
+<span class="n">ratio</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">freq_jun</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">freq_jan</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">ratio</span><span class="p">)</span>
+
+<span class="c1"># Create a constant variable &#39;count&#39; and recode &#39;month&#39; for summer vs. rest of the year</span>
+<span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span>
+<span class="w">         </span><span class="n">summer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">month</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;06&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;07&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;08&quot;</span><span class="p">),</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">))</span>
+
+<span class="c1"># Collapsing the data (your comment indicated this as more efficient than &quot;collapse&quot;)</span>
+<span class="nf">if </span><span class="p">(</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">    </span><span class="nf">group_by</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="n">summer</span><span class="p">,</span><span class="w"> </span><span class="n">related</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">    </span><span class="nf">summarise</span><span class="p">(</span><span class="n">n_month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">n</span><span class="p">())</span>
+<span class="p">}</span>
+
+<span class="c1"># Running single-level Poisson model first to get starting estimates</span>
+<span class="n">poisson_model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">glm</span><span class="p">(</span><span class="n">donations</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">summer</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">related</span><span class="p">,</span><span class="w"> </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poisson</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
+<span class="n">start_vals</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">poisson_model</span><span class="p">)</span>
+
+<span class="c1"># Placeholder for setting initial estimates</span>
+<span class="c1"># To check the starting values before using them</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">start_vals</span><span class="p">)</span>
+
+<span class="c1"># Run multilevel Poisson model using initial estimates (measured in iterations)</span>
+<span class="c1"># Uncomment this block if you want to proceed with the multilevel Poisson model</span>
+<span class="nf">if </span><span class="p">(</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">mepoisson_model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">glmer</span><span class="p">(</span><span class="n">donations</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">summer</span><span class="p">),</span><span class="w"> </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poisson</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start_vals</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># Close the log</span>
+<span class="nf">sink</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This should accomplish the same tasks as your original Stata code. Let me know if you have any questions or need further clarification.</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./act0/act_0_3/act_0_3_1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-individual-level-and-group-level-data">Combining individual-level and group-level data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration-of-the-mepoisson-command-in-stata-ultimately-translate-to-r">Demonstration of the <code class="docutils literal notranslate"><span class="pre">mepoisson</span></code> command in Stata; ultimately translate to R</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Abimereki Muzaale & Vincent Jin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

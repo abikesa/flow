@@ -1,0 +1,627 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1. Rigor &#8212; Challenges, Skills, and Tools</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'act1/act_1_0/act_1_0_1';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2. Error" href="act_1_0_2.html" />
+    <link rel="prev" title="Welcome to Fena" href="../../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://github.com/jhufena/jhufena.github.io/blob/main/png/hub_and_spoke.jpg?raw=true" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="https://github.com/jhufena/jhufena.github.io/blob/main/png/hub_and_spoke.jpg?raw=true" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to Fena
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Challenges</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Rigor</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="act_1_0_2.html">2. Error</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="act_1_0_3.html">3. Sloppiness</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act2/act_2_0/act_2_0_1.html">4. Manuscripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act2/act_2_0/act_2_0_2.html">5. Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act2/act_2_0/act_2_0_3.html">6. Git</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numeracy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act3/act_3_0/act_3_0_1.html">7. Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act3/act_3_0/act_3_0_2.html">8. R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act3/act_3_0/act_3_0_3.html">9. Stata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Literacy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act4/act_4_0/act_4_0_1.html">10. Open Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act4/act_4_0/act_4_0_2.html">11. Self-Publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act4/act_4_0/act_4_0_3.html">12. Grants</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workflow</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act5/act_5_0/act_5_0_1.html">13. Automate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act5/act_5_0/act_5_0_2.html">14. Bash</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../act5/act_5_0/act_5_0_3.html">15. Unix</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/act1/act_1_0/act_1_0_1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>1. Rigor</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Rigor</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"></a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="rigor">
+<h1>1. Rigor<a class="headerlink" href="#rigor" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\(
+\Large
+\left\{
+\begin{array}{ll}
+\text{Truth} \\
+\text{} \\
+\textcolor{gray}{\text{Knowledge}} \ \ 
+\left\{ \begin{array}{l} \textcolor{gray}{\text{Rigor}} \text{} \\ \text{Error} \ \ \ \ \ \ \ \ \
+\left\{ \begin{array}{l} \text{Variance} \\ \text{Bias}  \end{array} \right. \\ \text{Sloppy}  \end{array} \right. 
+\left\{ \begin{array}{l} \text{Explain/Control} \end{array}  \right. \\
+\text{} \\
+\text{Justice} 
+\end{array} 
+\right. 
+\)</span></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id3">
+<h1><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id4">
+<h1><a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h1>
+<p><span style="font-size:23px;">Complexity of Knowledge in Empirical Decision-Making</span><br></p>
+<p><span style="font-weight:bold; font-size:17px;">Introduction</span><br></p>
+<p>Science is constructed upon empirically validated evidence that cumulatively forms our “knowledge.” However, when we dissect the processes producing the data, matters of “truth” and “justice” become focal points, often blurred in real-world applications.</p>
+<p><span style="font-weight:bold; font-size:17px;">A Case Study: The CKD-EPI Equation and Cisplatin Therapy</span><br></p>
+<p><img alt="Decision Making in Medicine" src="https://github.com/jhutrc/beta/blob/main/act_0/act_0_2/act_0_2_1/fig1_cisplatin.png?raw=true" /></p>
+<p>Consider a Urologist evaluating the impact of the new race-neutral CKD-EPI 2021 equation for determining eligibility for cisplatin therapy among bladder cancer patients. For over a decade, the standard has been the CKD-EPI 2009 equation, requiring four inputs:</p>
+<ol class="arabic simple">
+<li><p><strong>Serum Creatinine (SCr)</strong>: A byproduct of muscle metabolism, measured in mg/dL or µmol/L.</p></li>
+<li><p><strong>Age</strong>: The patient’s age in years.</p></li>
+<li><p><strong>Sex</strong>: Biological sex (Male or Female), relevant due to differences in muscle mass and consequently, creatinine levels.</p></li>
+<li><p><strong>Race</strong>: Originally included as a variable in the CKD-EPI 2009 equation, race has since become a point of ongoing debate due to ethical concerns.</p></li>
+</ol>
+<p><span style="font-weight:bold; font-size:17px;">The Original Equations</span><br></p>
+<p>The CKD-EPI 2009 equation relies on subgroup-specific formulations to calculate the Glomerular Filtration Rate (GFR).</p>
+<ul class="simple">
+<li><p>For females with SCr ≤ 0.7 mg/dL:
+<span class="math notranslate nohighlight">\(GFR = 144 \times \left( \frac{{SCr}}{0.7} \right)^{-0.329} \times 0.993^{Age}\)</span></p></li>
+<li><p>For females with SCr &gt; 0.7 mg/dL:
+<span class="math notranslate nohighlight">\(GFR = 144 \times \left( \frac{{SCr}}{0.7} \right)^{-1.209} \times 0.993^{Age}\)</span></p></li>
+<li><p>For males with SCr ≤ 0.9 mg/dL:
+<span class="math notranslate nohighlight">\(GFR = 141 \times \left( \frac{{SCr}}{0.9} \right)^{-0.411} \times 0.993^{Age}\)</span></p></li>
+<li><p>For males with SCr &gt; 0.9 mg/dL:
+<span class="math notranslate nohighlight">\(GFR = 141 \times \left( \frac{{SCr}}{0.9} \right)^{-1.209} \times 0.993^{Age}\)</span></p></li>
+<li><p>For African Americans, the estimated GFR is then multiplied by 1.159.</p></li>
+</ul>
+<p><span style="font-weight:bold; font-size:17px;">The Impact of a Race-Free Equation</span><br></p>
+<p>Adopting the new race-neutral equation opens a plethora of questions that warrant rigorous empirical scrutiny:</p>
+<ul class="simple">
+<li><p>What is the new classification of bladder cancer patients?</p></li>
+<li><p>How does this impact eligibility for cisplatin therapy?</p></li>
+<li><p>Are there expected changes in adverse effects?</p></li>
+</ul>
+<p>Such questions require methodical empirical investigation, inviting the reader to consider possible study designs.</p>
+<p><span style="font-weight:bold; font-size:17px;">Rigor, Error, and Sloppiness</span></p>
+<p>The methods for collecting, processing, and analyzing evidence emphasize issues of rigor, error, and sloppiness. The notions of “truth” and “justice,” while fascinating, are better suited to <a class="reference external" href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=AKqYlxMAAAAJ&amp;citation_for_view=AKqYlxMAAAAJ:3MwzVuqRcA0C">advanced dialogues</a> in philosophy and statistics.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../act0/act_0_12/act_0_0_12_1.html"><span class="doc std std-doc">Learn More</span></a></p></li>
+</ul>
+<Details>
+   <Summary></Summary>
+<p>We have a wall covered in photos, timelines, and red strings. Whether its a detective investigating an organized <a class="reference external" href="https://github.com/jhufena/jhufena.github.io/blob/main/png/family_tree.jpeg?raw=true">crime family</a> or its a <a class="reference external" href="https://github.com/jhufena/jhufena.github.io/blob/main/png/case_board.jpg?raw=true">caseboard</a> for a specific investigation, rigor across various disciplines may incoporate broadly similar approaches.</p>
+</Details>
+<Details>
+   <Summary></Summary>
+<p>We propose 15 tokens to represent academic life in the 21st century. These tokens are not meant to be exhaustive, but rather, to provide a starting point for <a class="reference external" href="https://github.com/jhufena/discussions">discussion</a>:</p>
+<ol class="arabic simple">
+<li><p>Rigor</p></li>
+<li><p>Error</p></li>
+<li><p>Sloppiness</p></li>
+<li><p>Manuscripts</p></li>
+<li><p>Code</p></li>
+<li><p>Git</p></li>
+<li><p>Python</p></li>
+<li><p>R</p></li>
+<li><p>Stata</p></li>
+<li><p>Open Science</p></li>
+<li><p>Self-Publishing</p></li>
+<li><p>Grants</p></li>
+<li><p>Automation</p></li>
+<li><p>Bash</p></li>
+<li><p>Unix</p></li>
+</ol>
+<p>Over time we are going to articulate these ideas in a more formal manner, but for now, we present them as placeholders and invite you to consider how they may be useful in your own work. Consider the following <a class="reference external" href="https://www.nytimes.com/2023/09/30/business/the-harvard-professor-and-the-bloggers.html">case study</a> and how some of these 15 tokens are missing from the dialogue:</p>
+</Details>
+<Details style="margin-top:111618px; margin-left:111618px;">
+   <Summary>🏧</Summary>
+</Details>
+<Details>
+   <Summary>🌕</Summary>
+<p>Michel Foucault was a French philosopher and social theorist known for his explorations of power, knowledge, and institutions. His work has been highly influential across a range of disciplines including philosophy, history, sociology, and more. One of his major contributions is the idea that power is not merely a top-down force exerted by a sovereign, but a complex structure that operates in all aspects of life, often in covert ways.</p>
+<p>Foucault often examined the relationship between <code class="docutils literal notranslate"><span class="pre">knowledge</span></code> (“savoir”), <code class="docutils literal notranslate"><span class="pre">power/truth</span></code> (“pouvoir”), and <code class="docutils literal notranslate"><span class="pre">visibility/justice</span></code> (“voir”). He argued that power and knowledge are intertwined; one cannot exist without the other. Institutions, according to Foucault, use knowledge to exert power, and those in power control what counts as knowledge. The concept of visibility comes into play in his discussions of panopticism, a social theory named after the Panopticon, a type of prison building designed by Jeremy Bentham. In a Panopticon, all prisoners can be observed by a single watchman without the prisoners being able to tell whether they are being watched, thus leading them to self-regulate their behavior.</p>
+<p>Foucault’s ideas have been instrumental in understanding how societal institutions—from prisons and hospitals to schools and the military—function to shape and control individuals. His work remains a cornerstone of critical theory and has inspired countless studies examining the nexus of power, knowledge, and visibility in various contexts.</p>
+</Details>
+<Details>
+   <Summary>🪙</Summary>
+<p>The CKD-EPI (Chronic Kidney Disease Epidemiology Collaboration) equation is a formula often used to estimate the Glomerular Filtration Rate (GFR), a measure of kidney function. The CKD-EPI 2009 equation, while more accurate than the older MDRD (Modification of Diet in Renal Disease) equation, raised issues of justice and equity in the United States due to its inclusion of race as a variable. It’s worth noting that these issues have yet to garner attention in other countries.</p>
+</Details>
+<Details>
+   <Summary>🌟</Summary>
+</Details>
+<Details>
+   <Summary>💵</Summary>
+</Details>
+<Details>
+   <Summary>💸</Summary>
+</Details>
+<Details>
+   <Summary>💰</Summary>
+</Details>
+<Details>
+   <Summary>🎁</Summary>
+</Details>
+<Details>
+   <Summary>💴</Summary>
+</Details>
+<Details>
+   <Summary>💯</Summary>
+</Details>
+<Details>
+   <Summary>🏆</Summary>
+</Details>
+<Details>
+   <Summary>💲</Summary>
+</Details>
+<Details>
+   <Summary>💀</Summary>
+</Details>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./act1/act_1_0"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to Fena</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="act_1_0_2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2. Error</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Rigor</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"></a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Abimereki Muzaale & Vincent Jin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
