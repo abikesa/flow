@@ -1,5 +1,5 @@
 # Delete repo folder
-git clone https://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@github.com/abikesa/ssh.git
+git clone https://token@github.com/abikesa/ssh.git
 cd ssh
 git checkout main
 rm -r ssh*

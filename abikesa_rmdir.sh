@@ -22,11 +22,20 @@ rm -r $DELETE_PATH
 git add -A 
 git commit -m "Removed $DELETE_PATH in main directory"
 git remote -v
-ssh-add -D 
-chmod 600 "$SSH_KEY_PATH"
+
+# Unblock if repo linked to ~/.ssh/id_etc
+
+# ssh-add -D 
+# chmod 600 "$SSH_KEY_PATH"
+
 git remote set-url origin "git@github.com:$REPO_URL.git"
-ssh-add "$SSH_KEY_PATH"
+
+# ssh-add "$SSH_KEY_PATH"
+
 git config --local user.name "$USERNAME"
 git config --local user.email "$EMAIL"
 git push -u origin main
 
+cd "$(basename "older_gfr")"
+
+origin  https://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@github.com/fawazalammary/older_gfr (fetch)
