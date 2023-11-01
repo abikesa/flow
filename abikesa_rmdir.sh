@@ -36,6 +36,3 @@ git config --local user.name "$USERNAME"
 git config --local user.email "$EMAIL"
 git push -u origin main
 
-cd "$(basename "older_gfr")"
-
-origin  https://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@github.com/fawazalammary/older_gfr (fetch)
