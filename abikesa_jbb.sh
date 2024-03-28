@@ -66,6 +66,8 @@ if [ $? -ne 0 ]; then
 fi
 
 # Pushing changes
+# git config pull.rebase true
+# git pull
 git push -u origin main
 if [ $? -ne 0 ]; then
   echo "Failed to push to the repository. Check your SSH key path and GitHub permissions."
