@@ -36,3 +36,4 @@ git config --local user.name "$USERNAME"
 git config --local user.email "$EMAIL"
 git push -u origin main
 
+# token for stata/intermediate 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
