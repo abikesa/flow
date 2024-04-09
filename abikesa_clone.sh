@@ -20,3 +20,5 @@ git clone https://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@github.com/jhurepos/r
 mkdir stataone
 mv "stataone 2"/* stataone/
 rm -r "stataone 2"
+
+# phrase is "work", not "workflow"

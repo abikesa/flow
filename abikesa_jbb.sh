@@ -50,7 +50,8 @@ git remote -v
 ssh-add -D 
 # Remove all identities from the SSH agent
 chmod 600 "$(eval echo $SSH_KEY_PATH)"
-# ls -l ~/.ssh/id_nh_projectbetaprojectbeta
+# ls -l ~/.ssh/id_stata0elemental
+#chmod 600 "$(eval echo ~/.ssh/id_stata0elemental"
 
 git remote set-url origin "git@github.com:$GITHUB_USERNAME/$REPO_NAME"
 ssh-add "$(eval echo $SSH_KEY_PATH)"
