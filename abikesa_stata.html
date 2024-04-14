@@ -61,10 +61,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'abikesa_stata';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="" href="act_0/act_0_0/act_0_0_0/act_0_0_0_1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -130,7 +129,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -149,8 +148,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     
                 </a>
             </li>
@@ -263,7 +262,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/intro.ipynb" target="_blank"
+      <li><a href="_sources/abikesa_stata.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -356,7 +355,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stata">Stata</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-i-basic">Stata I (Basic)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-ii-intermediate">Stata II (Intermediate)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-iii-advanced">Stata III (Advanced)</a></li>
 </ul>
 </li>
 </ul>
@@ -374,16 +376,31 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id2">
-<h1>.<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
+<section class="tex2jax_ignore mathjax_ignore" id="stata">
+<h1>Stata<a class="headerlink" href="#stata" title="Permalink to this heading">#</a></h1>
+<section id="stata-i-basic">
+<h2>Stata I (Basic)<a class="headerlink" href="#stata-i-basic" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Commands, syntax, and file management restricted to Stata dropdown menu, command window, and <code class="docutils literal notranslate"><span class="pre">.do</span></code> files on local computer</p></li>
+</ul>
+</section>
+<section id="stata-ii-intermediate">
+<h2>Stata II (Intermediate)<a class="headerlink" href="#stata-ii-intermediate" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>File management including <code class="docutils literal notranslate"><span class="pre">.do</span></code>, <code class="docutils literal notranslate"><span class="pre">.ado</span></code>, and datafiles are managed remotely on GitHub to enhance collaboration, sharing, and openness</p></li>
+</ul>
+</section>
+<section id="stata-iii-advanced">
+<h2>Stata III (Advanced)<a class="headerlink" href="#stata-iii-advanced" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Batch mode is used on a <code class="docutils literal notranslate"><span class="pre">Visual</span> <span class="pre">Studio</span> <span class="pre">Code</span></code> terminal with <code class="docutils literal notranslate"><span class="pre">.sh</span></code> scripts, with .do files and other outputs embedded in <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> env</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Workflow for Stata III </span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/applications/stata/statamp.app/contents/macos/
+stata-mp<span class="w"> </span>-b<span class="w"> </span>work/abikesa_batch.do
+</pre></div>
 </div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -395,16 +412,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "r"
+            mode: "python"
         },
         kernelOptions: {
-            name: "ir",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'ir'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -417,15 +434,6 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="right-next"
-       href="act_0/act_0_0/act_0_0_0/act_0_0_0_1.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"></p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>
@@ -445,7 +453,10 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stata">Stata</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-i-basic">Stata I (Basic)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-ii-intermediate">Stata II (Intermediate)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-iii-advanced">Stata III (Advanced)</a></li>
 </ul>
 </li>
 </ul>
