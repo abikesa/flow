@@ -4,6 +4,9 @@ title: Play
 parts:
   - caption:  
     chapters:
+      - file: abikesa_r.ipynb
+      - file: abikesa_python.ipynb
+      - file: abikesa_stata.ipynb
       - file: act_0/act_0_0/act_0_0_0/act_0_0_0_1.ipynb
       - file: act_0/act_0_0/act_0_0_0/act_0_0_0_2.ipynb
       - file: act_0/act_0_0/act_0_0_0/act_0_0_0_3.ipynb
