@@ -43,7 +43,7 @@ ds, has(type string)
 return list
 
 // Summarize continuous variables
-sum if type == "numeric"
+sum if type == "numeric"`'
 
 // Summarize binary variables
 tab if type == 1
