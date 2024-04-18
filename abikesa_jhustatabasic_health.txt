@@ -1,0 +1,393 @@
+
+# just did a massive cleanup of repo:
+
+After you've cleaned up your directory by removing the duplicate files, you need to commit these changes to your Git repository to reflect the updates. Here’s a straightforward process for committing the changes to your Git repo:
+
+### Step 1: Check the Status of Your Repository
+
+First, make sure you're in the root directory of your Git repository, and then run the following command to see which files have been deleted:
+
+```bash
+git status
+```
+
+This command will show you the changes in the repository, including files that are no longer tracked because they've been deleted.
+
+### Step 2: Stage the Changes
+
+You can stage all the deletions at once using the following command:
+
+```bash
+git add -u
+```
+
+The `-u` option with `git add` stages all modifications and deletions, but not new files (if there are any new files you want to commit, use `git add <file>` or `git add .` to add everything).
+
+### Step 3: Commit the Changes
+
+Once you have staged the changes, commit them to the repository:
+
+```bash
+git commit -m "Removed duplicate files"
+```
+
+Use a commit message that describes what you did, so you or anyone else working in the repository can understand the history.
+
+### Step 4: Push the Changes
+
+Finally, push your changes to the remote repository:
+
+```bash
+git push
+```
+
+If you're working on a specific branch (other than the default `main` or `master`), you'll need to specify the branch in your push command:
+
+```bash
+git push origin <branch-name>
+```
+
+### Optional: Check the Repository Health
+
+After making significant changes like removing files, it's good practice to check the integrity and status of your Git repository:
+
+```bash
+git status
+git log
+```
+
+These commands help you ensure that the repository is in the desired state and that the history looks correct.
+
+### Wrap-Up
+
+These steps will update your Git repository by removing the unwanted files permanently, keeping your project clean and manageable. Always ensure that these deletions are intended as they affect both your local and remote repositories once pushed.
+
+#
+
+
+
+
+(myenv) d@Poseidon basic % git add -u
+(myenv) d@Poseidon basic % git commit -m "Removed duplicate files"
+
+[main 26c0cb2] Removed duplicate files
+ 80 files changed, 17235 deletions(-)
+ delete mode 100644 addplot 2.png
+ delete mode 100644 addplot2 2.png
+ delete mode 100644 area 2.png
+ delete mode 100644 as1_vj_t1 2.do
+ delete mode 100644 as1_vj_t2 2.do
+ delete mode 100644 as1_vj_t4 2.do
+ delete mode 100644 as1_vj_t5 2.do
+ delete mode 100644 as1_vj_t6 2.do
+ delete mode 100644 bmi 2.png
+ delete mode 100644 bmi2 2.png
+ delete mode 100644 bmi_bin500 2.png
+ delete mode 100644 chapter1 2.ipynb
+ delete mode 100644 chapter2 2.ipynb
+ delete mode 100644 chapter4 2.ipynb
+ delete mode 100644 chapter5 2.ipynb
+ delete mode 100644 chapter6 2.ipynb
+ delete mode 100644 chapter7 2.ipynb
+ delete mode 100644 chapter8 2.ipynb
+ delete mode 100644 connected 2.png
+ delete mode 100644 discrete 2.png
+ delete mode 100644 discrete2 2.png
+ delete mode 100644 dofile 2.md
+ delete mode 100644 donors 2.dta
+ delete mode 100644 donors 2.txt
+ delete mode 100644 donors_recipients 2.txt
+ delete mode 100644 file_read 2.do
+ delete mode 100644 filename 2.do
+ delete mode 100644 five_overlay 2.png
+ delete mode 100644 forvalues2_chatGPT 2.png
+ delete mode 100644 hw1_grading_inter 2.do
+ delete mode 100644 hw1sol 2.md
+ delete mode 100644 import_data 2.md
+ delete mode 100644 intro 2.md
+ delete mode 100644 jhustata.datasets 2.do
+ delete mode 100644 lab1solution 2.do
+ delete mode 100644 lab2_answerkey 2.md
+ delete mode 100644 lab3 2.md
+ delete mode 100644 lab3_answerkey 2.md
+ delete mode 100644 lab3_test 2.xlsx
+ delete mode 100644 lab3solution 2.do
+ delete mode 100644 lab4 2.md
+ delete mode 100644 lab4_answerkey 2.md
+ delete mode 100644 lab5_answerkey 2.md
+ delete mode 100644 lab5fig1 2.png
+ delete mode 100644 lab5fig4 2.png
+ delete mode 100644 lec4demo 2.do
+ delete mode 100644 lec4demodo 2.md
+ delete mode 100644 lecture1 2.do
+ delete mode 100644 lecture2do 2.md
+ delete mode 100644 lecture3do 2.md
+ delete mode 100644 lecture4do_original 2.ipynb
+ delete mode 100644 lecture5_putexcel 2.do
+ delete mode 100644 lecture6 2.do
+ delete mode 100644 lecture8_frames 2.do
+ delete mode 100644 lecture8_putdocx 2.do
+ delete mode 100644 lexp_s2color 2.png
+ delete mode 100644 lexp_setscheme 2.png
+ delete mode 100644 line_n_yr 2.png
+ delete mode 100644 line_regress 2.png
+ delete mode 100644 matching 2.do
+ delete mode 100644 nhanes-stmd 2.do
+ delete mode 100644 nyvar3 2.png
+ delete mode 100644 quickrefs 2.ipynb
+ delete mode 100644 references 2.bib
+ delete mode 100644 requirements 2.txt
+ delete mode 100644 scale2 2.png
+ delete mode 100644 set_scheme_default 2.png
+ delete mode 100644 stmarkdown 2.css
+ delete mode 100644 strpos 2.dta
+ delete mode 100644 survey 2.jpg
+ delete mode 100644 syntax 2.png
+ delete mode 100644 table1_fena 2.md
+ delete mode 100644 teachingteam 2.md
+ delete mode 100644 transplants 2.dta
+ delete mode 100644 transplants_hw 2.dta
+ delete mode 100644 transplants_hw 2.txt
+ delete mode 100644 twowway 2.png
+ delete mode 100644 tx_yr 2.dta
+ delete mode 100644 tx_yr 2.txt
+ delete mode 100644 ~filename.do 2.stswp
+(myenv) d@Poseidon basic % ssh-add -D                             
+All identities removed.
+(myenv) d@Poseidon basic % chmod 600 "$(eval echo ~/.ssh/id_stataonebasic)"
+(myenv) d@Poseidon basic % git remote set-url origin "git@github.com:jhustata/basic"     
+(myenv) d@Poseidon basic % ssh-add "$(eval echo ~/.ssh/id_stataonebasic)"
+Enter passphrase for /Users/d/.ssh/id_stataonebasic: 
+Identity added: /Users/d/.ssh/id_stataonebasic (muzaale@icloud.com)
+(myenv) d@Poseidon basic % git config --local user.name "jhustata" 
+(myenv) d@Poseidon basic % git config --local user.email "muzaale@icloud.com"
+(myenv) d@Poseidon basic % git push -u origin main
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 522 bytes | 522.00 KiB/s, done.
+Total 2 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:jhustata/basic
+   d8e0f49..26c0cb2  main -> main
+branch 'main' set up to track 'origin/main'.
+(myenv) d@Poseidon basic % git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+(myenv) d@Poseidon basic % git log
+commit 26c0cb29703fe03d0277b49a9f96e5507a396ba0 (HEAD -> main, origin/main, origin/HEAD)
+Author: jhutrc <muzaale@gmail.com>
+Date:   Thu Apr 18 03:29:52 2024 -0400
+
+    Removed duplicate files
+
+commit d8e0f49830db56e6ccdf8154e72463f6b845d6a4
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 19:30:55 2024 -0400
+
+    minor edit to hw3 sol
+
+commit 00db8277d36d144d51c042e60e7f0d6d15f2426f
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 16:09:37 2024 -0400
+
+    loop over for .xlsx output
+
+commit 00fea2762554379bf1d0060786900d609e11d273
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 15:29:37 2024 -0400
+
+    HW3 solution for students, but not posted yet (hw3sol.md)
+
+commit 20ef8e4371291849813f62a5c9dacc4d29488ca1
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 11:48:36 2024 -0400
+
+    debugged Female (N=)
+
+commit 387e4ae988243c9d1ccf70468ef05970ba619ac7
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 10:40:09 2024 -0400
+
+:...skipping...
+commit 26c0cb29703fe03d0277b49a9f96e5507a396ba0 (HEAD -> main, origin/main, origin/HEAD)
+Author: jhutrc <muzaale@gmail.com>
+Date:   Thu Apr 18 03:29:52 2024 -0400
+
+    Removed duplicate files
+
+commit d8e0f49830db56e6ccdf8154e72463f6b845d6a4
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 19:30:55 2024 -0400
+
+    minor edit to hw3 sol
+
+commit 00db8277d36d144d51c042e60e7f0d6d15f2426f
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 16:09:37 2024 -0400
+
+    loop over for .xlsx output
+
+commit 00fea2762554379bf1d0060786900d609e11d273
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 15:29:37 2024 -0400
+
+    HW3 solution for students, but not posted yet (hw3sol.md)
+
+commit 20ef8e4371291849813f62a5c9dacc4d29488ca1
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 11:48:36 2024 -0400
+
+    debugged Female (N=)
+
+commit 387e4ae988243c9d1ccf70468ef05970ba619ac7
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 10:40:09 2024 -0400
+
+    more settings commands
+
+commit 8e3bf73e3ff22fb3471c72a002fb2173d2b84ca9
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 09:41:44 2024 -0400
+
+    rubric is same for all homeworks
+
+commit 6c17be933812d12740e8165248e9e6bec1394130
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 09:26:30 2024 -0400
+
+    rubric updated, and shared with students
+
+:...skipping...
+commit 26c0cb29703fe03d0277b49a9f96e5507a396ba0 (HEAD -> main, origin/main, origin/HEAD)
+Author: jhutrc <muzaale@gmail.com>
+Date:   Thu Apr 18 03:29:52 2024 -0400
+
+    Removed duplicate files
+
+commit d8e0f49830db56e6ccdf8154e72463f6b845d6a4
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 19:30:55 2024 -0400
+
+    minor edit to hw3 sol
+
+commit 00db8277d36d144d51c042e60e7f0d6d15f2426f
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 16:09:37 2024 -0400
+
+    loop over for .xlsx output
+
+commit 00fea2762554379bf1d0060786900d609e11d273
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 15:29:37 2024 -0400
+
+    HW3 solution for students, but not posted yet (hw3sol.md)
+
+commit 20ef8e4371291849813f62a5c9dacc4d29488ca1
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 11:48:36 2024 -0400
+
+    debugged Female (N=)
+
+commit 387e4ae988243c9d1ccf70468ef05970ba619ac7
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 10:40:09 2024 -0400
+
+    more settings commands
+
+commit 8e3bf73e3ff22fb3471c72a002fb2173d2b84ca9
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 09:41:44 2024 -0400
+
+    rubric is same for all homeworks
+
+commit 6c17be933812d12740e8165248e9e6bec1394130
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 09:26:30 2024 -0400
+
+    rubric updated, and shared with students
+
+commit efdc126796db9b844409358cfc82253f4bdd55b0
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 09:12:30 2024 -0400
+
+    rubric
+
+commit 66a4e31df419305bd139cdbe6b6e7e9364325b89
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 08:27:56 2024 -0400
+
+    hw3 debugged
+
+commit 6dc6100a1bec21cc95c671df287171e8e1a5c93a
+Author: jhutrc <muzaale@gmail.com>
+Date:   Tue Apr 16 11:08:10 2024 -0400
+:...skipping...
+commit 26c0cb29703fe03d0277b49a9f96e5507a396ba0 (HEAD -> main, origin/main, origin/HEAD)
+Author: jhutrc <muzaale@gmail.com>
+Date:   Thu Apr 18 03:29:52 2024 -0400
+
+    Removed duplicate files
+
+commit d8e0f49830db56e6ccdf8154e72463f6b845d6a4
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 19:30:55 2024 -0400
+
+    minor edit to hw3 sol
+
+commit 00db8277d36d144d51c042e60e7f0d6d15f2426f
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 16:09:37 2024 -0400
+
+    loop over for .xlsx output
+
+commit 00fea2762554379bf1d0060786900d609e11d273
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 15:29:37 2024 -0400
+
+    HW3 solution for students, but not posted yet (hw3sol.md)
+
+commit 20ef8e4371291849813f62a5c9dacc4d29488ca1
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 11:48:36 2024 -0400
+
+    debugged Female (N=)
+
+commit 387e4ae988243c9d1ccf70468ef05970ba619ac7
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 10:40:09 2024 -0400
+
+    more settings commands
+
+commit 8e3bf73e3ff22fb3471c72a002fb2173d2b84ca9
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 09:41:44 2024 -0400
+
+    rubric is same for all homeworks
+
+commit 6c17be933812d12740e8165248e9e6bec1394130
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 09:26:30 2024 -0400
+
+    rubric updated, and shared with students
+
+commit efdc126796db9b844409358cfc82253f4bdd55b0
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 09:12:30 2024 -0400
+
+    rubric
+
+commit 66a4e31df419305bd139cdbe6b6e7e9364325b89
+Author: jhutrc <muzaale@gmail.com>
+Date:   Wed Apr 17 08:27:56 2024 -0400
+
+    hw3 debugged
+
+commit 6dc6100a1bec21cc95c671df287171e8e1a5c93a
+Author: jhutrc <muzaale@gmail.com>
+Date:   Tue Apr 16 11:08:10 2024 -0400
+
+    added .xlsx output to HW3 solution
