@@ -113,3 +113,4 @@ mepoisson donations || summer:, irr from(start_vals) iter(3)
 }
 
 log close 
+

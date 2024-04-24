@@ -1,0 +1,1 @@
+* demonstrate batch mode for basic class

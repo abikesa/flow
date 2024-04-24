@@ -3,7 +3,7 @@ log using work/abikesa_stata.log, replace
 
 if 0 {
 
-// Basic (observed data)
+// Basic (observed data): .do File
 1. c(N) and c(k)
 2. ds, has(type numeric)
 3. ds, has(type string)
@@ -12,14 +12,14 @@ if 0 {
 6. save dataset
 7. program a table 1 & figure 1 from regression output
 
-// Intermediate (expected data)
+// Intermediate (expected data): GitHub Pages
 1. Do the observed data match the expected data?
 2. How do we formally test this?
 3. Is missingness "observed" or "expected"?
 4. Lets decide that by modifying table 1 & figure 1 from the basics class
 5. expected
 
-// Advanced
+// Advanced: VSCode
 1. Hierarchical clustering
 2. Do we always have to acknowledge hierarchies in data?
 3. When may we be able to ignore hierarchies in data?
@@ -43,7 +43,7 @@ ds, has(type string)
 return list
 
 // Summarize continuous variables
-sum if type == "numeric"`'
+sum if type == "numeric"
 
 // Summarize binary variables
 tab if type == 1
@@ -53,6 +53,7 @@ tab if type == 2
 
 // Has labels
 ds, has(vallabel)
+
 
 
 // Stata Programming II (Intermediate)
