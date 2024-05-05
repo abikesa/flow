@@ -366,7 +366,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-hierarchical-multilevel-longitudinal-data">6 Nested, Hierarchical, Multilevel, Longitudinal Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-hierarchical-multilevel-longitudinal-data">6 Nested, Hierarchical, Multilevel, Longitudinal Data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-python">I Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-stata">II Stata</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -442,6 +446,8 @@ Submit a Jupyter notebook containing all code, outputs, visualizations, and a di
 <ul class="simple">
 <li><p><strong>Load the dataset and inspect its structure:</strong></p></li>
 </ul>
+<section id="i-python">
+<h2>I Python<a class="headerlink" href="#i-python" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -762,6 +768,108 @@ Group Var             7242677.078 3273083.158
 </ol>
 <p>Overall, the model suggests that there is no significant relationship between the <code class="docutils literal notranslate"><span class="pre">year_month</span></code> and <code class="docutils literal notranslate"><span class="pre">usrds_id</span></code> variables. The intercept, which represents the average usrds_id, is the main factor influencing the dependent variable in this model.</p>
 </section>
+<section id="ii-stata">
+<h2>II Stata<a class="headerlink" href="#ii-stata" title="Permalink to this heading">#</a></h2>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">* Import data from URL</span>
+import delimited <span class="s">&quot;https://github.com/jhustata/lab6.md/raw/main/stsrpos.csv&quot;</span>,<span class="k"> clear</span>
+
+<span class="c1">* Convert srvc_dt to date format</span>
+<span class="k">gen</span> srvc_dt_date = <span class="nf">date</span>(srvc_dt, <span class="s">&quot;DMY&quot;</span>)
+
+<span class="c1">* Create year_month variable</span>
+<span class="k">format</span> srvc_dt_date <span class="nx">%tm</span>
+<span class="k">gen</span> year_month = <span class="nf">month</span>(srvc_dt_date)
+
+<span class="c1">* Count prescriptions by month</span>
+<span class="k">table</span> year_month,
+
+<span class="c1">* Create bar chart for number of prescriptions by month</span>
+<span class="k">graph</span> bar (count), over(year_month) title(<span class="s">&quot;Number of Prescriptions by Month&quot;</span>) <span class="cs">///</span>
+	ytitle(<span class="s">&quot;Number of Prescriptions&quot;</span>) <span class="c1">//xtitle(&quot;Year-Month&quot;)</span>
+
+<span class="c1">* Calculate the top 10 most prescribed medications</span>
+<span class="k">preserve</span> 
+<span class="k">bys</span> gnn:<span class="k"> g</span> top_meds=_N
+<span class="k">egen</span> grouptag=tag(gnn)
+<span class="k">keep if</span> grouptag<span class="o">==</span><span class="m">1</span>
+<span class="k">gsort</span> <span class="o">-</span>top_meds
+<span class="k">l in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>
+
+<span class="c1">* Create bar chart for top 10 most prescribed medications</span>
+<span class="k">encode</span> gnn,<span class="k"> gen</span>(Gnn)
+<span class="k">keep in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>
+<span class="k">g</span> x=_n
+<span class="k">levelsof</span> Gnn
+<span class="k">list</span> Gnn
+<span class="k">local</span> varlab:<span class="k"> var lab</span> Gnn
+<span class="k">local</span> vallab: value<span class="k"> label</span> Gnn
+<span class="k">levelsof</span> Gnn,<span class="k"> local</span>(numlevels)
+<span class="k">local</span> i=<span class="m">1</span>
+<span class="k">foreach l</span> of<span class="k"> numlist</span> <span class="nv">`numlevels&#39;</span> {
+<span class="k">    local</span> vallab: value<span class="k"> label</span> Gnn
+<span class="k">	local</span> catlab:<span class="k"> lab</span> <span class="nv">`vallab&#39;</span> <span class="nv">`l&#39;</span>
+<span class="k">	global</span> xlab<span class="nv">`i&#39;</span> = <span class="s">&quot;</span><span class="nv">`catlab&#39;</span><span class="s">&quot;</span>
+<span class="k">	local</span> i= <span class="nv">`i&#39;</span> <span class="o">+</span> <span class="m">1</span>
+}
+<span class="k">global</span> ylab 
+<span class="k">twoway</span> bar top_meds x, <span class="cs">/// </span>
+    horizontal <span class="cs">///</span>
+    ytitle(<span class="s">&quot;Number of Prescriptions&quot;</span>) <span class="cs">///</span>
+	xtitle(<span class="s">&quot;Medication&quot;</span>) <span class="cs">///</span>
+	title(<span class="s">&quot;Top 10 Most Prescribed Medications&quot;</span>) <span class="cs">///</span>
+	ylab(<span class="m">0</span>(<span class="m">1</span>)<span class="m">10</span> <span class="cs">///</span>
+	    <span class="m">1</span> <span class="s">&quot;</span><span class="vg">$xlab1</span><span class="s">&quot;</span> <span class="cs">///</span>
+		<span class="m">2</span> <span class="s">&quot;</span><span class="vg">$xlab2</span><span class="s">&quot;</span> <span class="cs">///</span>
+		<span class="m">3</span> <span class="s">&quot;</span><span class="vg">$xlab3</span><span class="s">&quot;</span> <span class="cs">///</span>
+		<span class="m">4</span> <span class="s">&quot;</span><span class="vg">$xlab4</span><span class="s">&quot;</span> <span class="cs">///</span>
+		<span class="m">5</span> <span class="s">&quot;</span><span class="vg">$xlab5</span><span class="s">&quot;</span> <span class="cs">///</span>
+		<span class="m">6</span> <span class="s">&quot;</span><span class="vg">$xlab6</span><span class="s">&quot;</span> <span class="cs">///</span>
+		<span class="m">7</span> <span class="s">&quot;</span><span class="vg">$xlab7</span><span class="s">&quot;</span> <span class="cs">///</span>
+		<span class="m">8</span> <span class="s">&quot;</span><span class="vg">$xlab8</span><span class="s">&quot;</span> <span class="cs">///</span>
+		<span class="m">9</span> <span class="s">&quot;</span><span class="vg">$xlab9</span><span class="s">&quot;</span> <span class="cs">///</span>
+		<span class="m">10</span> <span class="s">&quot;</span><span class="vg">$xlab10</span><span class="s">&quot;</span>)
+<span class="k">restore</span> 
+<span class="c1">* Calculate number of unique patients and number of prescriptions</span>
+<span class="k">egen</span> idtag=tag(usrds_id)
+<span class="k">count if</span> idtag 
+<span class="k">egen</span> gnntag = tag(gnn)
+<span class="k">count if</span> gnntag 
+
+<span class="c1">* Descriptive statistics for prescriptions per patient</span>
+<span class="k">bys</span> usrds_id:<span class="k"> g</span> pillcount=_N
+<span class="k">hist</span> pillcount
+<span class="k">sum</span> pillcount,<span class="k"> de</span>
+<span class="k">gen</span> polypharm=pillcount<span class="o">&gt;=</span><span class="m">3</span>
+
+<span class="c1">* Identify patients with 3 or more prescriptions</span>
+<span class="k">egen</span> prescriptions_per_patient =<span class="k"> count</span>(usrds_id),<span class="k"> by</span>(usrds_id)
+<span class="k">compare</span> pillcount prescriptions_per_patient
+<span class="k">gen</span> patients_with_3_plus = prescriptions_per_patient <span class="o">&gt;=</span> <span class="m">3</span>
+<span class="k">compare</span> polypharm patients_with_3_plus
+
+<span class="c1">* Subset dataset for patients with 3 or more prescriptions</span>
+<span class="cm">/*</span>
+<span class="cm">keep if patients_with_3_plus</span>
+
+<span class="cm">* Identify and display prescriptions over time for selected patients</span>
+
+<span class="cm">levelsof usrds_id, local(selected_patients)</span>
+<span class="cm">foreach patient_id in `selected_patients&#39; {</span>
+<span class="cm">    keep if usrds_id == `patient_id&#39;</span>
+<span class="cm">	count </span>
+<span class="cm">	local count=r(N)</span>
+<span class="cm">	twoway bar `count&#39; year_month </span>
+<span class="cm">    graph bar (`count&#39;), over(year_month) title(&quot;Patient `patient_id&#39;: Prescriptions Over Time&quot;) ///</span>
+<span class="cm">	    ytitle(&quot;Number of Prescriptions&quot;) xtitle(&quot;Year-Month&quot;)</span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
+
+<span class="cm">* Fit the mixed-effects model</span>
+<span class="k">xtmixed</span> usrds_id i<span class="m">.</span>year_month, mle
+</pre></div>
+</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -831,7 +939,11 @@ Group Var             7242677.078 3273083.158
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-hierarchical-multilevel-longitudinal-data">6 Nested, Hierarchical, Multilevel, Longitudinal Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-hierarchical-multilevel-longitudinal-data">6 Nested, Hierarchical, Multilevel, Longitudinal Data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-python">I Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-stata">II Stata</a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>
