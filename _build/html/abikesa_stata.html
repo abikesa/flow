@@ -163,9 +163,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="abikesa_python.html"></a></li>
 
-
-
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"></a></li>
+
 
 <li class="toctree-l1"><a class="reference internal" href="act_0/act_0_0/act_0_0_0/act_0_0_0_1.html"></a></li>
 <li class="toctree-l1"><a class="reference internal" href="act_0/act_0_0/act_0_0_0/act_0_0_0_2.html"></a></li>
@@ -373,6 +372,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-iii-advanced">Stata III (Advanced)</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
 </ul>
 
             </nav>
@@ -413,6 +413,21 @@ stata-mp<span class="w"> </span>-b<span class="w"> </span>work/abikesa_batch.do
 </pre></div>
 </div>
 </section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h1>
+<p>Ah, I see what you’re trying to do. Running Stata in batch mode is a handy way to automate tasks, especially when dealing with large datasets or repetitive tasks.</p>
+<p>To run a remote script in batch mode with Stata, you can use the <code class="docutils literal notranslate"><span class="pre">curl</span></code> command to download the script from GitHub and then pass it to Stata for execution. Here’s how you can do it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download the remote script using curl</span>
+curl<span class="w"> </span>-O<span class="w"> </span>https://github.com/abikesa/do/raw/main/hello.do
+
+<span class="c1"># Run Stata in batch mode with the downloaded script</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/applications/stata/statamp.app/contents/macos/
+stata-mp<span class="w"> </span>-b<span class="w"> </span>hello.do
+</pre></div>
+</div>
+<p>This script will download the <code class="docutils literal notranslate"><span class="pre">hello.do</span></code> script from the GitHub repository and then execute it in batch mode using Stata. Make sure you have <code class="docutils literal notranslate"><span class="pre">curl</span></code> installed on your system, or you can use any other tool to download files from the web.</p>
+<p>Running scripts remotely can be a powerful tool, but always ensure you trust the source of the script to avoid any security risks.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -489,6 +504,7 @@ stata-mp<span class="w"> </span>-b<span class="w"> </span>work/abikesa_batch.do
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-iii-advanced">Stata III (Advanced)</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
 </ul>
 
   </nav></div>

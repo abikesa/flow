@@ -163,9 +163,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"></a></li>
 
-
-
 <li class="toctree-l1"><a class="reference internal" href="abikesa_stata.html"></a></li>
+
 
 <li class="toctree-l1"><a class="reference internal" href="act_0/act_0_0/act_0_0_0/act_0_0_0_1.html"></a></li>
 <li class="toctree-l1"><a class="reference internal" href="act_0/act_0_0/act_0_0_0/act_0_0_0_2.html"></a></li>
@@ -368,8 +367,6 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-hierarchical-multilevel-longitudinal-data">6 Nested, Hierarchical, Multilevel, Longitudinal Data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">Lab</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
 </ul>
 
             </nav>
@@ -387,45 +384,6 @@ document.write(`
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="nested-hierarchical-multilevel-longitudinal-data">
 <h1>6 Nested, Hierarchical, Multilevel, Longitudinal Data<a class="headerlink" href="#nested-hierarchical-multilevel-longitudinal-data" title="Permalink to this heading">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="c1"># Correct URL</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/jhustata/lab6.md/raw/main/stsrpos.csv&#39;</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>  <span class="c1"># Raise an error for bad status codes</span>
-
-<span class="c1"># Save the content to a temporary file</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;temp_stsrpos.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">temp_file</span><span class="p">:</span>
-    <span class="n">temp_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
-
-<span class="c1"># Load the dataset from the temporary file</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;temp_stsrpos.csv&#39;</span><span class="p">)</span>
-
-<span class="c1"># Display the first few rows and column names</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">(),</span> <span class="n">dataset</span><span class="o">.</span><span class="n">columns</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(   usrds_id                        gnn    srvc_dt
- 0         0                 FEBUXOSTAT  11oct2024
- 1         1        CYCLOBENZAPRINE HCL  15jun2024
- 2         7       LEVOTHYROXINE SODIUM  18feb2024
- 3        12             INSULIN ASPART  17nov2024
- 4        15  HYDROCODONE/ACETAMINOPHEN  14jan2024,
- Index([&#39;usrds_id&#39;, &#39;gnn&#39;, &#39;srvc_dt&#39;], dtype=&#39;object&#39;))
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="lab">
-<h1>Lab<a class="headerlink" href="#lab" title="Permalink to this heading">#</a></h1>
-<p>Creating a homework assignment for graduate students that focuses on nested, hierarchical, multilevel, and longitudinal data requires tasks that challenge their understanding and application of these concepts. Here’s an assignment that should serve the purpose:</p>
-<hr class="docutils" />
 <p><strong>Assignment: Analyzing Hierarchical and Longitudinal Data</strong></p>
 <p><strong>Objective:</strong><br />
 The purpose of this assignment is to develop your understanding and skills in handling nested, hierarchical, multilevel, and longitudinal data structures. You will analyze a dataset that exhibits these characteristics using Python and relevant libraries such as <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>.</p>
@@ -480,38 +438,139 @@ You are provided with a dataset (<code class="docutils literal notranslate"><spa
 </ol>
 <p><strong>Submission:</strong><br />
 Submit a Jupyter notebook containing all code, outputs, visualizations, and a discussion. Make sure to clearly comment your code and provide insightful interpretations of your results.</p>
-<hr class="docutils" />
-<p>This assignment covers various aspects of working with hierarchical and longitudinal data, engaging students with practical applications.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="solutions">
-<h1>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h1>
-<p>Certainly, here are some potential solutions and hints for the teaching assistants (TAs) for the given assignment. The solutions provided here cover the major points, but TAs should keep in mind that students may approach problems differently, and multiple correct answers can exist.</p>
-<hr class="docutils" />
 <p><strong>1. Data Preparation:</strong></p>
-<ul>
-<li><p><strong>Load the dataset and inspect its structure:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<ul class="simple">
+<li><p><strong>Load the dataset and inspect its structure:</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;stsrpos.csv&#39;</span><span class="p">)</span>
+<span class="c1"># Correct URL</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/jhustata/lab6.md/raw/main/stsrpos.csv&#39;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>  <span class="c1"># Raise an error for bad status codes</span>
+
+<span class="c1"># Save the content to a temporary file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;temp_stsrpos.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">temp_file</span><span class="p">:</span>
+    <span class="n">temp_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+<span class="c1"># Load the dataset from the temporary file</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;temp_stsrpos.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Display the first few rows and column names</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">(),</span> <span class="n">dataset</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(   usrds_id                        gnn    srvc_dt
+ 0         0                 FEBUXOSTAT  11oct2024
+ 1         1        CYCLOBENZAPRINE HCL  15jun2024
+ 2         7       LEVOTHYROXINE SODIUM  18feb2024
+ 3        12             INSULIN ASPART  17nov2024
+ 4        15  HYDROCODONE/ACETAMINOPHEN  14jan2024,
+ Index([&#39;usrds_id&#39;, &#39;gnn&#39;, &#39;srvc_dt&#39;], dtype=&#39;object&#39;))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;temp_stsrpos.csv&#39;</span><span class="p">)</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
-</li>
-<li><p><strong>Convert <code class="docutils literal notranslate"><span class="pre">srvc_dt</span></code> column to a proper date format:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;srvc_dt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;srvc_dt&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">%b%Y&#39;</span><span class="p">)</span>
-</pre></div>
 </div>
-</li>
-<li><p><strong>Create a new column for the year and month:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;year_month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;srvc_dt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
-</pre></div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>usrds_id</th>
+      <th>gnn</th>
+      <th>srvc_dt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>FEBUXOSTAT</td>
+      <td>11oct2024</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>CYCLOBENZAPRINE HCL</td>
+      <td>15jun2024</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>LEVOTHYROXINE SODIUM</td>
+      <td>18feb2024</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>12</td>
+      <td>INSULIN ASPART</td>
+      <td>17nov2024</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>15</td>
+      <td>HYDROCODONE/ACETAMINOPHEN</td>
+      <td>14jan2024</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-</li>
+<ul class="simple">
+<li><p><strong>Convert <code class="docutils literal notranslate"><span class="pre">srvc_dt</span></code> column to a proper date format:</strong></p></li>
 </ul>
+<ul class="simple">
+<li><p><strong>Create a new column for the year and month:</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;srvc_dt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;srvc_dt&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">%b%Y&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;year_month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;srvc_dt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>2. Descriptive Analysis:</strong></p>
-<ul>
-<li><p><strong>Calculate and visualize the distribution of prescriptions over time:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<ul class="simple">
+<li><p><strong>Calculate and visualize the distribution of prescriptions over time:</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># Count prescriptions by month</span>
 <span class="n">month_counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;year_month&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
@@ -523,42 +582,82 @@ Submit a Jupyter notebook containing all code, outputs, visualizations, and a di
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</li>
-<li><p><strong>Identify the most frequently prescribed medications:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">top_meds</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;gnn&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e0e7d9740b3f4d8d5bd32ba24cd8554433ff81c85f6ffe06bfe80aa8463c5b5b.png" src="_images/e0e7d9740b3f4d8d5bd32ba24cd8554433ff81c85f6ffe06bfe80aa8463c5b5b.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Identify the most frequently prescribed medications:</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_meds</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;gnn&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">top_meds</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Top 10 Most Prescribed Medications&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Prescriptions&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Medication&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</li>
-</ul>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c1806871af068bdb2715ddec9142c20c28f681b920f4ba66700000399dd0733f.png" src="_images/c1806871af068bdb2715ddec9142c20c28f681b920f4ba66700000399dd0733f.png" />
+</div>
+</div>
 <p><strong>3. Hierarchical Data Analysis:</strong></p>
-<ul>
-<li><p><strong>Determine the number of unique patients and prescriptions:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">num_patients</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;usrds_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+<ul class="simple">
+<li><p><strong>Determine the number of unique patients and prescriptions:</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_patients</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;usrds_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
 <span class="n">num_prescriptions</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
 </div>
-</li>
-<li><p><strong>Explore the variability in the number of prescriptions per patient:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prescriptions_per_patient</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;usrds_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Explore the variability in the number of prescriptions per patient:</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prescriptions_per_patient</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;usrds_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="n">prescriptions_per_patient</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
-</li>
-</ul>
-<p><strong>4. Longitudinal Data Analysis:</strong></p>
-<ul>
-<li><p><strong>Select a subset of patients with at least five prescriptions:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">patients_with_5_plus</span> <span class="o">=</span> <span class="n">prescriptions_per_patient</span><span class="p">[</span><span class="n">prescriptions_per_patient</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
-<span class="n">subset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;usrds_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">patients_with_5_plus</span><span class="p">)]</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    2271.000000
+mean        1.141347
+std         0.383370
+min         1.000000
+25%         1.000000
+50%         1.000000
+75%         1.000000
+max         4.000000
+Name: count, dtype: float64
 </pre></div>
 </div>
-</li>
-<li><p><strong>Examine and plot the frequency of prescriptions over time for selected patients:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">selected_patients</span> <span class="o">=</span> <span class="n">patients_with_5_plus</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</div>
+</div>
+<p><strong>4. Longitudinal Data Analysis:</strong></p>
+<ul class="simple">
+<li><p><strong>Select a subset of patients with at least three prescriptions:</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patients_with_3_plus</span> <span class="o">=</span> <span class="n">prescriptions_per_patient</span><span class="p">[</span><span class="n">prescriptions_per_patient</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+<span class="n">subset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;usrds_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">patients_with_3_plus</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Examine and plot the frequency of prescriptions over time for selected patients:</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected_patients</span> <span class="o">=</span> <span class="n">patients_with_3_plus</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">patient_id</span> <span class="ow">in</span> <span class="n">selected_patients</span><span class="p">:</span>
     <span class="n">patient_data</span> <span class="o">=</span> <span class="n">subset</span><span class="p">[</span><span class="n">subset</span><span class="p">[</span><span class="s1">&#39;usrds_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">patient_id</span><span class="p">]</span>
@@ -569,21 +668,63 @@ Submit a Jupyter notebook containing all code, outputs, visualizations, and a di
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</li>
-</ul>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/88ae08f96e6761a89311807148ebf779e33141a1561201fd231746450c0ec14b.png" src="_images/88ae08f96e6761a89311807148ebf779e33141a1561201fd231746450c0ec14b.png" />
+<img alt="_images/7a8602bd0eaa06bfb3fd007b31990d356bc221a6229aa29178a6939761a34737.png" src="_images/7a8602bd0eaa06bfb3fd007b31990d356bc221a6229aa29178a6939761a34737.png" />
+<img alt="_images/8f38f5a0d506d915c23f76100338394567fdbaea077750c9b3c62dc32218a61e.png" src="_images/8f38f5a0d506d915c23f76100338394567fdbaea077750c9b3c62dc32218a61e.png" />
+</div>
+</div>
 <p><strong>5. Multilevel Modeling:</strong></p>
-<ul>
-<li><p><strong>Build a linear mixed-effects model:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+<ul class="simple">
+<li><p><strong>Build a linear mixed-effects model:</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">mixedlm</span><span class="p">(</span><span class="s2">&quot;usrds_id ~ year_month&quot;</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;usrds_id&quot;</span><span class="p">])</span>
+<span class="c1"># Convert &#39;year_month&#39; to string</span>
+<span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;year_month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;year_month&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+<span class="c1"># Fit the mixed-effects model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">mixedlm</span><span class="p">(</span><span class="s2">&quot;usrds_id ~ year_month&quot;</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;usrds_id&quot;</span><span class="p">])</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   Mixed Linear Model Regression Results
+============================================================================
+Model:                   MixedLM       Dependent Variable:       usrds_id   
+No. Observations:        2592          Method:                   REML       
+No. Groups:              2271          Scale:                    0.0316     
+Min. group size:         1             Log-Likelihood:           -21180.9335
+Max. group size:         4             Converged:                Yes        
+Mean group size:         1.1                                                
+----------------------------------------------------------------------------
+                         Coef.      Std.Err.    z    P&gt;|z|  [0.025   0.975] 
+----------------------------------------------------------------------------
+Intercept                4966.686      56.473 87.948 0.000 4856.001 5077.371
+year_month[T.2024-02]      -0.000       0.048 -0.000 1.000   -0.093    0.093
+year_month[T.2024-03]       0.000       0.050  0.000 1.000   -0.098    0.098
+year_month[T.2024-04]       0.000       0.048  0.000 1.000   -0.095    0.095
+year_month[T.2024-05]       0.000       0.050  0.000 1.000   -0.098    0.098
+year_month[T.2024-06]       0.000       0.049  0.000 1.000   -0.096    0.096
+year_month[T.2024-07]       0.000       0.048  0.000 1.000   -0.094    0.094
+year_month[T.2024-08]      -0.000       0.053 -0.000 1.000   -0.104    0.104
+year_month[T.2024-09]       0.000       0.050  0.000 1.000   -0.099    0.099
+year_month[T.2024-10]       0.000       0.052  0.000 1.000   -0.103    0.103
+year_month[T.2024-11]      -0.000       0.053 -0.000 1.000   -0.104    0.104
+year_month[T.2024-12]       0.000       0.051  0.000 1.000   -0.100    0.100
+Group Var             7242677.078 3273083.158                               
+============================================================================
+</pre></div>
+</div>
+</div>
+</div>
 <p>The model here is quite simple and is mostly for illustrative purposes. The TA can expect variations, such as different covariates in the formula or more complex structures for the random effects.</p>
-</li>
-</ul>
 <p><strong>6. Discussion:</strong></p>
 <ul class="simple">
 <li><p>This section is primarily qualitative, but TAs should encourage students to discuss:</p>
@@ -596,6 +737,30 @@ Submit a Jupyter notebook containing all code, outputs, visualizations, and a di
 </li>
 </ul>
 <p>By providing these solutions and hints, TAs should be able to effectively guide students through the assignment while allowing flexibility for different approaches and interpretations.</p>
+<p>This output is from a mixed linear model (MLM) regression analysis. Let’s break down the key parts:</p>
+<ol class="arabic simple">
+<li><p><strong>Model Summary</strong>:</p>
+<ul class="simple">
+<li><p><strong>Model</strong>: MixedLM (Mixed Linear Model)</p></li>
+<li><p><strong>Dependent Variable</strong>: usrds_id</p></li>
+<li><p><strong>No. Observations</strong>: 2592</p></li>
+<li><p><strong>Method</strong>: REML (Restricted Maximum Likelihood)</p></li>
+<li><p><strong>No. Groups</strong>: 2271</p></li>
+<li><p><strong>Scale</strong>: 0.0316</p></li>
+<li><p><strong>Log-Likelihood</strong>: -21180.9335</p></li>
+<li><p><strong>Converged</strong>: Yes</p></li>
+<li><p><strong>Mean group size</strong>: 1.1</p></li>
+</ul>
+</li>
+<li><p><strong>Coefficients</strong>:</p>
+<ul class="simple">
+<li><p><strong>Intercept</strong>: 4966.686, Std.Err. 56.473, z 87.948, P&gt;|z| 0.000</p></li>
+<li><p><strong>year_month[T.2024-02]</strong> to <strong>year_month[T.2024-12]</strong>: These are the coefficients for each month of the year 2024. They all seem to be close to zero, with standard errors close to zero as well, and p-values of 1.000, indicating that these coefficients are not statistically significant.</p></li>
+</ul>
+</li>
+<li><p><strong>Group Variance</strong>: 7242677.078, Std.Err. 3273083.158: This represents the variance between groups (different usrds_id), suggesting there is substantial variation between groups.</p></li>
+</ol>
+<p>Overall, the model suggests that there is no significant relationship between the <code class="docutils literal notranslate"><span class="pre">year_month</span></code> and <code class="docutils literal notranslate"><span class="pre">usrds_id</span></code> variables. The intercept, which represents the average usrds_id, is the main factor influencing the dependent variable in this model.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -667,8 +832,6 @@ Submit a Jupyter notebook containing all code, outputs, visualizations, and a di
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-hierarchical-multilevel-longitudinal-data">6 Nested, Hierarchical, Multilevel, Longitudinal Data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">Lab</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
 </ul>
 
   </nav></div>
