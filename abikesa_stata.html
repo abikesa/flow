@@ -443,6 +443,10 @@ cls
 <span class="k">use</span> <span class="vg">${repo}</span>esrdRisk_t02tT,<span class="k"> clear</span>
 <span class="k">tab</span> donor rSMGJcEdF_d
 <span class="k">g</span> entry = rSMGJcEdF_t0
+<span class="c1">//linkage for donors after 2011 is untrustworthy</span>
+<span class="k">replace</span> rSMGJcEdF_d=<span class="m">0</span><span class="k"> if</span> rSMGJcEdF_tT <span class="o">&gt;</span><span class="k"> d</span>(31dec2011)
+<span class="k">replace</span> rSMGJcEdF_tT =<span class="k"> d</span>(31dec2011)<span class="k"> if</span> rSMGJcEdF_tT <span class="o">&gt;</span><span class="k"> d</span>(31dec2011)
+<span class="c1">//linkage before 1994 is untrustworthy</span>
 <span class="k">replace</span> entry =<span class="k"> d</span>(01jan1994)<span class="k"> if</span> <span class="cs">///</span>
     entry <span class="o">&lt;</span><span class="k"> d</span>(01jan1994) <span class="o">&amp;</span> <span class="cs">///</span>
 	rSMGJcEdF_tT <span class="o">&gt;</span><span class="k"> d</span>(01jan1994)
@@ -480,6 +484,7 @@ cls
 <span class="k">    by</span>(donor) <span class="cs">///</span>
     fail <span class="cs">///</span>
 	per(<span class="m">100</span>) <span class="cs">///</span>
+	xlab(<span class="m">0</span>(<span class="m">3</span>)<span class="m">15</span>) <span class="cs">///</span>
 	ylab(<span class="m">0</span>(<span class="m">10</span>)<span class="m">40</span>, <span class="cs">///</span>
 <span class="k">	    format</span>(<span class="nx">%2.0f</span>)) <span class="cs">///</span>
 	tmax(<span class="m">15</span>) <span class="cs">///</span>
@@ -499,13 +504,13 @@ cls
 	) <span class="cs">///</span>
 	ti(<span class="s">&quot;Mortality&quot;</span>) <span class="cs">///</span>
 	text(<span class="nv">`don5y&#39;</span> <span class="m">5</span> <span class="s">&quot;</span><span class="nv">`don5y&#39;</span><span class="s">%&quot;</span>, col(stc1)) <span class="cs">///</span>
-	text(<span class="nv">`don12y&#39;</span> <span class="m">10</span> <span class="s">&quot;</span><span class="nv">`don10y&#39;</span><span class="s">%&quot;</span>, col(stc1)) <span class="cs">///</span>
+	text(<span class="nv">`don12y&#39;</span> <span class="m">12</span> <span class="s">&quot;</span><span class="nv">`don12y&#39;</span><span class="s">%&quot;</span>, col(stc1)) <span class="cs">///</span>
 	text(<span class="nv">`don15y&#39;</span> <span class="m">15</span> <span class="s">&quot;</span><span class="nv">`don15y&#39;</span><span class="s">%&quot;</span>, col(stc1)) <span class="cs">///</span>
 	text(<span class="nv">`hnd5y&#39;</span> <span class="m">5</span> <span class="s">&quot;</span><span class="nv">`hnd5y&#39;</span><span class="s">%&quot;</span>, col(stc2)) <span class="cs">///</span>
-	text(<span class="nv">`hnd12y&#39;</span> <span class="m">10</span> <span class="s">&quot;</span><span class="nv">`hnd10y&#39;</span><span class="s">%&quot;</span>, col(stc2)) <span class="cs">///</span>
+	text(<span class="nv">`hnd12y&#39;</span> <span class="m">12</span> <span class="s">&quot;</span><span class="nv">`hnd12y&#39;</span><span class="s">%&quot;</span>, col(stc2)) <span class="cs">///</span>
 	text(<span class="nv">`hnd15y&#39;</span> <span class="m">15</span> <span class="s">&quot;</span><span class="nv">`hnd15y&#39;</span><span class="s">%&quot;</span>, col(stc2)) <span class="cs">///</span>
 	text(<span class="nv">`gpop5y&#39;</span> <span class="m">5</span> <span class="s">&quot;</span><span class="nv">`gpop5y&#39;</span><span class="s">%&quot;</span>, col(stc3)) <span class="cs">///</span>
-	text(<span class="nv">`gpop12y&#39;</span> <span class="m">10</span> <span class="s">&quot;</span><span class="nv">`gpop10y&#39;</span><span class="s">%&quot;</span>, col(stc3)) <span class="cs">///</span>
+	text(<span class="nv">`gpop12y&#39;</span> <span class="m">12</span> <span class="s">&quot;</span><span class="nv">`gpop12y&#39;</span><span class="s">%&quot;</span>, col(stc3)) <span class="cs">///</span>
 	text(<span class="nv">`gpop15y&#39;</span> <span class="m">15</span> <span class="s">&quot;</span><span class="nv">`gpop15y&#39;</span><span class="s">%&quot;</span>, col(stc3))
 
 <span class="k">graph</span> export jamascript<span class="m">.</span>png,<span class="k"> replace</span> 
