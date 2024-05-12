@@ -374,10 +374,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-iii-advanced">Stata III (Advanced)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#line-continuation-is-problematic-in-terminal-jupyter">Line continuation is problematic in Terminal &amp; Jupyter</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
 </ul>
 
             </nav>
@@ -414,6 +411,7 @@ document.write(`
 </ul>
 <Details>
    <Summary>Victory! But After 100 Iterations!!</Summary>
+<p>Just scored a revolutionary victory that carries profound implications for “Stata III (Advanced)” Next year!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
 <p>It looks like the Stata kernel (<code class="docutils literal notranslate"><span class="pre">stata</span></code>) is listed as an available kernel, which is a good sign. Since you’re still not seeing it in the kernel selector in VS Code, it might be worth checking the VS Code settings to ensure it’s looking in the correct directory for kernels.</p>
 <p>In VS Code, you can check the Jupyter kernel settings by going to the command palette (Ctrl+Shift+P) and searching for “Preferences: Open Settings (UI)”. Then, navigate to the “Python &gt; Jupyter” section and look for the “Jupyter: Kernel Spec Path” setting. Make sure it’s pointing to the correct directory where the Stata kernel is installed (<code class="docutils literal notranslate"><span class="pre">/Users/d/Library/Jupyter/kernels/</span></code> in your case).</p>
 <p>If the path is correct and you’re still not seeing the Stata kernel, you might try restarting VS Code again or even restarting your computer to see if that resolves the issue. Sometimes, these changes require a complete restart to take effect.</p>
@@ -438,97 +436,6 @@ stata-mp<span class="w"> </span>-b<span class="w"> </span>hello.do
 </div>
 <p>This script will download the <code class="docutils literal notranslate"><span class="pre">hello.do</span></code> script from the GitHub repository and then execute it in batch mode using Stata. Make sure you have <code class="docutils literal notranslate"><span class="pre">curl</span></code> installed on your system, or you can use any other tool to download files from the web.</p>
 <p>Running scripts remotely can be a powerful tool, but always ensure you trust the source of the script to avoid any security risks.</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
-<span class="k">global</span> repo https:<span class="o">//</span>github<span class="m">.</span>com<span class="o">/</span>muzaale<span class="o">/</span>forum<span class="o">/</span>raw<span class="o">/</span>main<span class="o">/</span> 
-cls
-<span class="k">noi di</span> <span class="s">&quot;What is your work directory?&quot;</span> _request(workdir)
-<span class="k">if</span> <span class="s">&quot;</span><span class="vg">$workdir</span><span class="s">&quot;</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> {
-<span class="k">	di as err</span> <span class="s">&quot;Please provide your work directory&quot;</span>
-<span class="k">	exit</span>
-}
-<span class="k">else</span> {
-<span class="k">	cd</span> <span class="vg">$workdir</span>
-<span class="k">	noi di</span> <span class="s">&quot;jamascript is running ...&quot;</span>
-}
-<span class="k">use</span> <span class="vg">${repo}</span>esrdRisk_t02tT,<span class="k"> clear</span>
-<span class="k">tab</span> donor rSMGJcEdF_d
-<span class="k">g</span> entry = rSMGJcEdF_t0
-<span class="c1">//linkage for donors after 2011 is untrustworthy</span>
-<span class="k">replace</span> rSMGJcEdF_d=<span class="m">0</span><span class="k"> if</span> rSMGJcEdF_tT <span class="o">&gt;</span><span class="k"> d</span>(31dec2011)
-<span class="k">replace</span> rSMGJcEdF_tT =<span class="k"> d</span>(31dec2011)<span class="k"> if</span> rSMGJcEdF_tT <span class="o">&gt;</span><span class="k"> d</span>(31dec2011)
-<span class="c1">//linkage before 1994 is untrustworthy</span>
-<span class="k">replace</span> entry =<span class="k"> d</span>(01jan1994)<span class="k"> if</span> <span class="cs">///</span>
-    entry <span class="o">&lt;</span><span class="k"> d</span>(01jan1994) <span class="o">&amp;</span> <span class="cs">///</span>
-	rSMGJcEdF_tT <span class="o">&gt;</span><span class="k"> d</span>(01jan1994)
-<span class="k">stset</span> rSMGJcEdF_tT, <span class="cs">///</span>
-    origin(rSMGJcEdF_t0) <span class="cs">///</span>
-	entry(<span class="nv">`entry&#39;</span>) <span class="cs">///</span>
-	fail(rSMGJcEdF_d<span class="o">==</span><span class="m">2</span>) <span class="cs">///</span>
-	scale(<span class="m">365.25</span>) 
-<span class="k">sts list</span>, fail<span class="k"> by</span>(donor) at(<span class="m">5</span> <span class="m">12</span> <span class="m">15</span>) saving(km,<span class="k"> replace</span> )
-<span class="k">preserve</span> 
-<span class="k">    use</span> km,<span class="k"> clear</span> 
-<span class="k">	replace</span> failure=failure<span class="o">*</span><span class="m">100</span>
-<span class="k">    sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">1</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">5</span>
-<span class="k">	local</span> don5y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
-<span class="k">    sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">1</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">12</span>
-<span class="k">	local</span> don12y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
-<span class="k">	sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">1</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">15</span>
-<span class="k">	local</span> don15y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
-	<span class="c1">//</span>
-<span class="k">    sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">2</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">5</span>
-<span class="k">	local</span> hnd5y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
-<span class="k">    sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">2</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">12</span>
-<span class="k">	local</span> hnd12y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
-<span class="k">	sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">2</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">15</span>
-<span class="k">	local</span> hnd15y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
-	<span class="c1">//</span>
-<span class="k">    sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">3</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">5</span>
-<span class="k">	local</span> gpop5y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
-<span class="k">    sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">3</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">12</span>
-<span class="k">	local</span> gpop12y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
-<span class="k">	sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">3</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">15</span>
-<span class="k">	local</span> gpop15y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
-<span class="k">restore</span> 
-<span class="k">sts graph</span>, <span class="cs">///</span>
-<span class="k">    by</span>(donor) <span class="cs">///</span>
-    fail <span class="cs">///</span>
-	per(<span class="m">100</span>) <span class="cs">///</span>
-	xlab(<span class="m">0</span>(<span class="m">3</span>)<span class="m">15</span>) <span class="cs">///</span>
-	ylab(<span class="m">0</span>(<span class="m">10</span>)<span class="m">40</span>, <span class="cs">///</span>
-<span class="k">	    format</span>(<span class="nx">%2.0f</span>)) <span class="cs">///</span>
-	tmax(<span class="m">15</span>) <span class="cs">///</span>
-	risktable(, color(stc1) group (<span class="m">1</span>) <span class="cs">///</span>
-<span class="k">	    order</span>(<span class="m">3</span> <span class="s">&quot; &quot;</span> <span class="m">2</span> <span class="s">&quot; &quot;</span> <span class="m">1</span> <span class="s">&quot; &quot;</span>) <span class="cs">///</span>
-		ti(<span class="s">&quot;#&quot;</span>) <span class="cs">///</span>
-	) <span class="cs">///</span>
-	risktable(, color(stc2) group(<span class="m">2</span>)) <span class="cs">///</span>
-	risktable(, color(stc3) group(<span class="m">3</span>)) <span class="cs">///</span>
-	legend(on <span class="cs">///</span>
-	ring(<span class="m">0</span>) <span class="cs">///</span>
-	    pos(<span class="m">11</span>) <span class="cs">///</span>
-<span class="k">	   order</span>(<span class="m">3</span> <span class="m">2</span> <span class="m">1</span>) <span class="cs">///</span>
-<span class="k">	   lab</span>(<span class="m">3</span> <span class="s">&quot;General population&quot;</span>) <span class="cs">///</span>
-<span class="k">	   lab</span>(<span class="m">2</span> <span class="s">&quot;Healthy nondonor&quot;</span>) <span class="cs">///</span>
-<span class="k">	   lab</span>(<span class="m">1</span> <span class="s">&quot;Living donor&quot;</span>) <span class="cs">///</span>
-	) <span class="cs">///</span>
-	ti(<span class="s">&quot;Mortality&quot;</span>) <span class="cs">///</span>
-	text(<span class="nv">`don5y&#39;</span> <span class="m">5</span> <span class="s">&quot;</span><span class="nv">`don5y&#39;</span><span class="s">%&quot;</span>, col(stc1)) <span class="cs">///</span>
-	text(<span class="nv">`don12y&#39;</span> <span class="m">12</span> <span class="s">&quot;</span><span class="nv">`don12y&#39;</span><span class="s">%&quot;</span>, col(stc1)) <span class="cs">///</span>
-	text(<span class="nv">`don15y&#39;</span> <span class="m">15</span> <span class="s">&quot;</span><span class="nv">`don15y&#39;</span><span class="s">%&quot;</span>, col(stc1)) <span class="cs">///</span>
-	text(<span class="nv">`hnd5y&#39;</span> <span class="m">5</span> <span class="s">&quot;</span><span class="nv">`hnd5y&#39;</span><span class="s">%&quot;</span>, col(stc2)) <span class="cs">///</span>
-	text(<span class="nv">`hnd12y&#39;</span> <span class="m">12</span> <span class="s">&quot;</span><span class="nv">`hnd12y&#39;</span><span class="s">%&quot;</span>, col(stc2)) <span class="cs">///</span>
-	text(<span class="nv">`hnd15y&#39;</span> <span class="m">15</span> <span class="s">&quot;</span><span class="nv">`hnd15y&#39;</span><span class="s">%&quot;</span>, col(stc2)) <span class="cs">///</span>
-	text(<span class="nv">`gpop5y&#39;</span> <span class="m">5</span> <span class="s">&quot;</span><span class="nv">`gpop5y&#39;</span><span class="s">%&quot;</span>, col(stc3)) <span class="cs">///</span>
-	text(<span class="nv">`gpop12y&#39;</span> <span class="m">12</span> <span class="s">&quot;</span><span class="nv">`gpop12y&#39;</span><span class="s">%&quot;</span>, col(stc3)) <span class="cs">///</span>
-	text(<span class="nv">`gpop15y&#39;</span> <span class="m">15</span> <span class="s">&quot;</span><span class="nv">`gpop15y&#39;</span><span class="s">%&quot;</span>, col(stc3))
-
-<span class="k">graph</span> export jamascript<span class="m">.</span>png,<span class="k"> replace</span> 
-<span class="k">noi ls</span>
-} 
-</pre></div>
-</div>
-<p><img alt="" src="_images/jamascript.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">display</span> <span class="s">&quot;Hello, Stata!&quot;</span>
@@ -541,104 +448,12 @@ cls
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
-<span class="k">global</span> repo https:<span class="o">//</span>github<span class="m">.</span>com<span class="o">/</span>muzaale<span class="o">/</span>forum<span class="o">/</span>raw<span class="o">/</span>main<span class="o">/</span> 
-<span class="c1">// cls; some commands don&#39;t work outside Stata!!</span>
-<span class="k">noi di</span> <span class="s">&quot;What is your work directory?&quot;</span> _request(workdir)
-<span class="k">if</span> <span class="s">&quot;</span><span class="vg">$workdir</span><span class="s">&quot;</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> {
-<span class="k">	di as err</span> <span class="s">&quot;Please provide your work directory&quot;</span>
-<span class="k">	exit</span>
-}
-<span class="k">else</span> {
-<span class="k">	cd</span> <span class="vg">$workdir</span>
-<span class="k">	noi di</span> <span class="s">&quot;jamascript is running ...&quot;</span>
-}
-<span class="k">use</span> <span class="vg">${repo}</span>esrdRisk_t02tT,<span class="k"> clear</span>
-<span class="k">tab</span> donor rSMGJcEdF_d
-<span class="k">g</span> entry = rSMGJcEdF_t0
-<span class="c1">//linkage for donors after 2011 is untrustworthy</span>
-<span class="k">replace</span> rSMGJcEdF_d=<span class="m">0</span><span class="k"> if</span> rSMGJcEdF_tT <span class="o">&gt;</span><span class="k"> d</span>(31dec2011)
-<span class="k">replace</span> rSMGJcEdF_tT =<span class="k"> d</span>(31dec2011)<span class="k"> if</span> rSMGJcEdF_tT <span class="o">&gt;</span><span class="k"> d</span>(31dec2011)
-<span class="c1">//linkage before 1994 is untrustworthy</span>
-<span class="k">replace</span> entry =<span class="k"> d</span>(01jan1994)<span class="k"> if</span> <span class="cs">///</span>
-    entry <span class="o">&lt;</span><span class="k"> d</span>(01jan1994) <span class="o">&amp;</span> <span class="cs">///</span>
-	rSMGJcEdF_tT <span class="o">&gt;</span><span class="k"> d</span>(01jan1994)
-<span class="k">stset</span> rSMGJcEdF_tT, <span class="cs">///</span>
-    origin(rSMGJcEdF_t0) <span class="cs">///</span>
-	entry(<span class="nv">`entry&#39;</span>) <span class="cs">///</span>
-	fail(rSMGJcEdF_d<span class="o">==</span><span class="m">2</span>) <span class="cs">///</span>
-	scale(<span class="m">365.25</span>) 
-<span class="k">sts list</span>, fail<span class="k"> by</span>(donor) at(<span class="m">5</span> <span class="m">12</span> <span class="m">15</span>) saving(km,<span class="k"> replace</span> )
-<span class="k">preserve</span> 
-<span class="k">    use</span> km,<span class="k"> clear</span> 
-<span class="k">	replace</span> failure=failure<span class="o">*</span><span class="m">100</span>
-<span class="k">    sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">1</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">5</span>
-<span class="k">	local</span> don5y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
-<span class="k">    sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">1</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">12</span>
-<span class="k">	local</span> don12y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
-<span class="k">	sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">1</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">15</span>
-<span class="k">	local</span> don15y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
-	<span class="c1">//</span>
-<span class="k">    sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">2</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">5</span>
-<span class="k">	local</span> hnd5y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
-<span class="k">    sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">2</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">12</span>
-<span class="k">	local</span> hnd12y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
-<span class="k">	sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">2</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">15</span>
-<span class="k">	local</span> hnd15y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
-	<span class="c1">//</span>
-<span class="k">    sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">3</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">5</span>
-<span class="k">	local</span> gpop5y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
-<span class="k">    sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">3</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">12</span>
-<span class="k">	local</span> gpop12y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
-<span class="k">	sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">3</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">15</span>
-<span class="k">	local</span> gpop15y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
-<span class="k">restore</span> 
-<span class="k">sts graph</span>, <span class="cs">///</span>
-<span class="k">    by</span>(donor) <span class="cs">///</span>
-    fail <span class="cs">///</span>
-	per(<span class="m">100</span>) <span class="cs">///</span>
-	xlab(<span class="m">0</span>(<span class="m">3</span>)<span class="m">15</span>) <span class="cs">///</span>
-	ylab(<span class="m">0</span>(<span class="m">10</span>)<span class="m">40</span>, <span class="cs">///</span>
-<span class="k">	    format</span>(<span class="nx">%2.0f</span>)) <span class="cs">///</span>
-	tmax(<span class="m">15</span>) <span class="cs">///</span>
-	risktable(, color(stc1) group (<span class="m">1</span>) <span class="cs">///</span>
-<span class="k">	    order</span>(<span class="m">3</span> <span class="s">&quot; &quot;</span> <span class="m">2</span> <span class="s">&quot; &quot;</span> <span class="m">1</span> <span class="s">&quot; &quot;</span>) <span class="cs">///</span>
-		ti(<span class="s">&quot;#&quot;</span>) <span class="cs">///</span>
-	) <span class="cs">///</span>
-	risktable(, color(stc2) group(<span class="m">2</span>)) <span class="cs">///</span>
-	risktable(, color(stc3) group(<span class="m">3</span>)) <span class="cs">///</span>
-	legend(on <span class="cs">///</span>
-	ring(<span class="m">0</span>) <span class="cs">///</span>
-	    pos(<span class="m">11</span>) <span class="cs">///</span>
-<span class="k">	   order</span>(<span class="m">3</span> <span class="m">2</span> <span class="m">1</span>) <span class="cs">///</span>
-<span class="k">	   lab</span>(<span class="m">3</span> <span class="s">&quot;General population&quot;</span>) <span class="cs">///</span>
-<span class="k">	   lab</span>(<span class="m">2</span> <span class="s">&quot;Healthy nondonor&quot;</span>) <span class="cs">///</span>
-<span class="k">	   lab</span>(<span class="m">1</span> <span class="s">&quot;Living donor&quot;</span>) <span class="cs">///</span>
-	) <span class="cs">///</span>
-	ti(<span class="s">&quot;Morte&quot;</span>) <span class="cs">///</span>
-	text(<span class="nv">`don5y&#39;</span> <span class="m">5</span> <span class="s">&quot;</span><span class="nv">`don5y&#39;</span><span class="s">%&quot;</span>, col(stc1)) <span class="cs">///</span>
-	text(<span class="nv">`don12y&#39;</span> <span class="m">12</span> <span class="s">&quot;</span><span class="nv">`don12y&#39;</span><span class="s">%&quot;</span>, col(stc1)) <span class="cs">///</span>
-	text(<span class="nv">`don15y&#39;</span> <span class="m">15</span> <span class="s">&quot;</span><span class="nv">`don15y&#39;</span><span class="s">%&quot;</span>, col(stc1)) <span class="cs">///</span>
-	text(<span class="nv">`hnd5y&#39;</span> <span class="m">5</span> <span class="s">&quot;</span><span class="nv">`hnd5y&#39;</span><span class="s">%&quot;</span>, col(stc2)) <span class="cs">///</span>
-	text(<span class="nv">`hnd12y&#39;</span> <span class="m">12</span> <span class="s">&quot;</span><span class="nv">`hnd12y&#39;</span><span class="s">%&quot;</span>, col(stc2)) <span class="cs">///</span>
-	text(<span class="nv">`hnd15y&#39;</span> <span class="m">15</span> <span class="s">&quot;</span><span class="nv">`hnd15y&#39;</span><span class="s">%&quot;</span>, col(stc2)) <span class="cs">///</span>
-	text(<span class="nv">`gpop5y&#39;</span> <span class="m">5</span> <span class="s">&quot;</span><span class="nv">`gpop5y&#39;</span><span class="s">%&quot;</span>, col(stc3)) <span class="cs">///</span>
-	text(<span class="nv">`gpop12y&#39;</span> <span class="m">12</span> <span class="s">&quot;</span><span class="nv">`gpop12y&#39;</span><span class="s">%&quot;</span>, col(stc3)) <span class="cs">///</span>
-	text(<span class="nv">`gpop15y&#39;</span> <span class="m">15</span> <span class="s">&quot;</span><span class="nv">`gpop15y&#39;</span><span class="s">%&quot;</span>, col(stc3))
-
-<span class="k">graph</span> export work<span class="o">/</span>jamascript<span class="m">.</span>png,<span class="k"> replace</span> 
-<span class="k">noi ls</span>
-} 
- 
-</pre></div>
-</div>
-</div>
-</div>
-<section id="line-continuation-is-problematic-in-terminal-jupyter">
-<h2>Line continuation is problematic in Terminal &amp; Jupyter<a class="headerlink" href="#line-continuation-is-problematic-in-terminal-jupyter" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
 <span class="k">global</span> repo https:<span class="o">//</span>github<span class="m">.</span>com<span class="o">/</span>muzaale<span class="o">/</span>forum<span class="o">/</span>raw<span class="o">/</span>main<span class="o">/</span> 
@@ -731,188 +546,14 @@ cls
 #delimit cr
 
 <span class="k">graph</span> export <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>work<span class="o">/</span>jamascript<span class="m">.</span>png,<span class="k"> replace</span> 
-<span class="k">noi ls</span>
+<span class="c1">//noi ls</span>
 } 
  
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total 8808
-</pre></div>
+</details>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff       25 May  5 16:19 README.md
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>drwxr-xr-x@  5 d  staff      160 May 12 18:16 _build/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff      137 May  5 16:19 _config.yml
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff     2955 May  5 16:19 _toc.yml
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff       81 May  5 16:19 abikesa_batch.do*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff      551 May  5 16:19 abikesa_clone.sh
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff      168 May  5 16:19 abikesa_copilot.do*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff       45 May  5 16:19 abikesa_copilot.sh
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff      115 May  5 16:19 abikesa_csv.do
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff      123 May  5 16:19 abikesa_csv.sh*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff     1774 May  5 16:19 abikesa_editrepo.sh*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff     2046 May  5 16:19 abikesa_folked.sh*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff     2569 May  5 16:19 abikesa_jbb.sh*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff     3745 May  5 16:19 abikesa_jbc.sh*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff    12248 May  5 16:19 abikesa_jhustatabasic_health.txt
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff      924 May  5 16:19 abikesa_key.sh
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff     2380 May  5 16:19 abikesa_key_g.sh*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff     4084 May  5 16:19 abikesa_ngoma.sh*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff      950 May  5 16:19 abikesa_nhanes.do
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff      103 May  5 16:19 abikesa_nhanes.sh*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff   349288 May 12 17:47 abikesa_python.ipynb*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff    99361 May 12 12:01 abikesa_r.ipynb*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff     1120 May  5 16:19 abikesa_remove_duplicates.sh*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff      809 May  5 16:19 abikesa_rmdir.sh*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff      642 May  5 16:19 abikesa_rmfiles.sh*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff      959 May  5 16:19 abikesa_rmstuff.sh*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff     3233 May  5 16:19 abikesa_seasons.do
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff       93 May  5 16:19 abikesa_seasons.sh*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff     1378 May  5 16:19 abikesa_stata.do
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff    18913 May 12 18:14 abikesa_stata.ipynb*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff     2482 May  5 16:19 abikesa_stata.log
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff      112 May 12 10:23 abikesa_stata.sh*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff       40 May  5 16:19 abikesa_stata3.do*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff      250 May  5 16:19 abikesa_statacurl.sh*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>drwxr-xr-x@ 16 d  staff      512 May  5 16:21 act0/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>drwxr-xr-x@  4 d  staff      128 May  5 16:21 act1/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>drwxr-xr-x@  4 d  staff      128 May  5 16:20 act2/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>drwxr-xr-x@  3 d  staff       96 May  5 16:21 act3/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>drwxr-xr-x@  3 d  staff       96 May  5 16:21 act4/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>drwxr-xr-x@  3 d  staff       96 May  5 16:21 act5/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>drwxr-xr-x@  5 d  staff      160 May  5 16:21 act_0/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>drwxr-xr-x@  5 d  staff      160 May  5 16:21 act_1/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>drwxr-xr-x@  5 d  staff      160 May  5 16:21 act_2/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>drwxr-xr-x@  5 d  staff      160 May  5 16:21 act_3/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x@  1 d  staff      376 May  5 16:19 bash.sh*
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff     6402 May 12 17:54 intro.ipynb
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff  2446062 May 12 09:22 jamascript-e.pdf
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff   175502 May 12 09:21 jamascript-m.pdf
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff     1932 May 12 07:50 jamascript.do
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff    45893 May 12 18:16 jamascript.png
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff     5936 May 12 18:16 km.dta
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff   342072 May  5 16:19 maluminse.png
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff    77753 May 12 18:16 particle_animation.gif
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff   680890 May  5 16:19 preface.ipynb
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff    12114 May  5 16:19 prologue.ipynb
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r--@  1 d  staff    83094 May 12 18:16 temp_stsrpos.csv
-</pre></div>
-</div>
-</div>
-</div>
-<p><img alt="" src="_images/jamascript.png" /></p>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -989,10 +630,7 @@ cls
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-iii-advanced">Stata III (Advanced)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#line-continuation-is-problematic-in-terminal-jupyter">Line continuation is problematic in Terminal &amp; Jupyter</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
 </ul>
 
   </nav></div>
