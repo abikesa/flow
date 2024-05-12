@@ -365,7 +365,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-kernel-in-jupyter-notebook">Stata kernel in jupyter notebook</a><ul class="visible nav section-nav flex-column">
 </ul>
 </li>
 </ul>
@@ -383,8 +383,25 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id2">
-<h1>.<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="stata-kernel-in-jupyter-notebook">
+<h1>Stata kernel in jupyter notebook<a class="headerlink" href="#stata-kernel-in-jupyter-notebook" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://stackoverflow.com/questions/66638993/how-to-enable-stata-kernel-in-jupyter-notebook">In Terminal</a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/documents/github/myenv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>stata_kernel<span class="w"> </span>--target<span class="o">=</span>/users/d/documents/github/menv/lib/python3.11/site-packages
+python<span class="w"> </span>-m<span class="w"> </span>stata_kernel.install
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>nodejs<span class="w"> </span>-y<span class="w">  </span><span class="c1"># not working</span>
+jupyter<span class="w"> </span>labextension<span class="w"> </span>install<span class="w"> </span>jupyterlab-stata-highlight<span class="sb">`</span>
+
+pip<span class="w"> </span>install<span class="w"> </span>ipystata<span class="w"> </span>--target<span class="o">=</span>/users/d/documents/github/menv/lib/python3.11/site-packages
+</pre></div>
+</div>
+<p>Hanging at <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">nodejs</span> <span class="pre">-y</span></code>. Let’s address it later</p>
+<p>In Jupyter notebook</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ipystata</span> 
+<span class="kn">from</span> <span class="nn">ipystata.config</span> <span class="kn">import</span> <span class="n">config_stata</span>  
+<span class="n">config_stata</span><span class="p">(</span><span class="s1">&#39;~/Applications/Stata/StataMP&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -404,16 +421,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "r"
+            mode: "python"
         },
         kernelOptions: {
-            name: "ir",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'ir'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -454,7 +471,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-kernel-in-jupyter-notebook">Stata kernel in jupyter notebook</a><ul class="visible nav section-nav flex-column">
 </ul>
 </li>
 </ul>
