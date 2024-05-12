@@ -387,6 +387,20 @@ document.write(`
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="stata-kernel-in-jupyter-notebook">
 <h1>Stata kernel in jupyter notebook<a class="headerlink" href="#stata-kernel-in-jupyter-notebook" title="Permalink to this heading">#</a></h1>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span>GitHub<span class="w"> </span>%<span class="w"> </span>~/documents/github/myenv/bin/python3.11<span class="w"> </span>-m<span class="w"> </span>jupyter<span class="w"> </span>kernelspec<span class="w"> </span>list
+
+<span class="m">0</span>.00s<span class="w"> </span>-<span class="w"> </span>Debugger<span class="w"> </span>warning:<span class="w"> </span>It<span class="w"> </span>seems<span class="w"> </span>that<span class="w"> </span>frozen<span class="w"> </span>modules<span class="w"> </span>are<span class="w"> </span>being<span class="w"> </span>used,<span class="w"> </span>which<span class="w"> </span>may
+<span class="m">0</span>.00s<span class="w"> </span>-<span class="w"> </span>make<span class="w"> </span>the<span class="w"> </span>debugger<span class="w"> </span>miss<span class="w"> </span>breakpoints.<span class="w"> </span>Please<span class="w"> </span>pass<span class="w"> </span>-Xfrozen_modules<span class="o">=</span>off
+<span class="m">0</span>.00s<span class="w"> </span>-<span class="w"> </span>to<span class="w"> </span>python<span class="w"> </span>to<span class="w"> </span>disable<span class="w"> </span>frozen<span class="w"> </span>modules.
+<span class="m">0</span>.00s<span class="w"> </span>-<span class="w"> </span>Note:<span class="w"> </span>Debugging<span class="w"> </span>will<span class="w"> </span>proceed.<span class="w"> </span>Set<span class="w"> </span><span class="nv">PYDEVD_DISABLE_FILE_VALIDATION</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>to<span class="w"> </span>disable<span class="w"> </span>this<span class="w"> </span>validation.
+Available<span class="w"> </span>kernels:
+<span class="w">  </span>ir<span class="w">         </span>/Users/d/Library/Jupyter/kernels/ir
+<span class="w">  </span>myenv<span class="w">      </span>/Users/d/Library/Jupyter/kernels/myenv
+<span class="w">  </span>stata<span class="w">      </span>/Users/d/Library/Jupyter/kernels/stata
+<span class="w">  </span>python3<span class="w">    </span>/Users/d/Dropbox<span class="w"> </span><span class="o">(</span>Personal<span class="o">)</span>/1f.ἡἔρις,κ/1.ontology/myenv/share/jupyter/kernels/python3
+<span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span>GitHub<span class="w"> </span>%<span class="w"> </span>
+</pre></div>
+</div>
 <p><a class="reference external" href="https://stackoverflow.com/questions/66638993/how-to-enable-stata-kernel-in-jupyter-notebook">In Terminal</a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/documents/github/myenv/bin/activate
 pip<span class="w"> </span>install<span class="w"> </span>stata_kernel<span class="w"> </span>--target<span class="o">=</span>/users/d/documents/github/menv/lib/python3.11/site-packages
