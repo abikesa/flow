@@ -428,6 +428,78 @@ stata-mp<span class="w"> </span>-b<span class="w"> </span>hello.do
 </div>
 <p>This script will download the <code class="docutils literal notranslate"><span class="pre">hello.do</span></code> script from the GitHub repository and then execute it in batch mode using Stata. Make sure you have <code class="docutils literal notranslate"><span class="pre">curl</span></code> installed on your system, or you can use any other tool to download files from the web.</p>
 <p>Running scripts remotely can be a powerful tool, but always ensure you trust the source of the script to avoid any security risks.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> esrdRisk_t02tT,<span class="k"> clear</span>
+<span class="k">tab</span> donor rSMGJcEdF_d
+<span class="k">g</span> entry = rSMGJcEdF_t0
+<span class="k">replace</span> entry =<span class="k"> d</span>(01jan1994)<span class="k"> if</span> <span class="cs">///</span>
+    entry <span class="o">&lt;</span><span class="k"> d</span>(01jan1994) <span class="o">&amp;</span> <span class="cs">///</span>
+	rSMGJcEdF_tT <span class="o">&gt;</span><span class="k"> d</span>(01jan1994)
+<span class="k">stset</span> rSMGJcEdF_tT, <span class="cs">///</span>
+    origin(rSMGJcEdF_t0) <span class="cs">///</span>
+	entry(<span class="nv">`entry&#39;</span>) <span class="cs">///</span>
+	fail(rSMGJcEdF_d<span class="o">==</span><span class="m">2</span>) <span class="cs">///</span>
+	scale(<span class="m">365.25</span>) 
+<span class="k">sts list</span>, fail<span class="k"> by</span>(donor) at(<span class="m">5</span> <span class="m">10</span> <span class="m">15</span>) saving(km,<span class="k"> replace</span> )
+<span class="k">preserve</span> 
+<span class="k">    use</span> km,<span class="k"> clear</span> 
+<span class="k">	replace</span> failure=failure<span class="o">*</span><span class="m">100</span>
+<span class="k">    sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">1</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">5</span>
+<span class="k">	local</span> don5y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
+<span class="k">    sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">1</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">10</span>
+<span class="k">	local</span> don10y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
+<span class="k">	sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">1</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">15</span>
+<span class="k">	local</span> don15y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
+	<span class="c1">//</span>
+<span class="k">    sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">2</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">5</span>
+<span class="k">	local</span> hnd5y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
+<span class="k">    sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">2</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">10</span>
+<span class="k">	local</span> hnd10y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
+<span class="k">	sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">2</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">15</span>
+<span class="k">	local</span> hnd15y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
+	<span class="c1">//</span>
+<span class="k">    sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">3</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">5</span>
+<span class="k">	local</span> gpop5y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
+<span class="k">    sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">3</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">10</span>
+<span class="k">	local</span> gpop10y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
+<span class="k">	sum</span> failure<span class="k"> if</span> donor<span class="o">==</span><span class="m">3</span> <span class="o">&amp;</span> time<span class="o">==</span><span class="m">15</span>
+<span class="k">	local</span> gpop15y:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(mean)
+<span class="k">restore</span> 
+<span class="k">sts graph</span>, <span class="cs">///</span>
+<span class="k">    by</span>(donor) <span class="cs">///</span>
+    fail <span class="cs">///</span>
+	per(<span class="m">100</span>) <span class="cs">///</span>
+	ylab(<span class="m">0</span>(<span class="m">10</span>)<span class="m">40</span>, <span class="cs">///</span>
+<span class="k">	    format</span>(<span class="nx">%2.0f</span>)) <span class="cs">///</span>
+	tmax(<span class="m">15</span>) <span class="cs">///</span>
+	risktable(, color(stc1) group (<span class="m">1</span>) <span class="cs">///</span>
+<span class="k">	    order</span>(<span class="m">3</span> <span class="s">&quot; &quot;</span> <span class="m">2</span> <span class="s">&quot; &quot;</span> <span class="m">1</span> <span class="s">&quot; &quot;</span>) <span class="cs">///</span>
+		ti(<span class="s">&quot;#&quot;</span>) <span class="cs">///</span>
+	) <span class="cs">///</span>
+	risktable(, color(stc2) group(<span class="m">2</span>)) <span class="cs">///</span>
+	risktable(, color(stc3) group(<span class="m">3</span>)) <span class="cs">///</span>
+	legend(on <span class="cs">///</span>
+	ring(<span class="m">0</span>) <span class="cs">///</span>
+	    pos(<span class="m">11</span>) <span class="cs">///</span>
+<span class="k">	   order</span>(<span class="m">3</span> <span class="m">2</span> <span class="m">1</span>) <span class="cs">///</span>
+<span class="k">	   lab</span>(<span class="m">3</span> <span class="s">&quot;General population&quot;</span>) <span class="cs">///</span>
+<span class="k">	   lab</span>(<span class="m">2</span> <span class="s">&quot;Healthy nondonor&quot;</span>) <span class="cs">///</span>
+<span class="k">	   lab</span>(<span class="m">1</span> <span class="s">&quot;Living donor&quot;</span>) <span class="cs">///</span>
+	) <span class="cs">///</span>
+	ti(<span class="s">&quot;Mortality&quot;</span>) <span class="cs">///</span>
+	text(<span class="nv">`don5y&#39;</span> <span class="m">5</span> <span class="s">&quot;</span><span class="nv">`don5y&#39;</span><span class="s">%&quot;</span>, col(stc1)) <span class="cs">///</span>
+	text(<span class="nv">`don10y&#39;</span> <span class="m">10</span> <span class="s">&quot;</span><span class="nv">`don10y&#39;</span><span class="s">%&quot;</span>, col(stc1)) <span class="cs">///</span>
+	text(<span class="nv">`don15y&#39;</span> <span class="m">15</span> <span class="s">&quot;</span><span class="nv">`don15y&#39;</span><span class="s">%&quot;</span>, col(stc1)) <span class="cs">///</span>
+	text(<span class="nv">`hnd5y&#39;</span> <span class="m">5</span> <span class="s">&quot;</span><span class="nv">`hnd5y&#39;</span><span class="s">%&quot;</span>, col(stc2)) <span class="cs">///</span>
+	text(<span class="nv">`hnd10y&#39;</span> <span class="m">10</span> <span class="s">&quot;</span><span class="nv">`hnd10y&#39;</span><span class="s">%&quot;</span>, col(stc2)) <span class="cs">///</span>
+	text(<span class="nv">`hnd15y&#39;</span> <span class="m">15</span> <span class="s">&quot;</span><span class="nv">`hnd15y&#39;</span><span class="s">%&quot;</span>, col(stc2)) <span class="cs">///</span>
+	text(<span class="nv">`gpop5y&#39;</span> <span class="m">5</span> <span class="s">&quot;</span><span class="nv">`gpop5y&#39;</span><span class="s">%&quot;</span>, col(stc3)) <span class="cs">///</span>
+	text(<span class="nv">`gpop10y&#39;</span> <span class="m">10</span> <span class="s">&quot;</span><span class="nv">`gpop10y&#39;</span><span class="s">%&quot;</span>, col(stc3)) <span class="cs">///</span>
+	text(<span class="nv">`gpop15y&#39;</span> <span class="m">15</span> <span class="s">&quot;</span><span class="nv">`gpop15y&#39;</span><span class="s">%&quot;</span>, col(stc3))
+
+<span class="k">graph</span> export jamascript<span class="m">.</span>png,<span class="k"> replace</span> 
+</pre></div>
+</div>
+<p><img alt="" src="_images/jamascript.png" /></p>
 </section>
 
     <script type="text/x-thebe-config">
