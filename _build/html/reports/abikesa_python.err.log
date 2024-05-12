@@ -68,7 +68,6 @@ ax.legend(handles, labels, title='Economic Activity', loc='lower right')
 
 plt.title('Classification of Nations by Economic Activity')
 plt.show()
-
 ------------------
 
 
