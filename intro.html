@@ -162,6 +162,9 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="abikesa_python.html"></a></li>
 
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="abikesa_stata.html"></a></li>
 
 
@@ -402,6 +405,62 @@ pip<span class="w"> </span>install<span class="w"> </span>ipystata<span class="w
 <span class="n">config_stata</span><span class="p">(</span><span class="s1">&#39;~/Applications/Stata/StataMP&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>It seems like there might be an issue with the installation of the <code class="docutils literal notranslate"><span class="pre">stata_kernel</span></code> package. Here’s a step-by-step guide to troubleshoot and resolve the problem:</p>
+<ol class="arabic">
+<li><p><strong>Check Installation</strong>: Verify that the <code class="docutils literal notranslate"><span class="pre">stata_kernel</span></code> package is installed in your virtual environment. You can do this by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/documents/github/myenv/bin/python3.11<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>stata_kernel
+</pre></div>
+</div>
+<p>If the package is not installed, you’ll need to install it using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/documents/github/myenv/bin/python3.11<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>stata_kernel
+</pre></div>
+</div>
+</li>
+<li><p><strong>Correct Command</strong>: The correct command to install the <code class="docutils literal notranslate"><span class="pre">stata_kernel</span></code> package for Jupyter notebooks is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/documents/github/myenv/bin/python3.11<span class="w"> </span>-m<span class="w"> </span>stata_kernel.install<span class="w"> </span>--user
+</pre></div>
+</div>
+<p>This command should be run from outside the virtual environment. It seems you tried running it from within the virtual environment, which might be causing the error.</p>
+</li>
+<li><p><strong>Check Jupyter Installation</strong>: Ensure that Jupyter Notebook is installed in your virtual environment. You can check by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/documents/github/myenv/bin/python3.11<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>jupyter
+</pre></div>
+</div>
+<p>If Jupyter is not installed, you can install it using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/documents/github/myenv/bin/python3.11<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>jupyter
+</pre></div>
+</div>
+</li>
+<li><p><strong>Kernel Configuration</strong>: If the above steps don’t resolve the issue, you may need to manually configure the <code class="docutils literal notranslate"><span class="pre">stata_kernel</span></code> as a Jupyter kernel. You can do this by following the instructions in the <code class="docutils literal notranslate"><span class="pre">stata_kernel</span></code> documentation: <a class="reference external" href="https://kylebarron.dev/stata_kernel/installation/">Stata Kernel Installation</a>.</p></li>
+<li><p><strong>Update PATH</strong>: Ensure that the path to your virtual environment is included in your system’s PATH variable. This will ensure that Jupyter Notebook can find the <code class="docutils literal notranslate"><span class="pre">stata_kernel</span></code> installation. You can add it to your PATH temporarily by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>~/documents/github/myenv/bin:<span class="nv">$PATH</span>
+</pre></div>
+</div>
+<p>You may want to add this line to your shell configuration file (e.g., <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>, <code class="docutils literal notranslate"><span class="pre">.zshrc</span></code>) to make it permanent.</p>
+</li>
+</ol>
+<p>Try these steps and let me know if you encounter any issues!</p>
+<p>To run Stata in a Jupyter notebook using the <code class="docutils literal notranslate"><span class="pre">stata_kernel</span></code>, you need to follow these steps:</p>
+<ol class="arabic">
+<li><p><strong>Activate Virtual Environment</strong>: Activate your virtual environment where <code class="docutils literal notranslate"><span class="pre">stata_kernel</span></code> is installed. If it’s not activated, you can do so with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/documents/github/myenv/bin/activate
+</pre></div>
+</div>
+</li>
+<li><p><strong>Start Jupyter Notebook</strong>: Start Jupyter Notebook from within your virtual environment. Run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>notebook
+</pre></div>
+</div>
+</li>
+<li><p><strong>Create a New Notebook</strong>: In the Jupyter Notebook interface, click on “New” and select “Stata” from the dropdown list of available kernels. This will create a new notebook using the Stata kernel.</p></li>
+<li><p><strong>Run Stata Code</strong>: In the new notebook, you can now write and execute Stata code cells just like you would in a regular Stata session.</p></li>
+<li><p><strong>Deactivate Virtual Environment</strong>: When you’re done using Stata, you can deactivate your virtual environment with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deactivate
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Remember to activate your virtual environment every time you want to use Stata in Jupyter Notebook, and deactivate it when you’re finished. This ensures that you’re using the correct environment and dependencies.</p>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
