@@ -18,62 +18,19 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import geopandas as gpd
-import pandas as pd
-import matplotlib.pyplot as plt
+# Load the world map shapefile from the downloaded file
+world_path = '~/documents/github/myenv/lib/python3.11/site-packages/geopandas/datasets/naturalearth_lowres/naturalearth_lowres.shp'
+world = gpd.read_file(world_path)
 
-# Load the world map shapefile
-world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
-
-# GDP per capita data (example data, actual values would vary)
-gdp_per_capita = {
-    'Austria': 52000, 'Belgium': 47500, 'Brazil': 9000, 'China': 11000,
-    'France': 43000, 'Germany': 52000, 'India': 2000, 'Italy': 40000,
-    'Japan': 42000, 'Nigeria': 2000, 'Russia': 11000, 'South Africa': 6500,
-    'Spain': 31000, 'Switzerland': 82000, 'United Kingdom': 43000, 'United States': 62000
-}
-
-# Classify countries
-def classify_gdp_per_capita(gdp):
-    if gdp < 2000:
-        return 'Peasant'
-    elif 2000 <= gdp < 10000:
-        return 'Farmer'
-    elif 10000 <= gdp < 30000:
-        return 'Manufacturer'
-    elif 30000 <= gdp < 50000:
-        return 'Energy'
-    else:
-        return 'Transportation'
-
-world['Economic_Classification'] = world['name'].map(gdp_per_capita).apply(classify_gdp_per_capita)
-
-# Define colors for each classification
-colors = {
-    'Peasant': 'gray',
-    'Farmer': 'brown',
-    'Manufacturer': 'orange',
-    'Energy': 'green',
-    'Transportation': 'blue'
-}
-
-# Plot the world map
-fig, ax = plt.subplots(figsize=(15, 10))``
-world.plot(ax=ax, color=world['Economic_Classification'].map(colors))
-
-# Add a legend
-handles = [plt.Rectangle((0,0),1,1, color=colors[label]) for label in colors]
-labels = colors.keys()
-ax.legend(handles, labels, title='Economic Activity', loc='lower right')
-
-plt.title('Classification of Nations by Economic Activity')
-plt.show()
 ------------------
 
 
-[0;36m  Cell [0;32mIn[12], line 41[0;36m[0m
-[0;31m    fig, ax = plt.subplots(figsize=(15, 10))``[0m
-[0m                                            ^[0m
-[0;31mSyntaxError[0m[0;31m:[0m invalid syntax
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[12], line 3[0m
+[1;32m      1[0m [38;5;66;03m# Load the world map shapefile from the downloaded file[39;00m
+[1;32m      2[0m world_path [38;5;241m=[39m [38;5;124m'[39m[38;5;124m~/documents/github/myenv/lib/python3.11/site-packages/geopandas/datasets/naturalearth_lowres/naturalearth_lowres.shp[39m[38;5;124m'[39m
+[0;32m----> 3[0m world [38;5;241m=[39m [43mgpd[49m[38;5;241m.[39mread_file(world_path)
 
+[0;31mNameError[0m: name 'gpd' is not defined
 
