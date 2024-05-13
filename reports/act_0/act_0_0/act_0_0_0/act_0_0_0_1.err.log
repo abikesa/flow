@@ -1,0 +1,134 @@
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/d/Library/Python/3.11/lib/python/site-packages/jupyter_core/utils/__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import matplotlib.pyplot as plt
+import numpy as np
+from matplotlib.cm import ScalarMappable
+from matplotlib.colors import LinearSegmentedColormap, PowerNorm
+
+def gaussian(x, mean, std_dev, amplitude=1):
+    return amplitude * np.exp(-0.9 * ((x - mean) / std_dev) ** 2)
+
+def overlay_gaussian_on_line(ax, start, end, std_dev):
+    x_line = np.linspace(start[0], end[0], 100)
+    y_line = np.linspace(start[1], end[1], 100)
+    mean = np.mean(x_line)
+    y = gaussian(x_line, mean, std_dev, amplitude=std_dev)
+    ax.plot(x_line + y / np.sqrt(2), y_line + y / np.sqrt(2), color='red', linewidth=2.5)
+
+fig, ax = plt.subplots(figsize=(10, 10))
+
+intervals = np.linspace(0, 100, 11)
+custom_means = np.linspace(1, 23, 10)
+custom_stds = np.linspace(.5, 10, 10)
+
+# Change to 'viridis' colormap to get gradations like the older plot
+cmap = plt.get_cmap('viridis')
+norm = plt.Normalize(custom_stds.min(), custom_stds.max())
+sm = ScalarMappable(cmap=cmap, norm=norm)
+sm.set_array([])
+
+median_points = []
+
+for i in range(10):
+    xi, xf = intervals[i], intervals[i+1]
+    x_center, y_center = (xi + xf) / 2 - 20, 100 - (xi + xf) / 2 - 20
+    x_curve = np.linspace(custom_means[i] - 3 * custom_stds[i], custom_means[i] + 3 * custom_stds[i], 200)
+    y_curve = gaussian(x_curve, custom_means[i], custom_stds[i], amplitude=15)
+    
+    x_gauss = x_center + x_curve / np.sqrt(2)
+    y_gauss = y_center + y_curve / np.sqrt(2) + x_curve / np.sqrt(2)
+    
+    ax.plot(x_gauss, y_gauss, color=cmap(norm(custom_stds[i])), linewidth=2.5)
+    median_points.append((x_center + custom_means[i] / np.sqrt(2), y_center + custom_means[i] / np.sqrt(2)))
+
+median_points = np.array(median_points)
+ax.plot(median_points[:, 0], median_points[:, 1], '--', color='grey')
+start_point = median_points[0, :]
+end_point = median_points[-1, :]
+overlay_gaussian_on_line(ax, start_point, end_point, 24)
+
+ax.grid(True, linestyle='--', linewidth=0.5, color='grey')
+ax.set_xlim(-30, 111)
+ax.set_ylim(-20, 87)
+
+# Create a new ScalarMappable with a reversed colormap just for the colorbar
+cmap_reversed = plt.get_cmap('viridis').reversed()
+sm_reversed = ScalarMappable(cmap=cmap_reversed, norm=norm)
+sm_reversed.set_array([])
+
+# Existing code for creating the colorbar
+cbar = fig.colorbar(sm_reversed, ax=ax, shrink=1, aspect=90)
+
+# Specify the tick positions you want to set
+custom_tick_positions = [0.5, 5, 8, 10]  # example positions, you can change these
+cbar.set_ticks(custom_tick_positions)
+
+# Specify custom labels for those tick positions
+custom_tick_labels = ['5', '3', '1', '0']  # example labels, you can change these
+cbar.set_ticklabels(custom_tick_labels)
+
+# Label for the colorbar
+cbar.set_label(r'♭', rotation=0, labelpad=15, fontstyle='italic', fontsize=24)
+
+
+# Label for the colorbar
+cbar.set_label(r'♭', rotation=0, labelpad=15, fontstyle='italic', fontsize=24)
+
+
+cbar.set_label(r'♭', rotation=0, labelpad=15, fontstyle='italic', fontsize=24)
+
+# Add X and Y axis labels with custom font styles
+ax.set_xlabel(r'Principal Component', fontstyle='italic')
+ax.set_ylabel(r'Emotional State', rotation=0, fontstyle='italic', labelpad=15)
+
+# Add musical modes as X-axis tick labels
+# musical_modes = ["Ionian", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian", "Locrian"]
+greek_letters = ['α', 'β','γ', 'δ', 'ε', 'ζ', 'η'] # 'θ' , 'ι', 'κ'
+mode_positions = np.linspace(ax.get_xlim()[0], ax.get_xlim()[1], len(greek_letters))
+ax.set_xticks(mode_positions)
+ax.set_xticklabels(greek_letters, rotation=0)
+
+# Add moods as Y-axis tick labels
+moods = ["flow", "control", "relaxed", "bored", "apathy","worry", "anxiety", "arousal"]
+mood_positions = np.linspace(ax.get_ylim()[0], ax.get_ylim()[1], len(moods))
+ax.set_yticks(mood_positions)
+ax.set_yticklabels(moods)
+
+# ... (rest of the code unchanged)
+
+
+plt.tight_layout()
+plt.show()
+------------------
+
+----- stdout -----
+
+import: unknown subcommand "matplotlib.pyplot"
+----- stderr -----
+r(198);
+----- stderr -----
+r(198);
+----- stdout -----
+
+------------------
+
+
+

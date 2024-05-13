@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title> &#8212; Work Flow</title>
+    <title>Prescriptions &#8212; Work Flow</title>
   
   
   
@@ -154,23 +154,20 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../../intro.html">
-                    
+                    Stata
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../abikesa_r.html"></a></li>
 
-
-
 <li class="toctree-l1"><a class="reference internal" href="../../../abikesa_python.html"></a></li>
-
 
 
 <li class="toctree-l1"><a class="reference internal" href="../../../abikesa_stata.html"></a></li>
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Prescriptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="act_0_0_0_2.html"></a></li>
 <li class="toctree-l1"><a class="reference internal" href="act_0_0_0_3.html"></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../act_0_0_1/act_0_0_1_1.html"></a></li>
@@ -357,7 +354,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1></h1>
+    <h1>Prescriptions</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -371,8 +368,640 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="prescriptions">
+<h1>Prescriptions<a class="headerlink" href="#prescriptions" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1"> </span>
+<span class="c1">* Import data from URL</span>
+import delimited <span class="s">&quot;https://github.com/jhustata/lab6.md/raw/main/stsrpos.csv&quot;</span>,<span class="k"> clear</span>
+
+<span class="c1">* Convert srvc_dt to date format</span>
+<span class="k">gen</span> srvc_dt_date = <span class="nf">date</span>(srvc_dt, <span class="s">&quot;DMY&quot;</span>)
+
+<span class="c1">* Create year_month variable</span>
+<span class="k">format</span> srvc_dt_date <span class="nx">%tm</span>
+<span class="k">gen</span> year_month = <span class="nf">month</span>(srvc_dt_date)
+
+<span class="c1">* Count prescriptions by month</span>
+<span class="k">table</span> year_month,
+
+<span class="c1">* Create bar chart for number of prescriptions by month</span>
+<span class="k">graph</span> bar (count), over(year_month) title(<span class="s">&quot;Number of Prescriptions by Month&quot;</span>) <span class="cs">///</span>
+	ytitle(<span class="s">&quot;Number of Prescriptions&quot;</span>) <span class="c1">//xtitle(&quot;Year-Month&quot;)</span>
+
+<span class="c1">* Calculate the top 10 most prescribed medications</span>
+<span class="k">preserve</span> 
+<span class="k">bys</span> gnn:<span class="k"> g</span> top_meds=_N
+<span class="k">egen</span> grouptag=tag(gnn)
+<span class="k">keep if</span> grouptag<span class="o">==</span><span class="m">1</span>
+<span class="k">gsort</span> <span class="o">-</span>top_meds
+<span class="k">l in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>
+
+<span class="c1">* Create bar chart for top 10 most prescribed medications</span>
+<span class="k">encode</span> gnn,<span class="k"> gen</span>(Gnn)
+<span class="k">keep in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>
+<span class="k">g</span> x=_n
+<span class="k">levelsof</span> Gnn
+<span class="k">list</span> Gnn
+<span class="k">local</span> varlab:<span class="k"> var lab</span> Gnn
+<span class="k">local</span> vallab: value<span class="k"> label</span> Gnn
+<span class="k">levelsof</span> Gnn,<span class="k"> local</span>(numlevels)
+<span class="k">local</span> i=<span class="m">1</span>
+<span class="k">foreach l</span> of<span class="k"> numlist</span> <span class="nv">`numlevels&#39;</span> {
+<span class="k">    local</span> vallab: value<span class="k"> label</span> Gnn
+<span class="k">	local</span> catlab:<span class="k"> lab</span> <span class="nv">`vallab&#39;</span> <span class="nv">`l&#39;</span>
+<span class="k">	global</span> xlab<span class="nv">`i&#39;</span> = <span class="s">&quot;</span><span class="nv">`catlab&#39;</span><span class="s">&quot;</span>
+<span class="k">	local</span> i= <span class="nv">`i&#39;</span> <span class="o">+</span> <span class="m">1</span>
+}
+<span class="k">global</span> ylab 
+#delimit ;
+<span class="k">twoway</span> bar top_meds x,  
+    horizontal  
+    ytitle(<span class="s">&quot;Number of Prescriptions&quot;</span>)  
+	xtitle(<span class="s">&quot;Medication&quot;</span>)  
+	title(<span class="s">&quot;Top 10 Most Prescribed Medications&quot;</span>)  
+	ylab(<span class="m">0</span>(<span class="m">1</span>)<span class="m">10</span>  
+	    <span class="m">1</span> <span class="s">&quot;</span><span class="vg">$xlab1</span><span class="s">&quot;</span>  
+		<span class="m">2</span> <span class="s">&quot;</span><span class="vg">$xlab2</span><span class="s">&quot;</span>  
+		<span class="m">3</span> <span class="s">&quot;</span><span class="vg">$xlab3</span><span class="s">&quot;</span>  
+		<span class="m">4</span> <span class="s">&quot;</span><span class="vg">$xlab4</span><span class="s">&quot;</span>  
+		<span class="m">5</span> <span class="s">&quot;</span><span class="vg">$xlab5</span><span class="s">&quot;</span>  
+		<span class="m">6</span> <span class="s">&quot;</span><span class="vg">$xlab6</span><span class="s">&quot;</span>  
+		<span class="m">7</span> <span class="s">&quot;</span><span class="vg">$xlab7</span><span class="s">&quot;</span>  
+		<span class="m">8</span> <span class="s">&quot;</span><span class="vg">$xlab8</span><span class="s">&quot;</span>  
+		<span class="m">9</span> <span class="s">&quot;</span><span class="vg">$xlab9</span><span class="s">&quot;</span>  
+		<span class="m">10</span> <span class="s">&quot;</span><span class="vg">$xlab10</span><span class="s">&quot;</span>);
+#delimit cr
+<span class="k">graph</span> export top_meds<span class="m">.</span>png,<span class="k"> replace</span> 
+<span class="k">restore</span> 
+<span class="c1">* Calculate number of unique patients and number of prescriptions</span>
+<span class="k">egen</span> idtag=tag(usrds_id)
+<span class="k">count if</span> idtag 
+<span class="k">egen</span> gnntag = tag(gnn)
+<span class="k">count if</span> gnntag 
+
+<span class="c1">* Descriptive statistics for prescriptions per patient</span>
+<span class="k">bys</span> usrds_id:<span class="k"> g</span> pillcount=_N
+<span class="k">hist</span> pillcount
+<span class="k">sum</span> pillcount,<span class="k"> de</span>
+<span class="k">gen</span> polypharm=pillcount<span class="o">&gt;=</span><span class="m">3</span>
+
+<span class="c1">* Identify patients with 3 or more prescriptions</span>
+<span class="k">egen</span> prescriptions_per_patient =<span class="k"> count</span>(usrds_id),<span class="k"> by</span>(usrds_id)
+<span class="k">compare</span> pillcount prescriptions_per_patient
+<span class="k">gen</span> patients_with_3_plus = prescriptions_per_patient <span class="o">&gt;=</span> <span class="m">3</span>
+<span class="k">compare</span> polypharm patients_with_3_plus
+
+<span class="c1">* Subset dataset for patients with 3 or more prescriptions</span>
+<span class="cm">/*</span>
+<span class="cm">keep if patients_with_3_plus</span>
+
+<span class="cm">* Identify and display prescriptions over time for selected patients</span>
+
+<span class="cm">levelsof usrds_id, local(selected_patients)</span>
+<span class="cm">foreach patient_id in `selected_patients&#39; {</span>
+<span class="cm">    keep if usrds_id == `patient_id&#39;</span>
+<span class="cm">	count </span>
+<span class="cm">	local count=r(N)</span>
+<span class="cm">	twoway bar `count&#39; year_month </span>
+<span class="cm">    graph bar (`count&#39;), over(year_month) title(&quot;Patient `patient_id&#39;: Prescriptions Over Time&quot;) ///</span>
+<span class="cm">	    ytitle(&quot;Number of Prescriptions&quot;) xtitle(&quot;Year-Month&quot;)</span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
+
+<span class="cm">* Fit the mixed-effects model</span>
+<span class="k">xtmixed</span> usrds_id i<span class="m">.</span>year_month, mle
+ 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(encoding automatically selected: ISO-8859-2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3 vars, 2,592 obs)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           |  Frequency
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----------+-----------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>year_month |           
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1        |        235
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2        |        208
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  3        |        211
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4        |        218
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5        |        216
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  6        |        208
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  7        |        231
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  8        |        197
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  9        |        229
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  10       |        217
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  11       |        198
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  12       |        224
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Total    |      2,592
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>file /Users/d/.stata_kernel_cache/graph0.svg saved as SVG format
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>file /Users/d/.stata_kernel_cache/graph0.pdf saved as PDF format
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2,273 observations deleted)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1. | usrds_id |                       gnn |   srvc_dt | srvc_d~e | year_m~h |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |     1734 |       SEVELAMER CARBONATE | 30dec2024 |   3938m5 |       12 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |------------------------------------------------------------------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |             top_meds              |              grouptag              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |                   85              |                     1              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2. | usrds_id |                       gnn |   srvc_dt | srvc_d~e | year_m~h |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |     4483 |       AMLODIPINE BESYLATE | 09jun2024 |   3921m5 |        6 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |------------------------------------------------------------------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |             top_meds              |              grouptag              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |                   74              |                     1              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  3. | usrds_id |                       gnn |   srvc_dt | srvc_d~e | year_m~h |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |     6780 |                CARVEDILOL | 13aug2024 |  3926m10 |        8 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |------------------------------------------------------------------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |             top_meds              |              grouptag              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |                   68              |                     1              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4. | usrds_id |                       gnn |   srvc_dt | srvc_d~e | year_m~h |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |      152 |            CINACALCET HCL | 21may2024 |  3919m10 |        5 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |------------------------------------------------------------------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |             top_meds              |              grouptag              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |                   66              |                     1              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5. | usrds_id |                       gnn |   srvc_dt | srvc_d~e | year_m~h |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |     3986 | HYDROCODONE/ACETAMINOPHEN | 27apr2024 |  3917m10 |        4 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |------------------------------------------------------------------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |             top_meds              |              grouptag              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |                   63              |                     1              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  6. | usrds_id |                       gnn |   srvc_dt | srvc_d~e | year_m~h |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |     7940 |                OMEPRAZOLE | 10mar2024 |  3913m10 |        3 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |------------------------------------------------------------------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |             top_meds              |              grouptag              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |                   62              |                     1              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  7. | usrds_id |                       gnn |   srvc_dt | srvc_d~e | year_m~h |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |     5502 |       METOPROLOL TARTRATE | 09jan2024 |   3908m9 |        1 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |------------------------------------------------------------------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |             top_meds              |              grouptag              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |                   61              |                     1              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  8. | usrds_id |                       gnn |   srvc_dt | srvc_d~e | year_m~h |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |     9516 |                LISINOPRIL | 05aug2024 |   3926m2 |        8 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |------------------------------------------------------------------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |             top_meds              |              grouptag              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |                   58              |                     1              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  9. | usrds_id |                       gnn |   srvc_dt | srvc_d~e | year_m~h |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |      265 |      LEVOTHYROXINE SODIUM | 07dec2024 |   3936m6 |       12 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |------------------------------------------------------------------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |             top_meds              |              grouptag              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |                   57              |                     1              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 10. | usrds_id |                       gnn |   srvc_dt | srvc_d~e | year_m~h |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |     2641 |           CALCIUM ACETATE | 29may2024 |   3920m6 |        5 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |------------------------------------------------------------------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |             top_meds              |              grouptag              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |                   52              |                     1              |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +------------------------------------------------------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(309 observations deleted)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14 42 45 53 130 165 172 195 226 271
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +---------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |                       Gnn |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |---------------------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1. |       SEVELAMER CARBONATE |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2. |       AMLODIPINE BESYLATE |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  3. |                CARVEDILOL |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4. |            CINACALCET HCL |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5. | HYDROCODONE/ACETAMINOPHEN |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |---------------------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  6. |                OMEPRAZOLE |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  7. |       METOPROLOL TARTRATE |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  8. |                LISINOPRIL |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  9. |      LEVOTHYROXINE SODIUM |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 10. |           CALCIUM ACETATE |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +---------------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14 42 45 53 130 165 172 195 226 271
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>file /Users/d/.stata_kernel_cache/graph1.svg saved as SVG format
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>file /Users/d/.stata_kernel_cache/graph1.pdf saved as PDF format
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>file top_meds.png written in PNG format
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2,271
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  319
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(bin=34, start=1, width=.08823529)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>file /Users/d/.stata_kernel_cache/graph2.svg saved as SVG format
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>file /Users/d/.stata_kernel_cache/graph2.pdf saved as PDF format
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                          pillcount
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Percentiles      Smallest
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 1%            1              1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 5%            1              1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10%            1              1       Obs               2,592
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25%            1              1       Sum of wgt.       2,592
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50%            1                      Mean           1.270062
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                        Largest       Std. dev.      .5164065
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>75%            1              4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>90%            2              4       Variance       .2666757
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>95%            2              4       Skewness       1.830838
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>99%            3              4       Kurtosis       5.875951
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                        ---------- Difference ----------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            Count       Minimum      Average     Maximum
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pillcount=prescri~t          2592
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                       ----------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jointly defined              2592             0            0           0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                       ----------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total                        2592
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                        ---------- Difference ----------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            Count       Minimum      Average     Maximum
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>polypharm=patient~s          2592
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                       ----------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jointly defined              2592             0            0           0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                       ----------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total                        2592
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mixed-effects ML regression                             Number of obs =  2,592
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                        Wald chi2(11) =  10.92
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log likelihood = -24319.522                             Prob &gt; chi2   = 0.4501
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    usrds_id | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  year_month |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          2  |  -209.6371   273.6408    -0.77   0.444    -745.9632     326.689
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          3  |   505.3038   272.6069     1.85   0.064    -28.99591    1039.603
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          4  |   185.9015   270.2909     0.69   0.492     -343.859     715.662
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          5  |   63.62092   270.9393     0.23   0.814    -467.4104    594.6522
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          6  |   121.3244   273.6408     0.44   0.657    -415.0016    657.6505
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          7  |   146.5159   266.3162     0.55   0.582    -375.4542    668.4861
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          8  |   -94.9125   277.6639    -0.34   0.732    -639.1237    449.2987
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          9  |   360.8374    266.902     1.35   0.176    -162.2809    883.9558
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         10  |   293.0983   270.6138     1.08   0.279    -237.2951    823.4916
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         11  |   10.89617   277.2822     0.04   0.969    -532.5669    554.3593
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         12  |    111.173   268.4065     0.41   0.679     -414.894      637.24
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       _cons |   4869.796    187.504    25.97   0.000     4502.295    5237.297
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----------------------------+------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                sd(Residual) |   2874.383   39.92198      2797.192    2953.703
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="../../../_images/top_meds.png" /></p>
 <Details style="margin-top:111618px; margin-left:111618px;">
    <Summary></Summary>
 </Details>
@@ -795,111 +1424,122 @@ April 9-11, 2024<br>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib.cm</span> <span class="kn">import</span> <span class="n">ScalarMappable</span>
-<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LinearSegmentedColormap</span><span class="p">,</span> <span class="n">PowerNorm</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>import matplotlib<span class="m">.</span>pyplot<span class="k"> as</span> plt
+import numpy<span class="k"> as</span> np
+from matplotlib<span class="m">.</span>cm import ScalarMappable
+from matplotlib<span class="m">.</span>colors import LinearSegmentedColormap, PowerNorm
 
-<span class="k">def</span> <span class="nf">gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std_dev</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">amplitude</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.9</span> <span class="o">*</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">std_dev</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+def gaussian(x,<span class="k"> mean</span>, std_dev, amplitude=<span class="m">1</span>):
+<span class="k">    return</span> amplitude <span class="o">*</span> np<span class="m">.</span><span class="nf">exp</span>(<span class="o">-</span><span class="m">0.9</span> <span class="o">*</span> ((x <span class="o">-</span><span class="k"> mean</span>) <span class="o">/</span> std_dev) <span class="o">**</span> <span class="m">2</span>)
 
-<span class="k">def</span> <span class="nf">overlay_gaussian_on_line</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">std_dev</span><span class="p">):</span>
-    <span class="n">x_line</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">end</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
-    <span class="n">y_line</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">end</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
-    <span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_line</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">x_line</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std_dev</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="n">std_dev</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_line</span> <span class="o">+</span> <span class="n">y</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">y_line</span> <span class="o">+</span> <span class="n">y</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+def overlay_gaussian_on_line(ax, start,<span class="k"> end</span>, std_dev):
+    x_line = np<span class="m">.</span>linspace(start[<span class="m">0</span>],<span class="k"> end</span>[<span class="m">0</span>], <span class="m">100</span>)
+    y_line = np<span class="m">.</span>linspace(start[<span class="m">1</span>],<span class="k"> end</span>[<span class="m">1</span>], <span class="m">100</span>)
+<span class="k">    mean</span> = np<span class="m">.</span>mean(x_line)
+    y = gaussian(x_line,<span class="k"> mean</span>, std_dev, amplitude=std_dev)
+    ax<span class="m">.</span>plot(x_line <span class="o">+</span> y <span class="o">/</span> np<span class="m">.</span><span class="nf">sqrt</span>(<span class="m">2</span>), y_line <span class="o">+</span> y <span class="o">/</span> np<span class="m">.</span><span class="nf">sqrt</span>(<span class="m">2</span>), color=&#39;red&#39;, linewidth=<span class="m">2.5</span>)
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+fig, ax = plt<span class="m">.</span>subplots(figsize=(<span class="m">10</span>, <span class="m">10</span>))
 
-<span class="n">intervals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
-<span class="n">custom_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">custom_stds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">.5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+intervals = np<span class="m">.</span>linspace(<span class="m">0</span>, <span class="m">100</span>, <span class="m">11</span>)
+custom_means = np<span class="m">.</span>linspace(<span class="m">1</span>, <span class="m">23</span>, <span class="m">10</span>)
+custom_stds = np<span class="m">.</span>linspace(.<span class="m">5</span>, <span class="m">10</span>, <span class="m">10</span>)
 
-<span class="c1"># Change to &#39;viridis&#39; colormap to get gradations like the older plot</span>
-<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
-<span class="n">norm</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">custom_stds</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">custom_stds</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
-<span class="n">sm</span> <span class="o">=</span> <span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
-<span class="n">sm</span><span class="o">.</span><span class="n">set_array</span><span class="p">([])</span>
+# Change to &#39;viridis&#39; colormap to get gradations like the older<span class="k"> plot</span>
+cmap = plt<span class="m">.</span>get_cmap(&#39;viridis&#39;)
+norm = plt<span class="m">.</span>Normalize(custom_stds<span class="m">.</span><span class="nf">min</span>(), custom_stds<span class="m">.</span><span class="nf">max</span>())
+sm = ScalarMappable(cmap=cmap, norm=norm)
+sm<span class="m">.</span>set_array([])
 
-<span class="n">median_points</span> <span class="o">=</span> <span class="p">[]</span>
+median_points = []
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-    <span class="n">xi</span><span class="p">,</span> <span class="n">xf</span> <span class="o">=</span> <span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">x_center</span><span class="p">,</span> <span class="n">y_center</span> <span class="o">=</span> <span class="p">(</span><span class="n">xi</span> <span class="o">+</span> <span class="n">xf</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">100</span> <span class="o">-</span> <span class="p">(</span><span class="n">xi</span> <span class="o">+</span> <span class="n">xf</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">20</span>
-    <span class="n">x_curve</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">custom_means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">custom_stds</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">custom_means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">custom_stds</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">200</span><span class="p">)</span>
-    <span class="n">y_curve</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">x_curve</span><span class="p">,</span> <span class="n">custom_means</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">custom_stds</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="k">for</span> i<span class="k"> in range</span>(<span class="m">10</span>):
+<span class="k">    xi</span>, xf = intervals[i], intervals[i<span class="m">+1</span>]
+    x_center, y_center = (xi <span class="o">+</span> xf) <span class="o">/</span> <span class="m">2</span> <span class="o">-</span> <span class="m">20</span>, <span class="m">100</span> <span class="o">-</span> (xi <span class="o">+</span> xf) <span class="o">/</span> <span class="m">2</span> <span class="o">-</span> <span class="m">20</span>
+    x_curve = np<span class="m">.</span>linspace(custom_means[i] <span class="o">-</span> <span class="m">3</span> <span class="o">*</span> custom_stds[i], custom_means[i] <span class="o">+</span> <span class="m">3</span> <span class="o">*</span> custom_stds[i], <span class="m">200</span>)
+    y_curve = gaussian(x_curve, custom_means[i], custom_stds[i], amplitude=<span class="m">15</span>)
     
-    <span class="n">x_gauss</span> <span class="o">=</span> <span class="n">x_center</span> <span class="o">+</span> <span class="n">x_curve</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">y_gauss</span> <span class="o">=</span> <span class="n">y_center</span> <span class="o">+</span> <span class="n">y_curve</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">x_curve</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    x_gauss = x_center <span class="o">+</span> x_curve <span class="o">/</span> np<span class="m">.</span><span class="nf">sqrt</span>(<span class="m">2</span>)
+    y_gauss = y_center <span class="o">+</span> y_curve <span class="o">/</span> np<span class="m">.</span><span class="nf">sqrt</span>(<span class="m">2</span>) <span class="o">+</span> x_curve <span class="o">/</span> np<span class="m">.</span><span class="nf">sqrt</span>(<span class="m">2</span>)
     
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_gauss</span><span class="p">,</span> <span class="n">y_gauss</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">custom_stds</span><span class="p">[</span><span class="n">i</span><span class="p">])),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
-    <span class="n">median_points</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">x_center</span> <span class="o">+</span> <span class="n">custom_means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">y_center</span> <span class="o">+</span> <span class="n">custom_means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+    ax<span class="m">.</span>plot(x_gauss, y_gauss, color=cmap(norm(custom_stds[i])), linewidth=<span class="m">2.5</span>)
+    median_points<span class="m">.</span>append((x_center <span class="o">+</span> custom_means[i] <span class="o">/</span> np<span class="m">.</span><span class="nf">sqrt</span>(<span class="m">2</span>), y_center <span class="o">+</span> custom_means[i] <span class="o">/</span> np<span class="m">.</span><span class="nf">sqrt</span>(<span class="m">2</span>)))
 
-<span class="n">median_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">median_points</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">median_points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">median_points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
-<span class="n">start_point</span> <span class="o">=</span> <span class="n">median_points</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
-<span class="n">end_point</span> <span class="o">=</span> <span class="n">median_points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
-<span class="n">overlay_gaussian_on_line</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">start_point</span><span class="p">,</span> <span class="n">end_point</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+median_points = np<span class="m">.</span>array(median_points)
+ax<span class="m">.</span>plot(median_points[:, <span class="m">0</span>], median_points[:, <span class="m">1</span>], &#39;<span class="o">--</span>&#39;, color=&#39;grey&#39;)
+start_point = median_points[<span class="m">0</span>, :]
+end_point = median_points[<span class="o">-</span><span class="m">1</span>, :]
+overlay_gaussian_on_line(ax, start_point, end_point, <span class="m">24</span>)
 
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">111</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">87</span><span class="p">)</span>
+ax<span class="m">.</span>grid(True, linestyle=&#39;<span class="o">--</span>&#39;, linewidth=<span class="m">0.5</span>, color=&#39;grey&#39;)
+ax<span class="m">.</span>set_xlim(<span class="o">-</span><span class="m">30</span>, <span class="m">111</span>)
+ax<span class="m">.</span>set_ylim(<span class="o">-</span><span class="m">20</span>, <span class="m">87</span>)
 
-<span class="c1"># Create a new ScalarMappable with a reversed colormap just for the colorbar</span>
-<span class="n">cmap_reversed</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reversed</span><span class="p">()</span>
-<span class="n">sm_reversed</span> <span class="o">=</span> <span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_reversed</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
-<span class="n">sm_reversed</span><span class="o">.</span><span class="n">set_array</span><span class="p">([])</span>
+# Create a new ScalarMappable with a reversed colormap just<span class="k"> for</span> the colorbar
+cmap_reversed = plt<span class="m">.</span>get_cmap(&#39;viridis&#39;).reversed()
+sm_reversed = ScalarMappable(cmap=cmap_reversed, norm=norm)
+sm_reversed<span class="m">.</span>set_array([])
 
-<span class="c1"># Existing code for creating the colorbar</span>
-<span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sm_reversed</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+# Existing code<span class="k"> for</span> creating the colorbar
+cbar = fig<span class="m">.</span>colorbar(sm_reversed, ax=ax, shrink=<span class="m">1</span>, aspect=<span class="m">90</span>)
 
-<span class="c1"># Specify the tick positions you want to set</span>
-<span class="n">custom_tick_positions</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>  <span class="c1"># example positions, you can change these</span>
-<span class="n">cbar</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">(</span><span class="n">custom_tick_positions</span><span class="p">)</span>
+# Specify the tick positions you want to<span class="k"> set</span>
+custom_tick_positions = [<span class="m">0.5</span>, <span class="m">5</span>, <span class="m">8</span>, <span class="m">10</span>]  # example positions, you can change these
+cbar<span class="m">.</span>set_ticks(custom_tick_positions)
 
-<span class="c1"># Specify custom labels for those tick positions</span>
-<span class="n">custom_tick_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">]</span>  <span class="c1"># example labels, you can change these</span>
-<span class="n">cbar</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">(</span><span class="n">custom_tick_labels</span><span class="p">)</span>
+# Specify custom labels<span class="k"> for</span> those tick positions
+custom_tick_labels = [&#39;<span class="m">5</span>&#39;, &#39;<span class="m">3</span>&#39;, &#39;<span class="m">1</span>&#39;, &#39;<span class="m">0</span>&#39;]  # example labels, you can change these
+cbar<span class="m">.</span>set_ticklabels(custom_tick_labels)
 
-<span class="c1"># Label for the colorbar</span>
-<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;♭&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">fontstyle</span><span class="o">=</span><span class="s1">&#39;italic&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
-
-
-<span class="c1"># Label for the colorbar</span>
-<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;♭&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">fontstyle</span><span class="o">=</span><span class="s1">&#39;italic&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+# Label<span class="k"> for</span> the colorbar
+cbar<span class="m">.</span>set_label(r&#39;♭&#39;, rotation=<span class="m">0</span>, labelpad=<span class="m">15</span>, fontstyle=&#39;italic&#39;, fontsize=<span class="m">24</span>)
 
 
-<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;♭&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">fontstyle</span><span class="o">=</span><span class="s1">&#39;italic&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
-
-<span class="c1"># Add X and Y axis labels with custom font styles</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Principal Component&#39;</span><span class="p">,</span> <span class="n">fontstyle</span><span class="o">=</span><span class="s1">&#39;italic&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Emotional State&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fontstyle</span><span class="o">=</span><span class="s1">&#39;italic&#39;</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-
-<span class="c1"># Add musical modes as X-axis tick labels</span>
-<span class="c1"># musical_modes = [&quot;Ionian&quot;, &quot;Dorian&quot;, &quot;Phrygian&quot;, &quot;Lydian&quot;, &quot;Mixolydian&quot;, &quot;Aeolian&quot;, &quot;Locrian&quot;]</span>
-<span class="n">greek_letters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;α&#39;</span><span class="p">,</span> <span class="s1">&#39;β&#39;</span><span class="p">,</span><span class="s1">&#39;γ&#39;</span><span class="p">,</span> <span class="s1">&#39;δ&#39;</span><span class="p">,</span> <span class="s1">&#39;ε&#39;</span><span class="p">,</span> <span class="s1">&#39;ζ&#39;</span><span class="p">,</span> <span class="s1">&#39;η&#39;</span><span class="p">]</span> <span class="c1"># &#39;θ&#39; , &#39;ι&#39;, &#39;κ&#39;</span>
-<span class="n">mode_positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">greek_letters</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">mode_positions</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">greek_letters</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># Add moods as Y-axis tick labels</span>
-<span class="n">moods</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;flow&quot;</span><span class="p">,</span> <span class="s2">&quot;control&quot;</span><span class="p">,</span> <span class="s2">&quot;relaxed&quot;</span><span class="p">,</span> <span class="s2">&quot;bored&quot;</span><span class="p">,</span> <span class="s2">&quot;apathy&quot;</span><span class="p">,</span><span class="s2">&quot;worry&quot;</span><span class="p">,</span> <span class="s2">&quot;anxiety&quot;</span><span class="p">,</span> <span class="s2">&quot;arousal&quot;</span><span class="p">]</span>
-<span class="n">mood_positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">moods</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">mood_positions</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">moods</span><span class="p">)</span>
-
-<span class="c1"># ... (rest of the code unchanged)</span>
+# Label<span class="k"> for</span> the colorbar
+cbar<span class="m">.</span>set_label(r&#39;♭&#39;, rotation=<span class="m">0</span>, labelpad=<span class="m">15</span>, fontstyle=&#39;italic&#39;, fontsize=<span class="m">24</span>)
 
 
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+cbar<span class="m">.</span>set_label(r&#39;♭&#39;, rotation=<span class="m">0</span>, labelpad=<span class="m">15</span>, fontstyle=&#39;italic&#39;, fontsize=<span class="m">24</span>)
+
+# Add X and Y axis labels with custom font styles
+ax<span class="m">.</span>set_xlabel(r&#39;Principal Component&#39;, fontstyle=&#39;italic&#39;)
+ax<span class="m">.</span>set_ylabel(r&#39;Emotional State&#39;, rotation=<span class="m">0</span>, fontstyle=&#39;italic&#39;, labelpad=<span class="m">15</span>)
+
+# Add musical modes<span class="k"> as</span> X<span class="o">-</span>axis tick labels
+# musical_modes = [<span class="s">&quot;Ionian&quot;</span>, <span class="s">&quot;Dorian&quot;</span>, <span class="s">&quot;Phrygian&quot;</span>, <span class="s">&quot;Lydian&quot;</span>, <span class="s">&quot;Mixolydian&quot;</span>, <span class="s">&quot;Aeolian&quot;</span>, <span class="s">&quot;Locrian&quot;</span>]
+greek_letters = [&#39;α&#39;, &#39;β&#39;,&#39;γ&#39;, &#39;δ&#39;, &#39;ε&#39;, &#39;ζ&#39;, &#39;η&#39;] # &#39;θ&#39; , &#39;ι&#39;, &#39;κ&#39;
+mode_positions = np<span class="m">.</span>linspace(ax<span class="m">.</span>get_xlim()[<span class="m">0</span>], ax<span class="m">.</span>get_xlim()[<span class="m">1</span>], len(greek_letters))
+ax<span class="m">.</span>set_xticks(mode_positions)
+ax<span class="m">.</span>set_xticklabels(greek_letters, rotation=<span class="m">0</span>)
+
+# Add moods<span class="k"> as</span> Y<span class="o">-</span>axis tick labels
+moods = [<span class="s">&quot;flow&quot;</span>, <span class="s">&quot;control&quot;</span>, <span class="s">&quot;relaxed&quot;</span>, <span class="s">&quot;bored&quot;</span>, <span class="s">&quot;apathy&quot;</span>,<span class="s">&quot;worry&quot;</span>, <span class="s">&quot;anxiety&quot;</span>, <span class="s">&quot;arousal&quot;</span>]
+mood_positions = np<span class="m">.</span>linspace(ax<span class="m">.</span>get_ylim()[<span class="m">0</span>], ax<span class="m">.</span>get_ylim()[<span class="m">1</span>], len(moods))
+ax<span class="m">.</span>set_yticks(mood_positions)
+ax<span class="m">.</span>set_yticklabels(moods)
+
+# ... (rest of the code unchanged)
+
+
+plt<span class="m">.</span>tight_layout()
+plt<span class="m">.</span>show()
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../../_images/babb942491b3a6db06de963caaa26dd2138cbef373341ad60a289218c3d7cae1.png" src="../../../_images/babb942491b3a6db06de963caaa26dd2138cbef373341ad60a289218c3d7cae1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>import: unknown subcommand &quot;matplotlib.pyplot&quot;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>r(198);
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>r(198);
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -909,48 +1549,48 @@ April 9-11, 2024<br>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>import matplotlib<span class="m">.</span>pyplot<span class="k"> as</span> plt
+import numpy<span class="k"> as</span> np
 
-<span class="c1"># Create data for the skill and challenge levels</span>
-<span class="n">skill_levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">challenge_levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+# Create data<span class="k"> for</span> the skill and challenge<span class="k"> levels</span>
+skill_levels = np<span class="m">.</span>linspace(<span class="m">0</span>, <span class="m">10</span>, <span class="m">100</span>)
+challenge_levels = np<span class="m">.</span>linspace(<span class="m">0</span>, <span class="m">10</span>, <span class="m">100</span>)
 
-<span class="c1"># Define the flow channel boundaries</span>
-<span class="n">flow_channel</span> <span class="o">=</span> <span class="n">skill_levels</span>
+# Define the flow channel boundaries
+flow_channel = skill_levels
 
-<span class="c1"># Adjust the phase and amplitude of the sinusoid wave</span>
-<span class="n">phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">16</span>
-<span class="n">amplitude</span> <span class="o">=</span> <span class="mf">1.5</span>
-<span class="n">sinusoid</span> <span class="o">=</span> <span class="n">flow_channel</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">skill_levels</span> <span class="o">+</span> <span class="n">phase</span><span class="p">)</span> <span class="o">*</span> <span class="n">amplitude</span>
+# Adjust the phase and amplitude of the sinusoid wave
+phase = np<span class="m">.</span>pi <span class="o">/</span> <span class="m">16</span>
+amplitude = <span class="m">1.5</span>
+sinusoid = flow_channel <span class="o">+</span> np<span class="m">.</span><span class="nf">sin</span>(skill_levels <span class="o">+</span> phase) <span class="o">*</span> amplitude
 
-<span class="c1"># Define the yellow zone boundaries, making it wider</span>
-<span class="n">yellow_zone_low</span> <span class="o">=</span> <span class="n">skill_levels</span> <span class="o">-</span> <span class="mf">1.5</span>  <span class="c1"># Adjust this value to make the yellow zone wider or narrower</span>
-<span class="n">yellow_zone_high</span> <span class="o">=</span> <span class="n">skill_levels</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="c1"># Adjust this value to make the yellow zone wider or narrower</span>
+# Define the yellow zone boundaries, making it wider
+yellow_zone_low = skill_levels <span class="o">-</span> <span class="m">1.5</span>  # Adjust this value to make the yellow zone wider or narrower
+yellow_zone_high = skill_levels <span class="o">+</span> <span class="m">1.5</span> # Adjust this value to make the yellow zone wider or narrower
 
-<span class="c1"># Plotting</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+# Plotting
+plt<span class="m">.</span>figure(figsize=(<span class="m">15</span>, <span class="m">10</span>))
 
-<span class="c1"># Plot the anxiety and boredom areas</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">,</span> <span class="n">yellow_zone_high</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orangered&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Place/Identification&#39;</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">yellow_zone_low</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lime&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Time/Revelation&#39;</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">,</span> <span class="n">yellow_zone_low</span><span class="p">,</span> <span class="n">yellow_zone_high</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Agent/Evolution&#39;</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+# Plot the anxiety and boredom areas
+plt<span class="m">.</span>fill_between(skill_levels, yellow_zone_high, <span class="m">10</span>, color=&#39;orangered&#39;,<span class="k"> alpha</span>=<span class="m">0.3</span>,<span class="k"> label</span>=&#39;Place<span class="o">/</span>Identification&#39;, interpolate=True)
+plt<span class="m">.</span>fill_between(skill_levels, <span class="m">0</span>, yellow_zone_low, color=&#39;lime&#39;,<span class="k"> alpha</span>=<span class="m">0.3</span>,<span class="k"> label</span>=&#39;Time<span class="o">/</span>Revelation&#39;, interpolate=True)
+plt<span class="m">.</span>fill_between(skill_levels, yellow_zone_low, yellow_zone_high, color=&#39;yellow&#39;,<span class="k"> alpha</span>=<span class="m">0.3</span>,<span class="k"> label</span>=&#39;Agent<span class="o">/</span>Evolution&#39;, interpolate=True)
 
-<span class="c1"># Plot the sinusoid function with the diagonal as its axis</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">,</span> <span class="n">sinusoid</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+# Plot the sinusoid function with the diagonal<span class="k"> as</span> its axis
+plt<span class="m">.</span>plot(skill_levels, sinusoid, color=&#39;purple&#39;, linestyle=&#39;<span class="o">-</span>&#39;)
 
-<span class="c1"># Add arrowhead to the sinusoid line</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">sinusoid</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">skill_levels</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">skill_levels</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">sinusoid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">sinusoid</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span>
-          <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">length_includes_head</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">head_width</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">head_length</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+# Add arrowhead to the sinusoid<span class="k"> line</span>
+plt<span class="m">.</span>arrow(skill_levels[<span class="o">-</span><span class="m">2</span>], sinusoid[<span class="o">-</span><span class="m">2</span>], skill_levels[<span class="o">-</span><span class="m">1</span>] <span class="o">-</span> skill_levels[<span class="o">-</span><span class="m">2</span>], sinusoid[<span class="o">-</span><span class="m">1</span>] <span class="o">-</span> sinusoid[<span class="o">-</span><span class="m">2</span>],
+          color=&#39;purple&#39;, length_includes_head=True, head_width=<span class="m">0.15</span>, head_length=<span class="m">0.3</span>)
 
-<span class="c1"># Set plot labels and title</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tokens&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Aesthetic&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+# Set<span class="k"> plot</span> labels and title
+plt<span class="m">.</span>xlabel(&#39;Tokens&#39;, fontsize=<span class="m">18</span>)
+plt<span class="m">.</span>ylabel(&#39;Aesthetic&#39;, rotation=&#39;vertical&#39;, fontsize=<span class="m">18</span>)
 
-<span class="c1"># Set plot limits and grid</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+# Set<span class="k"> plot</span> limits and grid
+plt<span class="m">.</span>xlim(<span class="m">0</span>, <span class="m">10</span>)
+plt<span class="m">.</span>ylim(<span class="m">0</span>, <span class="m">10</span>)
+plt<span class="m">.</span>grid(True)
 
 
 
@@ -972,25 +1612,22 @@ April 9-11, 2024<br>
     
 
 
-<span class="c1"># Set tick labels</span>
-<span class="n">tick_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;20&#39;</span><span class="p">,</span> <span class="s1">&#39;40&#39;</span><span class="p">,</span> <span class="s1">&#39;60&#39;</span><span class="p">,</span> <span class="s1">&#39;80&#39;</span><span class="p">,</span> <span class="s1">&#39;99&#39;</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">tick_labels</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">tick_labels</span><span class="p">)</span>
+# Set tick labels
+tick_labels = [&#39;<span class="m">0</span>&#39;, &#39;<span class="m">20</span>&#39;, &#39;<span class="m">40</span>&#39;, &#39;<span class="m">60</span>&#39;, &#39;<span class="m">80</span>&#39;, &#39;<span class="m">99</span>&#39;]
+plt<span class="m">.</span>xticks(np<span class="m">.</span>linspace(<span class="m">0</span>, <span class="m">10</span>, <span class="m">6</span>), tick_labels)
+plt<span class="m">.</span>yticks(np<span class="m">.</span>linspace(<span class="m">0</span>, <span class="m">10</span>, <span class="m">6</span>), tick_labels)
 
-<span class="c1"># Add text annotations to label the areas without shaded background</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="s1">&#39;See</span><span class="se">\n</span><span class="s1"> Internal &amp; External Environment</span><span class="se">\n</span><span class="s1"> (Blood/Lymph &amp; CVS/Neuroendocrine)  </span><span class="se">\n</span><span class="s1"> Nurturing &amp; Bridge (Allostasis) </span><span class="se">\n</span><span class="s1"> VOIR&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">4.7</span><span class="p">,</span> <span class="s1">&#39;Do</span><span class="se">\n</span><span class="s1"> Sustainability Across Terrains </span><span class="se">\n</span><span class="s1"> (Organs &amp; Systems) </span><span class="se">\n</span><span class="s1"> Adapting to Varied Landscapes (Homeostasis) </span><span class="se">\n</span><span class="s1"> POUVOIR&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Know</span><span class="se">\n</span><span class="s1"> Person &amp; Environment </span><span class="se">\n</span><span class="s1"> (Behavior &amp; Psychology) </span><span class="se">\n</span><span class="s1"> Wellness &amp; Perception (Wellness) </span><span class="se">\n</span><span class="s1"> SAVOIR&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+# Add text annotations to<span class="k"> label</span> the areas without shaded background
+plt<span class="m">.</span>text(<span class="m">2</span>, <span class="m">6.6</span>, &#39;See\n Internal <span class="o">&amp;</span> External Environment\n (Blood<span class="o">/</span>Lymph <span class="o">&amp;</span> CVS<span class="o">/</span>Neuroendocrine)  \n Nurturing <span class="o">&amp;</span> Bridge (Allostasis) \n VOIR&#39;, color=&#39;black&#39;, ha=&#39;center&#39;, va=&#39;center&#39;, fontsize=<span class="m">18</span>)
+plt<span class="m">.</span>text(<span class="m">5</span>, <span class="m">4.7</span>, &#39;Do\n Sustainability Across Terrains \n (Organs <span class="o">&amp;</span> Systems) \n Adapting to Varied Landscapes (Homeostasis) \n POUVOIR&#39;, color=&#39;black&#39;, ha=&#39;center&#39;, va=&#39;center&#39;, fontsize=<span class="m">18</span>)
+plt<span class="m">.</span>text(<span class="m">8</span>, <span class="m">3</span>, &#39;Know\n Person <span class="o">&amp;</span> Environment \n (Behavior <span class="o">&amp;</span> Psychology) \n Wellness <span class="o">&amp;</span> Perception (Wellness) \n SAVOIR&#39;, color=&#39;black&#39;, ha=&#39;center&#39;, va=&#39;center&#39;, fontsize=<span class="m">18</span>)
 
-<span class="c1"># Display the plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+# Display the<span class="k"> plot</span>
+plt<span class="m">.</span>show()
 </pre></div>
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="../../../_images/51c6671991d156c3428b5ff92d8ae7ba88dfa836dbda1eee3e60fd424831e226.png" src="../../../_images/51c6671991d156c3428b5ff92d8ae7ba88dfa836dbda1eee3e60fd424831e226.png" />
-</div>
 </div>
 <p>The concept of the “tragic aesthetic” has been a topic of interest across various disciplines, from literature and art to philosophy and psychology. At its core, the tragic aesthetic involves an appreciation for stories, artworks, or situations that center on human suffering, moral dilemmas, or the inescapability of fate. Yet, these narratives often carry an undercurrent of beauty or a greater truth that can make the experience of them deeply moving or even cathartic.</p>
 <p>In the world of arts and literature, this aesthetic often manifests through the depiction of characters or circumstances that are met with tragic ends, but whose struggles reveal complex emotions or moral dilemmas that resonate with audiences. Think of classical works like Shakespeare’s “Hamlet” or “Othello,” or even ancient tragedies like Sophocles’ “Oedipus Rex.”</p>
@@ -1345,50 +1982,47 @@ git2/abikesa_jbc.sh : 11 tokens</p>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>import networkx<span class="k"> as</span> nx
+import matplotlib<span class="m">.</span>pyplot<span class="k"> as</span> plt
 
-<span class="c1"># Create an empty directed graph</span>
-<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+# Create<span class="k"> an</span> empty directed<span class="k"> graph</span>
+G = nx<span class="m">.</span>DiGraph()
 
-<span class="c1"># Add nodes</span>
-<span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1.Confounder&#39;</span><span class="p">,</span> <span class="s1">&#39;3.Replication&#39;</span><span class="p">,</span> <span class="s1">&#39;4.Environment&#39;</span><span class="p">,</span> <span class="s1">&#39;5.Mediator&#39;</span><span class="p">,</span> <span class="s1">&#39;6.Outcome&#39;</span><span class="p">,</span> <span class="s1">&#39;2.Heredity&#39;</span><span class="p">]</span>
-<span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+# Add nodes
+nodes = [&#39;<span class="m">1.</span>Confounder&#39;, &#39;<span class="m">3.</span>Replication&#39;, &#39;<span class="m">4.</span>Environment&#39;, &#39;<span class="m">5.</span>Mediator&#39;, &#39;<span class="m">6.</span>Outcome&#39;, &#39;<span class="m">2.</span>Heredity&#39;]
+G<span class="m">.</span>add_nodes_from(nodes)
 
-<span class="c1"># Add edges to the graph (arrows in the DAG)</span>
-<span class="n">edges</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s1">&#39;1.Confounder&#39;</span><span class="p">,</span> <span class="s1">&#39;4.Environment&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;2.Heredity&#39;</span><span class="p">,</span> <span class="s1">&#39;4.Environment&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;4.Environment&#39;</span><span class="p">,</span> <span class="s1">&#39;5.Mediator&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;5.Mediator&#39;</span><span class="p">,</span> <span class="s1">&#39;6.Outcome&#39;</span><span class="p">)</span>
-<span class="p">]</span>
-<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+# Add edges to the<span class="k"> graph</span> (arrows<span class="k"> in</span> the DAG)
+edges = [
+    (&#39;<span class="m">1.</span>Confounder&#39;, &#39;<span class="m">4.</span>Environment&#39;),
+    (&#39;<span class="m">2.</span>Heredity&#39;, &#39;<span class="m">4.</span>Environment&#39;),
+    (&#39;<span class="m">4.</span>Environment&#39;, &#39;<span class="m">5.</span>Mediator&#39;),
+    (&#39;<span class="m">5.</span>Mediator&#39;, &#39;<span class="m">6.</span>Outcome&#39;)
+]
+G<span class="m">.</span>add_edges_from(edges)
 
-<span class="c1"># Set figure size</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># You can adjust the width and height here</span>
+# Set figure size
+plt<span class="m">.</span>figure(figsize=(<span class="m">10</span>, <span class="m">6</span>))  # You can<span class="k"> adjust</span> the width and height here
 
-<span class="c1"># Draw the DAG</span>
-<span class="n">pos</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;1.Confounder&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-    <span class="s1">&#39;3.Replication&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
-    <span class="s1">&#39;4.Environment&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">.75</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
-    <span class="s1">&#39;2.Heredity&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-    <span class="s1">&#39;5.Mediator&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">1.35</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
-    <span class="s1">&#39;6.Outcome&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="p">}</span>
+# Draw the DAG
+pos = {
+    &#39;<span class="m">1.</span>Confounder&#39;: (<span class="m">0</span>, <span class="m">1</span>),
+    &#39;<span class="m">3.</span>Replication&#39;: (<span class="m">0.2</span>, <span class="m">0.5</span>),
+    &#39;<span class="m">4.</span>Environment&#39;: (.<span class="m">75</span>, <span class="m">0.5</span>),
+    &#39;<span class="m">2.</span>Heredity&#39;: (<span class="m">0.1</span>, <span class="m">0</span>),
+    &#39;<span class="m">5.</span>Mediator&#39;: (<span class="m">1.35</span>, <span class="m">0.5</span>),
+    &#39;<span class="m">6.</span>Outcome&#39;: (<span class="m">2</span>, <span class="m">0.5</span>)
+}
 
-<span class="n">labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">edge</span><span class="p">:</span> <span class="s1">&#39;&#39;</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">}</span>
+labels = {edge: &#39;&#39;<span class="k"> for</span> edge<span class="k"> in</span> G<span class="m">.</span>edges}
 
-<span class="c1"># https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.ConnectionStyle.html#matplotlib.patches.ConnectionStyle</span>
-<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">12000</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">arrows</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">connectionstyle</span><span class="o">=</span><span class="s1">&#39;arc3,rad=0.01&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+# https:<span class="o">//</span>matplotlib<span class="m">.</span>org<span class="o">/</span>stable<span class="o">/</span>api<span class="o">/</span>_as_gen<span class="o">/</span>matplotlib<span class="m">.</span>patches<span class="m">.</span>ConnectionStyle<span class="m">.</span>html#matplotlib<span class="m">.</span>patches<span class="m">.</span>ConnectionStyle
+nx<span class="m">.</span>draw(G, pos, with_labels=True, node_color=&#39;lightblue&#39;, font_weight=&#39;normal&#39;, node_size=<span class="m">12000</span>, font_size=<span class="m">17</span>, arrows=True, connectionstyle=&#39;arc3,rad=<span class="m">0.01</span>&#39;)
+plt<span class="m">.</span>show()
 </pre></div>
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="../../../_images/25e992a093dd1934a413df9b6e25c5c39a4d2afaf26890673a439ed11f5d7911.png" src="../../../_images/25e992a093dd1934a413df9b6e25c5c39a4d2afaf26890673a439ed11f5d7911.png" />
-</div>
 </div>
 </Details>
 <Details>
@@ -1423,68 +2057,65 @@ The Randomized Controlled Trial is more than a scientific method; for some, it's
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>import matplotlib<span class="m">.</span>pyplot<span class="k"> as</span> plt
+import numpy<span class="k"> as</span> np
 
-<span class="c1"># Create data for the skill and challenge levels</span>
-<span class="n">skill_levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">challenge_levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+# Create data<span class="k"> for</span> the skill and challenge<span class="k"> levels</span>
+skill_levels = np<span class="m">.</span>linspace(<span class="m">0</span>, <span class="m">10</span>, <span class="m">100</span>)
+challenge_levels = np<span class="m">.</span>linspace(<span class="m">0</span>, <span class="m">10</span>, <span class="m">100</span>)
 
-<span class="c1"># Define the flow channel boundaries</span>
-<span class="n">flow_channel</span> <span class="o">=</span> <span class="n">skill_levels</span>
+# Define the flow channel boundaries
+flow_channel = skill_levels
 
-<span class="c1"># Adjust the phase and amplitude of the sinusoid wave</span>
-<span class="n">phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">16</span>
-<span class="n">amplitude</span> <span class="o">=</span> <span class="mf">1.5</span>
-<span class="n">sinusoid</span> <span class="o">=</span> <span class="n">flow_channel</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">skill_levels</span> <span class="o">+</span> <span class="n">phase</span><span class="p">)</span> <span class="o">*</span> <span class="n">amplitude</span>
+# Adjust the phase and amplitude of the sinusoid wave
+phase = np<span class="m">.</span>pi <span class="o">/</span> <span class="m">16</span>
+amplitude = <span class="m">1.5</span>
+sinusoid = flow_channel <span class="o">+</span> np<span class="m">.</span><span class="nf">sin</span>(skill_levels <span class="o">+</span> phase) <span class="o">*</span> amplitude
 
-<span class="c1"># Define the yellow zone boundaries, making it wider</span>
-<span class="n">yellow_zone_low</span> <span class="o">=</span> <span class="n">skill_levels</span> <span class="o">-</span> <span class="mf">1.5</span>  <span class="c1"># Adjust this value to make the yellow zone wider or narrower</span>
-<span class="n">yellow_zone_high</span> <span class="o">=</span> <span class="n">skill_levels</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="c1"># Adjust this value to make the yellow zone wider or narrower</span>
+# Define the yellow zone boundaries, making it wider
+yellow_zone_low = skill_levels <span class="o">-</span> <span class="m">1.5</span>  # Adjust this value to make the yellow zone wider or narrower
+yellow_zone_high = skill_levels <span class="o">+</span> <span class="m">1.5</span> # Adjust this value to make the yellow zone wider or narrower
 
-<span class="c1"># Plotting</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+# Plotting
+plt<span class="m">.</span>figure(figsize=(<span class="m">15</span>, <span class="m">10</span>))
 
-<span class="c1"># Plot the anxiety and boredom areas</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">,</span> <span class="n">yellow_zone_high</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orangered&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Place/Identification&#39;</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">yellow_zone_low</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lime&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Time/Revelation&#39;</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">,</span> <span class="n">yellow_zone_low</span><span class="p">,</span> <span class="n">yellow_zone_high</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Agent/Evolution&#39;</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+# Plot the anxiety and boredom areas
+plt<span class="m">.</span>fill_between(skill_levels, yellow_zone_high, <span class="m">10</span>, color=&#39;orangered&#39;,<span class="k"> alpha</span>=<span class="m">0.3</span>,<span class="k"> label</span>=&#39;Place<span class="o">/</span>Identification&#39;, interpolate=True)
+plt<span class="m">.</span>fill_between(skill_levels, <span class="m">0</span>, yellow_zone_low, color=&#39;lime&#39;,<span class="k"> alpha</span>=<span class="m">0.3</span>,<span class="k"> label</span>=&#39;Time<span class="o">/</span>Revelation&#39;, interpolate=True)
+plt<span class="m">.</span>fill_between(skill_levels, yellow_zone_low, yellow_zone_high, color=&#39;yellow&#39;,<span class="k"> alpha</span>=<span class="m">0.3</span>,<span class="k"> label</span>=&#39;Agent<span class="o">/</span>Evolution&#39;, interpolate=True)
 
-<span class="c1"># Plot the sinusoid function with the diagonal as its axis</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">,</span> <span class="n">sinusoid</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+# Plot the sinusoid function with the diagonal<span class="k"> as</span> its axis
+plt<span class="m">.</span>plot(skill_levels, sinusoid, color=&#39;purple&#39;, linestyle=&#39;<span class="o">-</span>&#39;)
 
-<span class="c1"># Add arrowhead to the sinusoid line</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">sinusoid</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">skill_levels</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">skill_levels</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">sinusoid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">sinusoid</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span>
-          <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">length_includes_head</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">head_width</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">head_length</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+# Add arrowhead to the sinusoid<span class="k"> line</span>
+plt<span class="m">.</span>arrow(skill_levels[<span class="o">-</span><span class="m">2</span>], sinusoid[<span class="o">-</span><span class="m">2</span>], skill_levels[<span class="o">-</span><span class="m">1</span>] <span class="o">-</span> skill_levels[<span class="o">-</span><span class="m">2</span>], sinusoid[<span class="o">-</span><span class="m">1</span>] <span class="o">-</span> sinusoid[<span class="o">-</span><span class="m">2</span>],
+          color=&#39;purple&#39;, length_includes_head=True, head_width=<span class="m">0.15</span>, head_length=<span class="m">0.3</span>)
 
-<span class="c1"># Set plot labels and title</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Skill-level&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Challenge-level&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+# Set<span class="k"> plot</span> labels and title
+plt<span class="m">.</span>xlabel(&#39;Skill<span class="o">-</span>level&#39;, fontsize=<span class="m">18</span>)
+plt<span class="m">.</span>ylabel(&#39;Challenge<span class="o">-</span>level&#39;, rotation=&#39;vertical&#39;, fontsize=<span class="m">18</span>)
 
-<span class="c1"># Set plot limits and grid</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+# Set<span class="k"> plot</span> limits and grid
+plt<span class="m">.</span>xlim(<span class="m">0</span>, <span class="m">10</span>)
+plt<span class="m">.</span>ylim(<span class="m">0</span>, <span class="m">10</span>)
+plt<span class="m">.</span>grid(True)
 
-<span class="c1"># Set tick labels</span>
-<span class="n">tick_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;6&#39;</span><span class="p">,</span> <span class="s1">&#39;8&#39;</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">tick_labels</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">tick_labels</span><span class="p">)</span>
+# Set tick labels
+tick_labels = [&#39;<span class="m">0</span>&#39;, &#39;<span class="m">2</span>&#39;, &#39;<span class="m">4</span>&#39;, &#39;<span class="m">6</span>&#39;, &#39;<span class="m">8</span>&#39;, &#39;<span class="m">10</span>&#39;]
+plt<span class="m">.</span>xticks(np<span class="m">.</span>linspace(<span class="m">0</span>, <span class="m">10</span>, <span class="m">6</span>), tick_labels)
+plt<span class="m">.</span>yticks(np<span class="m">.</span>linspace(<span class="m">0</span>, <span class="m">10</span>, <span class="m">6</span>), tick_labels)
 
-<span class="c1"># Add text annotations to label the areas without shaded background</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;Voir&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">4.7</span><span class="p">,</span> <span class="s1">&#39;Pouvoir&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Savoir&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+# Add text annotations to<span class="k"> label</span> the areas without shaded background
+plt<span class="m">.</span>text(<span class="m">1</span>, <span class="m">6</span>, &#39;Voir&#39;, color=&#39;black&#39;, ha=&#39;center&#39;, va=&#39;center&#39;, fontsize=<span class="m">50</span>)
+plt<span class="m">.</span>text(<span class="m">4.5</span>, <span class="m">4.7</span>, &#39;Pouvoir&#39;, color=&#39;black&#39;, ha=&#39;center&#39;, va=&#39;center&#39;, fontsize=<span class="m">50</span>)
+plt<span class="m">.</span>text(<span class="m">8</span>, <span class="m">3</span>, &#39;Savoir&#39;, color=&#39;black&#39;, ha=&#39;center&#39;, va=&#39;center&#39;, fontsize=<span class="m">50</span>)
 
-<span class="c1"># Display the plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+# Display the<span class="k"> plot</span>
+plt<span class="m">.</span>show()
 </pre></div>
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="../../../_images/aeb42aa50a44b2f0604b7bb15c9fda2268a2f7f854e44be290ce19d958bd43a9.png" src="../../../_images/aeb42aa50a44b2f0604b7bb15c9fda2268a2f7f854e44be290ce19d958bd43a9.png" />
-</div>
 </div>
 <ol class="arabic simple">
 <li><p><span style="color:lightpink;">Voir</span></p>
@@ -1538,16 +2169,16 @@ The Randomized Controlled Trial is more than a scientific method; for some, it's
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "stata"
         },
         kernelOptions: {
-            name: "python3",
+            name: "stata",
             path: "./act_0/act_0_0/act_0_0_0"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'stata'</script>
 
                 </article>
               

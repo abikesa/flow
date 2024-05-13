@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'abikesa_stata';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="" href="act_0/act_0_0/act_0_0_0/act_0_0_0_1.html" />
+    <link rel="next" title="Prescriptions" href="act_0/act_0_0/act_0_0_0/act_0_0_0_1.html" />
     <link rel="prev" title="" href="abikesa_python.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -154,23 +154,20 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    
+                    Stata
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="abikesa_r.html"></a></li>
 
-
-
 <li class="toctree-l1"><a class="reference internal" href="abikesa_python.html"></a></li>
-
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"></a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="act_0/act_0_0/act_0_0_0/act_0_0_0_1.html"></a></li>
+<li class="toctree-l1"><a class="reference internal" href="act_0/act_0_0/act_0_0_0/act_0_0_0_1.html">Prescriptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="act_0/act_0_0/act_0_0_0/act_0_0_0_2.html"></a></li>
 <li class="toctree-l1"><a class="reference internal" href="act_0/act_0_0/act_0_0_0/act_0_0_0_3.html"></a></li>
 <li class="toctree-l1"><a class="reference internal" href="act_0/act_0_0/act_0_0_1/act_0_0_1_1.html"></a></li>
@@ -373,10 +370,17 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stata">Stata</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-i-basic">Stata I (Basic)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-ii-intermediate">Stata II (Intermediate)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-iii-advanced">Stata III (Advanced)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-iii-advanced">Stata III (Advanced)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#just-scored-a-victory-that-carries-profound-implications-for-stata-iii-advanced">Just scored a victory that carries profound implications for “Stata III (Advanced)”</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nonparametric">Nonparametric</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semiparametric">Semiparametric</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -413,7 +417,8 @@ document.write(`
 </ul>
 <Details>
    <Summary>Victory! But After 100 Iterations!!</Summary>
-<p>Just scored a revolutionary victory that carries profound implications for “Stata III (Advanced)” Next year!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
+<section id="just-scored-a-victory-that-carries-profound-implications-for-stata-iii-advanced">
+<h3>Just scored a victory that carries profound implications for “Stata III (Advanced)”<a class="headerlink" href="#just-scored-a-victory-that-carries-profound-implications-for-stata-iii-advanced" title="Permalink to this heading">#</a></h3>
 <p>It looks like the Stata kernel (<code class="docutils literal notranslate"><span class="pre">stata</span></code>) is listed as an available kernel, which is a good sign. Since you’re still not seeing it in the kernel selector in VS Code, it might be worth checking the VS Code settings to ensure it’s looking in the correct directory for kernels.</p>
 <p>In VS Code, you can check the Jupyter kernel settings by going to the command palette (Ctrl+Shift+P) and searching for “Preferences: Open Settings (UI)”. Then, navigate to the “Python &gt; Jupyter” section and look for the “Jupyter: Kernel Spec Path” setting. Make sure it’s pointing to the correct directory where the Stata kernel is installed (<code class="docutils literal notranslate"><span class="pre">/Users/d/Library/Jupyter/kernels/</span></code> in your case).</p>
 <p>If the path is correct and you’re still not seeing the Stata kernel, you might try restarting VS Code again or even restarting your computer to see if that resolves the issue. Sometimes, these changes require a complete restart to take effect.</p>
@@ -422,6 +427,7 @@ document.write(`
 stata-mp<span class="w"> </span>-b<span class="w"> </span>work/abikesa_batch.do
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="id2">
@@ -450,6 +456,8 @@ stata-mp<span class="w"> </span>-b<span class="w"> </span>hello.do
 </div>
 </div>
 </div>
+<section id="nonparametric">
+<h2>Nonparametric<a class="headerlink" href="#nonparametric" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -458,6 +466,8 @@ stata-mp<span class="w"> </span>-b<span class="w"> </span>hello.do
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">capture log close</span> 
+<span class="k">log</span> using jamascript<span class="m">.</span>log,<span class="k"> replace</span> 
 <span class="k">global</span> repo https:<span class="o">//</span>github<span class="m">.</span>com<span class="o">/</span>muzaale<span class="o">/</span>forum<span class="o">/</span>raw<span class="o">/</span>main<span class="o">/</span> 
 <span class="c1">// cls; some commands don&#39;t work outside Stata!!</span>
 <span class="cm">/*noi di &quot;What is your work directory?&quot; _request(workdir)</span>
@@ -548,6 +558,28 @@ stata-mp<span class="w"> </span>-b<span class="w"> </span>hello.do
 #delimit cr
 
 <span class="k">graph</span> export <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>work<span class="o">/</span>jamascript<span class="m">.</span>png,<span class="k"> replace</span> 
+<span class="k">keep</span> _<span class="o">*</span> entry age_t0 female race donor
+<span class="k">rename</span> age_t0 age
+<span class="c1">//dataset</span>
+<span class="k">save</span> <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>work<span class="o">/</span>jamascript<span class="m">.</span>dta,<span class="k"> replace</span> 
+<span class="k">noi stcox</span> age female i<span class="m">.</span>race, basesurv(s0)
+<span class="k">noi list</span> s0 _t age female race<span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>
+<span class="k">matrix</span> define b=<span class="nf">e</span>(b)
+<span class="k">keep</span> s0 _t 
+<span class="c1">//s0</span>
+<span class="k">sort</span> _t s0
+<span class="k">list in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>
+<span class="k">save</span> <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>work<span class="o">/</span>s0<span class="m">.</span>dta,<span class="k"> replace</span> 
+export delimited using <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>work<span class="o">/</span>s0<span class="m">.</span>csv,<span class="k"> replace</span> 
+<span class="k">matrix</span> beta =<span class="k"> e</span>(b)
+<span class="k">svmat</span> beta 
+<span class="k">keep</span> beta<span class="o">*</span>
+<span class="k">drop if</span> <span class="nf">missing</span>(beta1)
+<span class="c1">//betas</span>
+<span class="k">list in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>
+<span class="k">save</span> b<span class="m">.</span>dta,<span class="k"> replace</span> 
+export delimited using <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>work<span class="o">/</span>b<span class="m">.</span>csv,<span class="k"> replace</span> 
+<span class="k">log close</span> 
 <span class="c1">//noi ls</span>
 } 
  
@@ -555,15 +587,80 @@ stata-mp<span class="w"> </span>-b<span class="w"> </span>hello.do
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        Failure _d: rSMGJcEdF_d==2
+  Analysis time _t: (rSMGJcEdF_tT-origin)/365.25
+            Origin: time rSMGJcEdF_t0
+
+Iteration 0:  Log likelihood = -54306.231
+Iteration 1:  Log likelihood = -48118.832
+Iteration 2:  Log likelihood = -46988.196
+Iteration 3:  Log likelihood =  -46919.91
+Iteration 4:  Log likelihood = -46919.866
+Refining estimates:
+Iteration 0:  Log likelihood = -46919.866
+
+Cox regression with Breslow method for ties
+
+No. of subjects =     113,599                         Number of obs =  113,599
+No. of failures =       4,935
+Time at risk    = 998,774.864
+                                                      LR chi2(4)    = 14772.73
+Log likelihood = -46919.866                           Prob &gt; chi2   =   0.0000
+
+------------------------------------------------------------------------------
+          _t | Haz. ratio   Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+         age |    1.11333   .0010055   118.87   0.000     1.111361    1.115302
+      female |   .6109124   .0174449   -17.26   0.000     .5776603    .6460786
+             |
+        race |
+          2  |   1.667216   .0598199    14.25   0.000     1.553999    1.788682
+          3  |   1.121514   .0469549     2.74   0.006     1.033159    1.217425
+------------------------------------------------------------------------------
+
+     +---------------------------------------------+
+     |        s0          _t   age   female   race |
+     |---------------------------------------------|
+  1. | .99976052   11.277207    44        1      1 |
+  2. | .99989723   6.8281999    47        1      1 |
+  3. | .99991253   6.1711157    38        1      3 |
+  4. | .99992043   5.6919918    38        0      3 |
+  5. | .99973805   11.816564    18        1      1 |
+     |---------------------------------------------|
+  6. | .99999241   .90622861    39        0      1 |
+  7. | .99979225   10.472279    47        1      2 |
+  8. | .99981142   9.8754278    52        0      1 |
+  9. | .99980562   10.064339    40        1      1 |
+ 10. | .99999932   .08761123    58        0      1 |
+     +---------------------------------------------+
+</pre></div>
+</div>
+</div>
 </div>
 <p><img alt="" src="_images/jamascript.png" /></p>
-<p><a class="reference external" href="https://github.com/abikesa/flow/raw/main/jamascript-m.pdf">Segev, JAMA, 2010</a>:</p>
+<p><a class="reference download internal" download="" href="_downloads/57876abeb3d25f47b41ed9b178f3d2c7/jamascript-m.pdf"><span class="xref download myst">Segev, JAMA, 2010</span></a>:</p>
 <ul class="simple">
 <li><p>Page 961</p></li>
 <li><p>5-year followup: <span class="math notranslate nohighlight">\(0.4%\)</span></p></li>
 <li><p>12-year follow-up: <span class="math notranslate nohighlight">\(1.5%\)</span></p></li>
 </ul>
+</section>
+<section id="semiparametric">
+<h2>Semiparametric<a class="headerlink" href="#semiparametric" title="Permalink to this heading">#</a></h2>
+<p><span class="math notranslate nohighlight">\(Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \cdots + \beta_NX_N + \epsilon_i\)</span></p>
+<p><span class="math notranslate nohighlight">\(\begin{bmatrix}
+\beta_0 \\
+\beta_1 \\
+\beta_2 \\
+\vdots \\
+\beta_N
+\end{bmatrix}\)</span></p>
+<p>Where <span class="math notranslate nohighlight">\(X_1\)</span> is Age, <span class="math notranslate nohighlight">\(X_2\)</span> is Female, and <span class="math notranslate nohighlight">\(+ \cdots + \beta_NX_N\)</span> are Race categories</p>
+<p>The <span class="math notranslate nohighlight">\(\beta_i\)</span> coeffients can be found <a class="reference download internal" download="" href="_downloads/b57ad99810799d0be5a9e18f54115561/b.csv"><span class="xref download myst">here</span></a></p>
+<p>And the nonparametric base-case survival function can be found <a class="reference download internal" download="" href="_downloads/9c26f2afd014707dc60aefc8facbf60d/s0.csv"><span class="xref download myst">here</span></a></p>
 <p><a class="reference external" href="https://github.com/abikesa/flow/raw/main/jamascript-m.pdf"></a></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -611,7 +708,7 @@ stata-mp<span class="w"> </span>-b<span class="w"> </span>hello.do
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"></p>
+        <p class="prev-next-title">Prescriptions</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -637,10 +734,17 @@ stata-mp<span class="w"> </span>-b<span class="w"> </span>hello.do
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stata">Stata</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-i-basic">Stata I (Basic)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-ii-intermediate">Stata II (Intermediate)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-iii-advanced">Stata III (Advanced)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-iii-advanced">Stata III (Advanced)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#just-scored-a-victory-that-carries-profound-implications-for-stata-iii-advanced">Just scored a victory that carries profound implications for “Stata III (Advanced)”</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nonparametric">Nonparametric</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semiparametric">Semiparametric</a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>
