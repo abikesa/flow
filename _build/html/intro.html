@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title> &#8212; Work Flow</title>
+    <title>Stata &#8212; Work Flow</title>
   
   
   
@@ -151,23 +151,20 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    
+                    Stata
                 </a>
             </li>
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="abikesa_r.html"></a></li>
 
-
-
 <li class="toctree-l1"><a class="reference internal" href="abikesa_python.html"></a></li>
-
 
 
 <li class="toctree-l1"><a class="reference internal" href="abikesa_stata.html"></a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="act_0/act_0_0/act_0_0_0/act_0_0_0_1.html"></a></li>
+<li class="toctree-l1"><a class="reference internal" href="act_0/act_0_0/act_0_0_0/act_0_0_0_1.html">Prescriptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="act_0/act_0_0/act_0_0_0/act_0_0_0_2.html"></a></li>
 <li class="toctree-l1"><a class="reference internal" href="act_0/act_0_0/act_0_0_0/act_0_0_0_3.html"></a></li>
 <li class="toctree-l1"><a class="reference internal" href="act_0/act_0_0/act_0_0_1/act_0_0_1_1.html"></a></li>
@@ -356,7 +353,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1></h1>
+    <h1>Stata</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -366,12 +363,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-kernel-in-jupyter-notebook">Stata kernel in jupyter notebook</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vscode">VSCode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel">Kernel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter">Jupyter</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -382,25 +377,40 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="stata">
+<h1>Stata<a class="headerlink" href="#stata" title="Permalink to this heading">#</a></h1>
+<section id="vscode">
+<h2>VSCode<a class="headerlink" href="#vscode" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Visual Studio Code</p></li>
+<li><p>Menu</p>
+<ul>
+<li><p>View</p>
+<ul>
+<li><p>Command Palatte</p>
+<ul>
+<li><p>Preferences: Open Settings (UI)</p>
+<ul>
+<li><p>Python &gt; JupyterJupyter: Kernel Spec Path</p>
+<ul>
+<li><p>/Users/d/Library/Jupyter/kernels/Stata</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>But this is after installing the stata_kernel</p></li>
+<li><p>I advise to delete any previous virtual environments you’d installed in other folders before doing this</p></li>
+<li><p>These steps worked only after about 20 iterations and the above represent the definitive solutions</p></li>
+</ul>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="stata-kernel-in-jupyter-notebook">
-<h1>Stata kernel in jupyter notebook<a class="headerlink" href="#stata-kernel-in-jupyter-notebook" title="Permalink to this heading">#</a></h1>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span>GitHub<span class="w"> </span>%<span class="w"> </span>~/documents/github/myenv/bin/python3.11<span class="w"> </span>-m<span class="w"> </span>jupyter<span class="w"> </span>kernelspec<span class="w"> </span>list
-
-<span class="m">0</span>.00s<span class="w"> </span>-<span class="w"> </span>Debugger<span class="w"> </span>warning:<span class="w"> </span>It<span class="w"> </span>seems<span class="w"> </span>that<span class="w"> </span>frozen<span class="w"> </span>modules<span class="w"> </span>are<span class="w"> </span>being<span class="w"> </span>used,<span class="w"> </span>which<span class="w"> </span>may
-<span class="m">0</span>.00s<span class="w"> </span>-<span class="w"> </span>make<span class="w"> </span>the<span class="w"> </span>debugger<span class="w"> </span>miss<span class="w"> </span>breakpoints.<span class="w"> </span>Please<span class="w"> </span>pass<span class="w"> </span>-Xfrozen_modules<span class="o">=</span>off
-<span class="m">0</span>.00s<span class="w"> </span>-<span class="w"> </span>to<span class="w"> </span>python<span class="w"> </span>to<span class="w"> </span>disable<span class="w"> </span>frozen<span class="w"> </span>modules.
-<span class="m">0</span>.00s<span class="w"> </span>-<span class="w"> </span>Note:<span class="w"> </span>Debugging<span class="w"> </span>will<span class="w"> </span>proceed.<span class="w"> </span>Set<span class="w"> </span><span class="nv">PYDEVD_DISABLE_FILE_VALIDATION</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>to<span class="w"> </span>disable<span class="w"> </span>this<span class="w"> </span>validation.
-Available<span class="w"> </span>kernels:
-<span class="w">  </span>ir<span class="w">         </span>/Users/d/Library/Jupyter/kernels/ir
-<span class="w">  </span>myenv<span class="w">      </span>/Users/d/Library/Jupyter/kernels/myenv
-<span class="w">  </span>stata<span class="w">      </span>/Users/d/Library/Jupyter/kernels/stata
-<span class="w">  </span>python3<span class="w">    </span>/Users/d/Dropbox<span class="w"> </span><span class="o">(</span>Personal<span class="o">)</span>/1f.ἡἔρις,κ/1.ontology/myenv/share/jupyter/kernels/python3
-<span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span>GitHub<span class="w"> </span>%<span class="w"> </span>
-</pre></div>
-</div>
+<section id="kernel">
+<h2>Kernel<a class="headerlink" href="#kernel" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://stackoverflow.com/questions/66638993/how-to-enable-stata-kernel-in-jupyter-notebook">In Terminal</a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/documents/github/myenv/bin/activate
 pip<span class="w"> </span>install<span class="w"> </span>stata_kernel<span class="w"> </span>--target<span class="o">=</span>/users/d/documents/github/menv/lib/python3.11/site-packages
@@ -412,6 +422,9 @@ pip<span class="w"> </span>install<span class="w"> </span>ipystata<span class="w
 </pre></div>
 </div>
 <p>Hanging at <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">nodejs</span> <span class="pre">-y</span></code>. Let’s address it later</p>
+</section>
+<section id="jupyter">
+<h2>Jupyter<a class="headerlink" href="#jupyter" title="Permalink to this heading">#</a></h2>
 <p>In Jupyter notebook</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ipystata</span> 
 <span class="kn">from</span> <span class="nn">ipystata.config</span> <span class="kn">import</span> <span class="n">config_stata</span>  
@@ -474,6 +487,7 @@ pip<span class="w"> </span>install<span class="w"> </span>ipystata<span class="w
 </li>
 </ol>
 <p>Remember to activate your virtual environment every time you want to use Stata in Jupyter Notebook, and deactivate it when you’re finished. This ensures that you’re using the correct environment and dependencies.</p>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -542,12 +556,10 @@ pip<span class="w"> </span>install<span class="w"> </span>ipystata<span class="w
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-kernel-in-jupyter-notebook">Stata kernel in jupyter notebook</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vscode">VSCode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel">Kernel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter">Jupyter</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
