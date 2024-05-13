@@ -18,13 +18,12 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import sys
 import geopandas as gpd
 import pandas as pd
 import warnings
 import geopandas.datasets
 import matplotlib.pyplot as plt
-print(sys.executable)
+
 # Load the world map shapefile from the downloaded file
 world_path = '~/documents/github/myenv/lib/python3.11/site-packages/geopandas/datasets/naturalearth_lowres/naturalearth_lowres.shp'
 world = gpd.read_file(world_path)
@@ -38,11 +37,10 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[12], line 2[0m
-[1;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01msys[39;00m
-[0;32m----> 2[0m [38;5;28;01mimport[39;00m [38;5;21;01mgeopandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mgpd[39;00m
-[1;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
-[1;32m      4[0m [38;5;28;01mimport[39;00m [38;5;21;01mwarnings[39;00m
+Cell [0;32mIn[12], line 1[0m
+[0;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mgeopandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mgpd[39;00m
+[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
+[1;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01mwarnings[39;00m
 
 [0;31mModuleNotFoundError[0m: No module named 'geopandas'
 
