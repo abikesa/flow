@@ -1,3 +1,3 @@
 #
-export PATH=$PATH:/applications/stata/statase.app/contents/macos/
-stata-se -b work/abikesa_nhanes.do
+export PATH=$PATH:/applications/stata/statamp.app/contents/macos/
+stata-mp -b work/abikesa_nhanes.do

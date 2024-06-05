@@ -14,7 +14,7 @@ eval "$(ssh-agent -s)"
 ssh-add -D
 
 # Add your SSH key to the agent
-`chmod 600 "$(eval echo $SSH_KEY_PATH)"`
+chmod 600 "$(eval echo $SSH_KEY_PATH)"
 ssh-add "$(eval echo $SSH_KEY_PATH)"
 
 # Build the book with Jupyter Book
@@ -51,9 +51,10 @@ ssh-add -D
 # Remove all identities from the SSH agent
 chmod 600 "$(eval echo $SSH_KEY_PATH)"
 # ls -l ~/.ssh/id_stata0elemental
-#chmod 600 "$(eval echo ~/.ssh/id_stata0elemental"
+#chmod 600 "$(eval echo ~/.ssh/id_workflow)"
 
 git remote set-url origin "git@github.com:$GITHUB_USERNAME/$REPO_NAME"
+# git remote set-url origin "git@github.com:abikesa/flow"
 ssh-add "$(eval echo $SSH_KEY_PATH)"
 git config --local user.name "$GITHUB_USERNAME"
 git config --local user.email "$EMAIL_ADDRESS"
